@@ -20,9 +20,9 @@ struct GoalProgressView: View {
         .background {
             GeometryReader { geometry in
                 HStack(spacing: 0) {
-                    Color.red
+                    model.progressMainColor.getColor()
                         .frame(width: geometry.size.width * model.getProgress())
-                    Color.blue
+                    model.progressBackgroundColor.getColor()
                 }
             }
         }
@@ -33,5 +33,7 @@ struct GoalProgressView: View {
 #Preview {
     GoalProgressView(model: .constant(GoalModel(name: "ggg",
                                                 currentValue: 12,
-                                                goalValue: 44)))
+                                                goalValue: 44,
+                                                backgroundColor: ColorModel(color: .blue.opacity(0.3)),
+                                                tintColor: ColorModel(color: .blue.opacity(0.5)))))
 }
