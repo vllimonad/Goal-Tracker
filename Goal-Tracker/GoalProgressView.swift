@@ -14,7 +14,9 @@ struct GoalProgressView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(model.name)
+                .frame(maxWidth: .infinity, alignment: .leading)
             Text("\(model.currentValue)/\(model.goalValue) ML")
+                .frame(maxWidth: .infinity, alignment: .leading)
         }
         .padding(16)
         .background {

@@ -8,6 +8,7 @@
 import Foundation
 import SwiftData
 import SwiftUI
+import UIKit
 
 @Model
 class ColorModel {
@@ -19,7 +20,7 @@ class ColorModel {
     
     convenience init(color: Color) {
         let uiColor = UIColor(color)
-        let ciColor = uiColor.ciColor
+        let ciColor = CIColor(color: uiColor)
         
         self.init(red: ciColor.red,
                   green: ciColor.red,
