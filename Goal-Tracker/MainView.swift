@@ -18,7 +18,7 @@ struct MainView: View {
                 value: .goals) {
                 GoalsListView()
             }
-            
+                        
             Tab("stats.title",
                 image: selectedTab == .stats ? "tab.stats.colored" : "tab.stats",
                 value: .stats) {

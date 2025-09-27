@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GoalProgressView: View {
     
-    @Binding var model: GoalModel
+    var model: GoalModel
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -33,9 +33,9 @@ struct GoalProgressView: View {
 }
 
 #Preview {
-    GoalProgressView(model: .constant(GoalModel(name: "ggg",
+    GoalProgressView(model: GoalModel(name: "ggg",
                                                 currentValue: 12,
                                                 goalValue: 44,
                                                 backgroundColor: ColorModel(color: .blue.opacity(0.3)),
-                                                tintColor: ColorModel(color: .blue.opacity(0.5)))))
+                                                tintColor: ColorModel(color: .blue.opacity(0.5))))
 }
