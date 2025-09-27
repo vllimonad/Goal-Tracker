@@ -7,8 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    
+struct GoalsListView: View {
     
     var body: some View {
         ScrollView {
@@ -27,5 +26,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    GoalsListView()
 }
