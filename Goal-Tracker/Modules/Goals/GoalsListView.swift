@@ -19,7 +19,7 @@ struct GoalsListView: View {
                     .listRowInsets(.init(top: 0, leading: 24, bottom: 0, trailing: 24))
                     .listRowBackground(Color.white)
                     .swipeActions(edge: .trailing) {
-                        Button("Delete", role: .destructive) {
+                        Button("goals.delete.action.title", role: .destructive) {
                             viewModel.deleteModel(model)
                         }
                     }

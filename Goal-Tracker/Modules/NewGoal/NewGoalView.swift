@@ -15,12 +15,12 @@ struct NewGoalView: View {
         NavigationView {
             Form {
                 Section {
-                    TextField("Goal's name", text: $viewModel.name)
+                    TextField("goal.name.placeholder", text: $viewModel.name)
                 }
                 
-                Section("Data") {
+                Section("goal.data.section.title") {
                     HStack {
-                        Text("Initial value")
+                        Text("goal.initial.value")
                         
                         Spacer()
                         
@@ -32,7 +32,7 @@ struct NewGoalView: View {
                     }
                     
                     HStack {
-                        Text("Target value")
+                        Text("goal.target.value")
                         
                         Spacer()
                         
@@ -46,7 +46,7 @@ struct NewGoalView: View {
                         UnitPickerView(unit: $viewModel.unitType)
                     } label: {
                         HStack {
-                            Text("Unit")
+                            Text("goal.unit")
                             
                             Spacer()
                             
@@ -55,19 +55,19 @@ struct NewGoalView: View {
                     }
                 }
                 
-                Section("Colors") {
-                    ColorPicker("Progress",
+                Section("goal.colors.section.title") {
+                    ColorPicker("goal.progress.color",
                                 selection: $viewModel.progressColor,
                                 supportsOpacity: false)
-                    ColorPicker("Background",
+                    ColorPicker("goal.background.color",
                                 selection: $viewModel.backgroundColor,
                                 supportsOpacity: false)
-                    ColorPicker("Text",
+                    ColorPicker("goal.text.color",
                                 selection: $viewModel.textColor,
                                 supportsOpacity: false)
                 }
                 
-                Section("Preview") {
+                Section("goal.preview.section.title") {
                     GoalProgressView(model: viewModel.getModel())
                         .listRowInsets(EdgeInsets())
                 }

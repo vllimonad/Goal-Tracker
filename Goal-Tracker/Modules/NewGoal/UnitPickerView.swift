@@ -25,7 +25,7 @@ struct UnitPickerView: View {
                 .labelsHidden()
             }
             
-            Section("Currency") {
+            Section("goal.unit.currency.section.title") {
                 Picker("", selection: $unit) {
                     ForEach(CurrencyUnitType.allCases, id: \.self) {
                         Text($0.name)
@@ -36,7 +36,7 @@ struct UnitPickerView: View {
                 .labelsHidden()
             }
             
-            Section("Weight") {
+            Section("goal.unit.weight.section.title") {
                 Picker("", selection: $unit) {
                     ForEach(WeightUnitType.allCases, id: \.self) {
                         Text($0.name)
@@ -47,7 +47,7 @@ struct UnitPickerView: View {
                 .labelsHidden()
             }
             
-            Section("Distance") {
+            Section("goal.unit.distance.section.title") {
                 Picker("", selection: $unit) {
                     ForEach(DistanceUnitType.allCases, id: \.self) {
                         Text($0.name)
