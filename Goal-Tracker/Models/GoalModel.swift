@@ -12,25 +12,25 @@ import SwiftData
 class GoalModel {
     
     var name: String
-    var currentValue: Int
-    var goalValue: Int
+    var currentValue: Double
+    var goalValue: Double
     
-    var progressBackgroundColor: ColorModel
-    var progressMainColor: ColorModel
+    var progressColor: ColorModel
+    var backgroundColor: ColorModel
     
     init(name: String,
-         currentValue: Int,
-         goalValue: Int,
-         backgroundColor: ColorModel,
-         tintColor: ColorModel) {
+         currentValue: Double,
+         goalValue: Double,
+         progressColor: ColorModel,
+         backgroundColor: ColorModel) {
         self.name = name
         self.currentValue = currentValue
         self.goalValue = goalValue
-        self.progressBackgroundColor = backgroundColor
-        self.progressMainColor = tintColor
+        self.progressColor = progressColor
+        self.backgroundColor = backgroundColor
     }
     
     func getProgress() -> Double {
-        Double(currentValue) / Double(goalValue)
+        currentValue / goalValue
     }
 }

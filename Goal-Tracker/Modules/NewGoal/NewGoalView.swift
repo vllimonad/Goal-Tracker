@@ -36,13 +36,33 @@ struct NewGoalView: View {
                         TextField("", value: $viewModel.goalValue, formatter: NumberFormatter())
                             .multilineTextAlignment(.trailing)
                     }
+                    
+                    NavigationLink {
+                        UnitPickerView(unit: $viewModel.unit)
+                    } label: {
+                        HStack {
+                            Text("Unit")
+                            
+                            Spacer()
+                            
+                            Text(viewModel.unit.name)
+                        }
+                    }
                 }
-                    
                 
-                    
-                    
-                    
+                Section("Colors") {
+                    ColorPicker("Progress",
+                                selection: $viewModel.progressColor,
+                                supportsOpacity: false)
+                    ColorPicker("Background",
+                                selection: $viewModel.backgroundColor,
+                                supportsOpacity: false)
+                }
                 
+                Section("Preview") {
+                    GoalProgressView(model: viewModel.getModel())
+                        .listRowInsets(EdgeInsets())
+                }
             }
         }
     }

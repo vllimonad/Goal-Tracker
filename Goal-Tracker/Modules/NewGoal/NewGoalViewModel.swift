@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 @Observable
 final class NewGoalViewModel {
@@ -14,11 +15,23 @@ final class NewGoalViewModel {
     var initialValue: Double
     var goalValue: Double
     var unit: UnitType
+    var progressColor: Color
+    var backgroundColor: Color
     
     init() {
         self.name = ""
         self.initialValue = 0
         self.goalValue = 0
-        self.unit = .none
+        self.unit = .other(.none)
+        self.progressColor = .blue.opacity(0.7)
+        self.backgroundColor = .blue.opacity(0.4)
+    }
+    
+    func getModel() -> GoalModel {
+        GoalModel(name: name,
+                  currentValue: initialValue,
+                  goalValue: goalValue,
+                  progressColor: .init(color: progressColor),
+                  backgroundColor: .init(color: backgroundColor))
     }
 }

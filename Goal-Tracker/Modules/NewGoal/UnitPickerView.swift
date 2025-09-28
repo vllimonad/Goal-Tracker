@@ -9,14 +9,17 @@ import SwiftUI
 
 struct UnitPickerView: View {
     
-    @State private var unit: UnitType = .none
+    @Environment(\.dismiss) var dismiss
+    @Binding var unit: UnitType
     
     var body: some View {
         Form {
             Section {
                 Picker("", selection: $unit) {
-                    Text("None")
-                        .tag(UnitType.none)
+                    ForEach(OtherUnitType.allCases, id: \.self) {
+                        Text($0.name)
+                            .tag(UnitType.other($0))
+                    }
                 }
                 .pickerStyle(.inline)
                 .labelsHidden()
@@ -55,9 +58,12 @@ struct UnitPickerView: View {
                 .labelsHidden()
             }
         }
+        .onChange(of: unit) { _, _ in
+            dismiss()
+        }
     }
 }
 
 #Preview {
-    UnitPickerView()
+    UnitPickerView(unit: .constant(.other(.none)))
 }

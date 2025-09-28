@@ -8,10 +8,19 @@
 import Foundation
 
 enum UnitType: Codable, Hashable {
-    case none
     case weight(WeightUnitType)
     case distance(DistanceUnitType)
     case currency(CurrencyUnitType)
+    case other(OtherUnitType)
+    
+    var name: String {
+        switch self {
+        case .weight(let value): value.name
+        case .distance(let value): value.name
+        case .currency(let value): value.name
+        case .other(let value): value.name
+        }
+    }
 }
 
 enum WeightUnitType: CaseIterable, Codable {
@@ -73,3 +82,14 @@ enum CurrencyUnitType: CaseIterable, Codable {
         }
     }
 }
+
+enum OtherUnitType: CaseIterable, Codable {
+    case none
+    
+    var name: String {
+        switch self {
+        case .none: "None"
+        }
+    }
+}
+

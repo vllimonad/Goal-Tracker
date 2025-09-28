@@ -18,13 +18,13 @@ final class GoalsListViewModel {
             GoalModel(name: "ggg",
                       currentValue: 12,
                       goalValue: 44,
-                      backgroundColor: ColorModel(color: .blue.opacity(0.3)),
-                      tintColor: ColorModel(color: .blue.opacity(0.5))),
-            GoalModel(name: "ervewr",
-                      currentValue: 323,
-                      goalValue: 436,
-                      backgroundColor: ColorModel(color: .green.opacity(0.3)),
-                      tintColor: ColorModel(color: .green.opacity(0.5)))
+                      progressColor: ColorModel(color: .blue.opacity(0.3)),
+                      backgroundColor: ColorModel(color: .blue.opacity(0.5))),
+            GoalModel(name: "ggg",
+                      currentValue: 12,
+                      goalValue: 44,
+                      progressColor: ColorModel(color: .blue.opacity(0.3)),
+                      backgroundColor: ColorModel(color: .blue.opacity(0.5)))
             ]
     }
     
