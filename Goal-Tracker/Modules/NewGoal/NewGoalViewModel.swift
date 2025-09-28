@@ -13,8 +13,8 @@ final class NewGoalViewModel {
     
     var name: String
     var initialValue: Double
-    var goalValue: Double
-    var unit: UnitType
+    var targetValue: Double
+    var unitType: UnitType
     
     var progressColor: Color
     var backgroundColor: Color
@@ -23,8 +23,8 @@ final class NewGoalViewModel {
     init() {
         self.name = ""
         self.initialValue = 0
-        self.goalValue = 0
-        self.unit = .other(.none)
+        self.targetValue = 0
+        self.unitType = .other(.none)
         
         self.progressColor = .blue.opacity(0.7)
         self.backgroundColor = .blue.opacity(0.4)
@@ -33,8 +33,9 @@ final class NewGoalViewModel {
     
     func getModel() -> GoalModel {
         GoalModel(name: name,
-                  currentValue: initialValue,
-                  goalValue: goalValue,
+                  initialValue: initialValue,
+                  targetValue: targetValue,
+                  unitType: unitType,
                   progressColor: .init(color: progressColor),
                   backgroundColor: .init(color: backgroundColor),
                   textColor: .init(color: textColor))

@@ -16,14 +16,16 @@ final class GoalsListViewModel {
     init(models: [GoalModel]) {
         self.models = [
             GoalModel(name: "ggg",
-                      currentValue: 12,
-                      goalValue: 44,
+                      initialValue: 12,
+                      targetValue: 44,
+                      unitType: .currency(.eur),
                       progressColor: ColorModel(color: .blue.opacity(0.3)),
                       backgroundColor: ColorModel(color: .blue.opacity(0.5)),
                       textColor: .init(color: .black)),
             GoalModel(name: "ggg",
-                      currentValue: 12,
-                      goalValue: 44,
+                      initialValue: 12,
+                      targetValue: 44,
+                      unitType: .currency(.eur),
                       progressColor: ColorModel(color: .blue.opacity(0.3)),
                       backgroundColor: ColorModel(color: .blue.opacity(0.5)),
                       textColor: .init(color: .black))

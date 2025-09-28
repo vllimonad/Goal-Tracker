@@ -33,19 +33,19 @@ struct NewGoalView: View {
                         
                         Spacer()
                         
-                        TextField("", value: $viewModel.goalValue, formatter: NumberFormatter())
+                        TextField("", value: $viewModel.targetValue, formatter: NumberFormatter())
                             .multilineTextAlignment(.trailing)
                     }
                     
                     NavigationLink {
-                        UnitPickerView(unit: $viewModel.unit)
+                        UnitPickerView(unit: $viewModel.unitType)
                     } label: {
                         HStack {
                             Text("Unit")
                             
                             Spacer()
                             
-                            Text(viewModel.unit.name)
+                            Text(viewModel.unitType.name)
                         }
                     }
                 }

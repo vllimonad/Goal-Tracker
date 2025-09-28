@@ -21,6 +21,15 @@ enum UnitType: Codable, Hashable {
         case .other(let value): value.name
         }
     }
+    
+    var abbreviation: String {
+        switch self {
+        case .weight(let value): value.abbreviation
+        case .distance(let value): value.abbreviation
+        case .currency(let value): value.abbreviation
+        case .other(let value): value.abbreviation
+        }
+    }
 }
 
 enum WeightUnitType: CaseIterable, Codable {
@@ -37,6 +46,16 @@ enum WeightUnitType: CaseIterable, Codable {
         case .t: "Tons"
         case .oz: "Ounces"
         case .lb: "Pounds"
+        }
+    }
+    
+    var abbreviation: String {
+        switch self {
+        case .g: "g"
+        case .kg: "kg"
+        case .t: "t"
+        case .oz: "oz"
+        case .lb: "lb"
         }
     }
 }
@@ -63,6 +82,19 @@ enum DistanceUnitType: CaseIterable, Codable {
         case .mi: "Miles"
         }
     }
+    
+    var abbreviation: String {
+        switch self {
+        case .mm: "mm"
+        case .cm: "cm"
+        case .m: "m"
+        case .km: "km"
+        case .inch: "inch"
+        case .ft: "ft"
+        case .yd: "yd"
+        case .mi: "mi"
+        }
+    }
 }
 
 enum CurrencyUnitType: CaseIterable, Codable {
@@ -73,6 +105,16 @@ enum CurrencyUnitType: CaseIterable, Codable {
     case gbp
     
     var name: String {
+        switch self {
+        case .usd: "USD"
+        case .eur: "EUR"
+        case .pln: "PLN"
+        case .jpy: "JPY"
+        case .gbp: "GBP"
+        }
+    }
+    
+    var abbreviation: String {
         switch self {
         case .usd: "$"
         case .eur: "€"
@@ -89,6 +131,12 @@ enum OtherUnitType: CaseIterable, Codable {
     var name: String {
         switch self {
         case .none: "None"
+        }
+    }
+    
+    var abbreviation: String {
+        switch self {
+        case .none: ""
         }
     }
 }

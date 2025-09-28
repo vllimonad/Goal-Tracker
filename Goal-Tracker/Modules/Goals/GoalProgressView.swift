@@ -16,7 +16,7 @@ struct GoalProgressView: View {
             Text(model.name)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .foregroundStyle(model.textColor.getColor())
-            Text("\(model.currentValue)/\(model.goalValue) ML")
+            Text("\(model.initialValue)/\(model.targetValue) \(model.unitType.abbreviation)")
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .foregroundStyle(model.textColor.getColor())
         }
@@ -36,8 +36,9 @@ struct GoalProgressView: View {
 
 #Preview {
     GoalProgressView(model: GoalModel(name: "ggg",
-                                      currentValue: 12,
-                                      goalValue: 44,
+                                      initialValue: 12,
+                                      targetValue: 44,
+                                      unitType: .currency(.eur),
                                       progressColor: ColorModel(color: .blue.opacity(0.3)),
                                       backgroundColor: ColorModel(color: .blue.opacity(0.5)),
                                       textColor: .init(color: .black)))
