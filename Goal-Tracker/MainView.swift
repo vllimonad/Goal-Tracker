@@ -10,6 +10,7 @@ import SwiftUI
 struct MainView: View {
     
     @State private var selectedTab: TabType = .goals
+    @State private var didTapNewGoalTab: Bool = false
     
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -25,11 +26,23 @@ struct MainView: View {
                 GoalsListView()
             }
             
-            Tab("new.goal.title", image: "tab.new.goal", value: .newGoal, role: .search) {
-                GoalsListView()
+            Tab("new.goal.title",
+                image: "tab.new.goal",
+                value: .newGoal,
+                role: .search) {
+                EmptyView()
             }
         }
         .tint(.primaryBlue)
+        .onChange(of: selectedTab, { oldValue, newValue in
+            if newValue == .newGoal {
+                didTapNewGoalTab = true
+                selectedTab = oldValue
+            }
+        })
+        .sheet(isPresented: $didTapNewGoalTab) {
+            NewGoalView()
+        }
     }
 }
 

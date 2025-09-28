@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NewGoalView: View {
     
+    @Environment(\.dismiss) var dismiss
     @State private var viewModel = NewGoalViewModel()
     
     var body: some View {
@@ -57,19 +58,29 @@ struct NewGoalView: View {
                 
                 Section("goal.colors.section.title") {
                     ColorPicker("goal.progress.color",
-                                selection: $viewModel.progressColor,
-                                supportsOpacity: false)
+                                selection: $viewModel.progressColor)
                     ColorPicker("goal.background.color",
-                                selection: $viewModel.backgroundColor,
-                                supportsOpacity: false)
+                                selection: $viewModel.backgroundColor)
                     ColorPicker("goal.text.color",
-                                selection: $viewModel.textColor,
-                                supportsOpacity: false)
+                                selection: $viewModel.textColor)
                 }
                 
                 Section("goal.preview.section.title") {
                     GoalProgressView(model: viewModel.getModel())
                         .listRowInsets(EdgeInsets())
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(role: .close) {
+                        dismiss()
+                    }
+                }
+                
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Save") {
+                        dismiss()
+                    }
                 }
             }
         }
