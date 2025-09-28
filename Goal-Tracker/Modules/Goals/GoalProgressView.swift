@@ -16,7 +16,7 @@ struct GoalProgressView: View {
             Text(model.name)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .foregroundStyle(model.textColor.getColor())
-            Text("\(model.initialValue)/\(model.targetValue) \(model.unitType.abbreviation)")
+            Text("\(roundToLastNonZero(model.initialValue))/\(roundToLastNonZero(model.targetValue)) \(model.unitType.abbreviation)")
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .foregroundStyle(model.textColor.getColor())
         }
@@ -32,11 +32,22 @@ struct GoalProgressView: View {
         }
         .clipShape(RoundedRectangle(cornerRadius: 20))
     }
+    
+    func roundToLastNonZero(_ value: Double) -> String {
+        let formatter = NumberFormatter()
+        formatter.maximumFractionDigits = 12
+        formatter.maximumIntegerDigits = 12
+        formatter.maximumSignificantDigits = 12
+        formatter.usesSignificantDigits = true
+        formatter.numberStyle = .decimal
+        
+        return formatter.string(for: value) ?? "\(value)"
+    }
 }
 
 #Preview {
     GoalProgressView(model: GoalModel(name: "ggg",
-                                      initialValue: 12,
+                                      initialValue: 24564356.7,
                                       targetValue: 44,
                                       unitType: .currency(.eur),
                                       progressColor: ColorModel(color: .blue.opacity(0.3)),

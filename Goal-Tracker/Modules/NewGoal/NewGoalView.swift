@@ -24,16 +24,21 @@ struct NewGoalView: View {
                         
                         Spacer()
                         
-                        TextField("", value: $viewModel.initialValue, formatter: NumberFormatter())
-                            .multilineTextAlignment(.trailing)
+                        TextField("",
+                                  value: $viewModel.initialValue,
+                                  format: .number)
+                        .keyboardType(.decimalPad)
+                        .multilineTextAlignment(.trailing)
                     }
                     
                     HStack {
-                        Text("Goal value")
+                        Text("Target value")
                         
                         Spacer()
                         
-                        TextField("", value: $viewModel.targetValue, formatter: NumberFormatter())
+                        TextField("",
+                                  value: $viewModel.targetValue,
+                                  format: .number)
                             .multilineTextAlignment(.trailing)
                     }
                     
