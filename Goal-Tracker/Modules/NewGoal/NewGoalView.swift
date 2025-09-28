@@ -57,6 +57,9 @@ struct NewGoalView: View {
                     ColorPicker("Background",
                                 selection: $viewModel.backgroundColor,
                                 supportsOpacity: false)
+                    ColorPicker("Text",
+                                selection: $viewModel.textColor,
+                                supportsOpacity: false)
                 }
                 
                 Section("Preview") {

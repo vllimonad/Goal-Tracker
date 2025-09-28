@@ -17,17 +17,20 @@ class GoalModel {
     
     var progressColor: ColorModel
     var backgroundColor: ColorModel
+    var textColor: ColorModel
     
     init(name: String,
          currentValue: Double,
          goalValue: Double,
          progressColor: ColorModel,
-         backgroundColor: ColorModel) {
+         backgroundColor: ColorModel,
+         textColor: ColorModel) {
         self.name = name
         self.currentValue = currentValue
         self.goalValue = goalValue
         self.progressColor = progressColor
         self.backgroundColor = backgroundColor
+        self.textColor = textColor
     }
     
     func getProgress() -> Double {
