@@ -18,6 +18,10 @@ class ColorModel {
     var blue: CGFloat
     var opacity: Double
     
+    var color: Color {
+        Color(red: red, green: green, blue: blue, opacity: opacity)
+    }
+    
     convenience init(color: Color) {
         let uiColor = UIColor(color)
         let ciColor = CIColor(color: uiColor)
@@ -33,9 +37,5 @@ class ColorModel {
         self.green = green
         self.blue = blue
         self.opacity = opacity
-    }
-    
-    func getColor() -> Color {
-        Color(red: red, green: green, blue: blue, opacity: opacity)
     }
 }

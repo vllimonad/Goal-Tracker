@@ -19,15 +19,10 @@ final class GoalStorage {
     }
     
     func fetchModels() -> [GoalModel] {
-        let sortDescriptor = SortDescriptor<GoalModel>(\.name, order: .reverse)
+        let sortDescriptor = SortDescriptor<GoalModel>(\.creationDate, order: .reverse)
         let fetchDescriptor = FetchDescriptor(sortBy: [sortDescriptor])
         
         return (try? modelContainer.mainContext.fetch(fetchDescriptor)) ?? []
-    }
-    
-    func insertModel(_ model: GoalModel) throws {
-        modelContainer.mainContext.insert(model)
-        try saveContext()
     }
     
     func deleteModel(_ model: GoalModel) throws {
@@ -37,5 +32,13 @@ final class GoalStorage {
     
     private func saveContext() throws {
         try modelContainer.mainContext.save()
+    }
+}
+
+extension GoalStorage: NewGoalStorageProtocol {
+    
+    func insertModel(_ model: GoalModel) throws {
+        modelContainer.mainContext.insert(model)
+        try saveContext()
     }
 }

@@ -10,13 +10,13 @@ import SwiftUI
 struct NewGoalView: View {
     
     @Environment(\.dismiss) var dismiss
-    @State private var viewModel = NewGoalViewModel()
+    @State private var viewModel = NewGoalViewModel(storage: GoalStorage())
     
     var body: some View {
         NavigationView {
             Form {
                 Section {
-                    TextField("goal.name.placeholder", text: $viewModel.name)
+                    TextField("goal.name.placeholder", text: $viewModel.model.name)
                 }
                 
                 Section("goal.data.section.title") {
@@ -26,7 +26,7 @@ struct NewGoalView: View {
                         Spacer()
                         
                         TextField("",
-                                  value: $viewModel.initialValue,
+                                  value: $viewModel.model.initialValue,
                                   format: .number)
                         .keyboardType(.decimalPad)
                         .multilineTextAlignment(.trailing)
@@ -38,35 +38,53 @@ struct NewGoalView: View {
                         Spacer()
                         
                         TextField("",
-                                  value: $viewModel.targetValue,
+                                  value: $viewModel.model.targetValue,
                                   format: .number)
                             .multilineTextAlignment(.trailing)
                     }
                     
                     NavigationLink {
-                        UnitPickerView(unit: $viewModel.unitType)
+                        UnitPickerView(unit: $viewModel.model.unitType)
                     } label: {
                         HStack {
                             Text("goal.unit")
                             
                             Spacer()
                             
-                            Text(viewModel.unitType.name)
+                            Text(viewModel.model.unitType.name)
                         }
                     }
                 }
                 
                 Section("goal.colors.section.title") {
                     ColorPicker("goal.progress.color",
-                                selection: $viewModel.progressColor)
+                                selection: Binding(
+                                    get: {
+                                        viewModel.model.progressColor.color
+                                    },
+                                    set: {
+                                        viewModel.model.progressColor = .init(color: $0)
+                                    }))
                     ColorPicker("goal.background.color",
-                                selection: $viewModel.backgroundColor)
+                                selection: Binding(
+                                    get: {
+                                        viewModel.model.backgroundColor.color
+                                    },
+                                    set: {
+                                        viewModel.model.backgroundColor = .init(color: $0)
+                                    }))
                     ColorPicker("goal.text.color",
-                                selection: $viewModel.textColor)
+                                selection: Binding(
+                                    get: {
+                                        viewModel.model.textColor.color
+                                    },
+                                    set: {
+                                        viewModel.model.textColor = .init(color: $0)
+                                    }))
                 }
                 
                 Section("goal.preview.section.title") {
-                    GoalProgressView(model: viewModel.getModel())
+                    GoalProgressView(model: viewModel.model)
                         .listRowInsets(EdgeInsets())
                 }
             }

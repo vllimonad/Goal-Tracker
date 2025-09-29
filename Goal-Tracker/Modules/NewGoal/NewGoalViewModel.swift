@@ -11,34 +11,13 @@ import SwiftUI
 @Observable
 final class NewGoalViewModel {
     
-    var name: String
-    var initialValue: Double
-    var targetValue: Double
-    var unitType: UnitType
+    private let storage: NewGoalStorageProtocol
     
-    var progressColor: Color
-    var backgroundColor: Color
-    var textColor: Color
+    var model: GoalModel
     
-    init() {
-        self.name = ""
-        self.initialValue = 0
-        self.targetValue = 0
-        self.unitType = .other(.none)
-        
-        self.progressColor = .blue.opacity(0.7)
-        self.backgroundColor = .blue.opacity(0.4)
-        self.textColor = .black
-    }
-    
-    func getModel() -> GoalModel {
-        GoalModel(name: name,
-                  initialValue: initialValue,
-                  targetValue: targetValue,
-                  unitType: unitType,
-                  progressColor: .init(color: progressColor),
-                  backgroundColor: .init(color: backgroundColor),
-                  textColor: .init(color: textColor))
+    init(storage: NewGoalStorageProtocol) {
+        self.storage = storage
+        self.model = GoalModel()
     }
     
     func saveModel() {
