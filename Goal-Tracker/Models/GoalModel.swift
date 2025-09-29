@@ -52,6 +52,18 @@ class GoalModel {
     }
     
     func getProgress() -> Double {
-        initialValue / targetValue
+        guard targetValue != 0 else {
+            return 0.5
+        }
+        
+        let progress = initialValue / targetValue
+        
+        if progress.isInfinite {
+            return 0.5
+        } else if progress < 0 {
+            return 0
+        } else {
+            return progress
+        }
     }
 }

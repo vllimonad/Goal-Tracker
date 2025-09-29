@@ -10,6 +10,7 @@ import SwiftUI
 struct NewGoalView: View {
     
     @Environment(\.dismiss) var dismiss
+    @FocusState private var focusedTextField: NewGoalTextFieldType?
     @State private var viewModel = NewGoalViewModel()
     
     var body: some View {
@@ -17,6 +18,11 @@ struct NewGoalView: View {
             Form {
                 Section {
                     TextField("goal.name.placeholder", text: $viewModel.model.name)
+                        .keyboardType(.default)
+                        .focused($focusedTextField, equals: .name)
+                        .onTapGesture {
+                            focusedTextField = .name
+                        }
                 }
                 
                 Section("goal.data.section.title") {
@@ -30,6 +36,10 @@ struct NewGoalView: View {
                                   format: .number)
                         .keyboardType(.decimalPad)
                         .multilineTextAlignment(.trailing)
+                        .focused($focusedTextField, equals: .initial)
+                    }
+                    .onTapGesture {
+                        focusedTextField = .initial
                     }
                     
                     HStack {
@@ -40,7 +50,12 @@ struct NewGoalView: View {
                         TextField("",
                                   value: $viewModel.model.targetValue,
                                   format: .number)
-                            .multilineTextAlignment(.trailing)
+                        .keyboardType(.decimalPad)
+                        .multilineTextAlignment(.trailing)
+                        .focused($focusedTextField, equals: .target)
+                    }
+                    .onTapGesture {
+                        focusedTextField = .target
                     }
                     
                     NavigationLink {
@@ -101,6 +116,9 @@ struct NewGoalView: View {
                         dismiss()
                     }
                 }
+            }
+            .onScrollPhaseChange { _, _ in
+                focusedTextField = nil
             }
         }
     }
