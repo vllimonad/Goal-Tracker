@@ -40,4 +40,8 @@ final class NewGoalViewModel {
                   backgroundColor: .init(color: backgroundColor),
                   textColor: .init(color: textColor))
     }
+    
+    func saveModel() {
+        
+    }
 }
