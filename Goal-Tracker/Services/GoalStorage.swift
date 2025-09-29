@@ -34,6 +34,11 @@ final class GoalStorage {
         return (try? modelContainer.mainContext.fetch(fetchDescriptor)) ?? []
     }
     
+    func insertModel(_ model: GoalModel) throws {
+        modelContainer.mainContext.insert(model)
+        try saveContext()
+    }
+    
     func deleteModel(_ model: GoalModel) throws {
         modelContainer.mainContext.delete(model)
         try saveContext()
@@ -41,13 +46,5 @@ final class GoalStorage {
     
     private func saveContext() throws {
         try modelContainer.mainContext.save()
-    }
-}
-
-extension GoalStorage: NewGoalStorageProtocol {
-    
-    func insertModel(_ model: GoalModel) throws {
-        modelContainer.mainContext.insert(model)
-        try saveContext()
     }
 }

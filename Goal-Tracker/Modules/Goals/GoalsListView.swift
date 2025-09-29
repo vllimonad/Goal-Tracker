@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GoalsListView: View {
     
-    @State private var viewModel = GoalsListViewModel(models: [])
+    @State private var viewModel = GoalsListViewModel()
     
     var body: some View {
         NavigationView {
@@ -27,6 +27,9 @@ struct GoalsListView: View {
             .listRowSpacing(8)
             .listStyle(.plain)
             .navigationTitle(Text("goals.title"))
+            .onAppear {
+                viewModel.fetchModels()
+            }
         }
     }
 }

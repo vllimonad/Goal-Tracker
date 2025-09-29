@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+@MainActor
 @Observable
 final class NewGoalViewModel {
     
@@ -17,7 +18,6 @@ final class NewGoalViewModel {
         self.model = GoalModel()
     }
     
-    @MainActor
     func saveModel() {
         do {
             try GoalStorage.shared.insertModel(model)
