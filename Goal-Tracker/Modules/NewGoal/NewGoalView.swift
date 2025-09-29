@@ -10,7 +10,7 @@ import SwiftUI
 struct NewGoalView: View {
     
     @Environment(\.dismiss) var dismiss
-    @State private var viewModel = NewGoalViewModel(storage: GoalStorage())
+    @State private var viewModel = NewGoalViewModel()
     
     var body: some View {
         NavigationView {
@@ -97,6 +97,7 @@ struct NewGoalView: View {
                 
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Save") {
+                        viewModel.saveModel()
                         dismiss()
                     }
                 }

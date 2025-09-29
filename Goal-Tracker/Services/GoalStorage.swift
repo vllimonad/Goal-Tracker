@@ -1,8 +1,17 @@
+//
+//  GoalStorage.swift
+//  Goal-Tracker
+//
+//  Created by Vlad Klunduk on 29/09/2025.
+//
+
 import SwiftData
 import Foundation
 
 @MainActor
 final class GoalStorage {
+    
+    static let shared = GoalStorage()
     
     private let modelContainer: ModelContainer
     

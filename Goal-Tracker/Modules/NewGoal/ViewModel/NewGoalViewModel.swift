@@ -11,16 +11,18 @@ import SwiftUI
 @Observable
 final class NewGoalViewModel {
     
-    private let storage: NewGoalStorageProtocol
-    
     var model: GoalModel
     
-    init(storage: NewGoalStorageProtocol) {
-        self.storage = storage
+    init() {
         self.model = GoalModel()
     }
     
+    @MainActor
     func saveModel() {
-        
+        do {
+            try GoalStorage.shared.insertModel(model)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }
