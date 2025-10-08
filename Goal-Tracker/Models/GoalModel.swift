@@ -22,6 +22,8 @@ class GoalModel {
     var backgroundColor: ColorModel
     var textColor: ColorModel
     
+    @Relationship(deleteRule: .cascade) var records: [RecordModel]
+    
     convenience init() {
         self.init(name: "",
                   creationDate: .now,
@@ -30,7 +32,8 @@ class GoalModel {
                   unitType: .other(.none),
                   progressColor: ColorModel(color: .blue.opacity(0.7)),
                   backgroundColor: ColorModel(color: .blue.opacity(0.4)),
-                  textColor: ColorModel(color: .black))
+                  textColor: ColorModel(color: .black),
+                  records: [])
     }
     
     init(name: String,
@@ -40,7 +43,8 @@ class GoalModel {
          unitType: UnitType,
          progressColor: ColorModel,
          backgroundColor: ColorModel,
-         textColor: ColorModel) {
+         textColor: ColorModel,
+         records: [RecordModel]) {
         self.name = name
         self.creationDate = creationDate
         self.initialValue = initialValue
@@ -49,6 +53,7 @@ class GoalModel {
         self.progressColor = progressColor
         self.backgroundColor = backgroundColor
         self.textColor = textColor
+        self.records = records
     }
     
     func getProgress() -> Double {

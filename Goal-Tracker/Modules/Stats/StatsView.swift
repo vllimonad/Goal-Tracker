@@ -6,23 +6,63 @@
 //
 
 import SwiftUI
+import Charts
 
 struct StatsView: View {
+    
+    @State private var viewModel = StatsViewModel()
+    
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 8) {
-                    HStack(spacing: 8) {
-                        StatView(name: .constant("ddd"), descritpion: .constant("ddd"), iconResource: .constant(.tabGoals))
+                    VStack(spacing: 8) {
+                        HStack(spacing: 8) {
+                            StatView(name: .constant("ddd"), descritpion: .constant("ddd"), iconResource: .constant(.tabGoals))
+                            
+                            StatView(name: .constant("ddd"), descritpion: .constant("ddd"), iconResource: .constant(.tabGoals))
+                        }
                         
-                        StatView(name: .constant("ddd"), descritpion: .constant("ddd"), iconResource: .constant(.tabGoals))
+                        HStack(spacing: 8) {
+                            StatView(name: .constant("ddd"), descritpion: .constant("ddd"), iconResource: .constant(.tabGoals))
+                            
+                            StatView(name: .constant("ddd"), descritpion: .constant("ddd"), iconResource: .constant(.tabGoals))
+                        }
                     }
                     
-                    HStack(spacing: 8) {
-                        StatView(name: .constant("ddd"), descritpion: .constant("ddd"), iconResource: .constant(.tabGoals))
+                    VStack(alignment: .leading, spacing: 16) {
+                        Text("Goal 111")
+                            .font(.title3.weight(.medium))
                         
-                        StatView(name: .constant("ddd"), descritpion: .constant("ddd"), iconResource: .constant(.tabGoals))
+                        Chart(viewModel.records) { item in
+                            LineMark(
+                                x: .value("Date", item.date),
+                                y: .value("Value", item.value)
+                            )
+                            .interpolationMethod(.catmullRom)
+                            .foregroundStyle(.primaryBlue)
+                            .lineStyle(StrokeStyle(lineWidth: 3))
+                        }
+                        .chartXAxis {
+                            AxisMarks {
+                                AxisValueLabel()
+                            }
+                        }
+                        .chartYAxis {
+                            AxisMarks {
+                                AxisGridLine(centered: true,
+                                             stroke: StrokeStyle(lineWidth: 1, dash: [7, 7]))
+                                AxisValueLabel()
+                            }
+                        }
+                        .frame(height: 200)
                     }
+                    .padding(20)
+                    .background {
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(.white)
+                    }
+                    .shadow(color: Color.black.opacity(0.06), radius: 10, x: 0, y: 0)
                 }
                 .padding(.horizontal, 24)
             }

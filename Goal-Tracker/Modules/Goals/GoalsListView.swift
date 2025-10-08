@@ -23,7 +23,9 @@ struct GoalsListView: View {
                             viewModel.deleteModel(model)
                         }
                     }
+                    
             }
+            .background(Color.bg)
             .listRowSpacing(8)
             .listStyle(.plain)
             .navigationTitle(Text("goals.title"))
