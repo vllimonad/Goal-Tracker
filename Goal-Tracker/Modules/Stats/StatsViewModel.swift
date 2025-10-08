@@ -7,12 +7,25 @@
 
 import Foundation
 
+@MainActor
 @Observable
 final class StatsViewModel {
     
+    var goals: [GoalModel]
     var records: [RecordModel]
     
-    init(records: [RecordModel] = []) {
-        self.records = records
+    var totalGoals: Int { goals.count }
+    var activeGoals: Int { goals.filter(\.isActive).count }
+    var averageProgress: Double {
+        goals.reduce(0) { $0 + $1.getProgress() } / Double(goals.count) * 100
+    }
+    
+    init() {
+        self.goals = []
+        self.records = []
+    }
+    
+    func fetchModels() {
+        self.goals = GoalStorage.shared.fetchModels()
     }
 }

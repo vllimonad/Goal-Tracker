@@ -9,9 +9,9 @@ import SwiftUI
 
 struct StatView: View {
     
-    @Binding var name: String
-    @Binding var descritpion: String
-    @Binding var iconResource: ImageResource
+    var name: String
+    var value: String
+    var iconResource: ImageResource
     
     var body: some View {
         HStack(spacing: 12) {
@@ -23,7 +23,7 @@ struct StatView: View {
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                 
-                Text(descritpion)
+                Text(value)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.body)
                     .foregroundStyle(.primary)
@@ -39,6 +39,6 @@ struct StatView: View {
 }
 
 #Preview {
-    StatView(name: .constant("dddsfvgfs"), descritpion: .constant("ddd"), iconResource: .constant(.tabGoals))
+    StatView(name: "dddsfvgfs", value: "ddd", iconResource: .tabGoals)
         .background(.black)
 }

@@ -18,15 +18,23 @@ struct StatsView: View {
                 VStack(spacing: 8) {
                     VStack(spacing: 8) {
                         HStack(spacing: 8) {
-                            StatView(name: .constant("ddd"), descritpion: .constant("ddd"), iconResource: .constant(.tabGoals))
+                            StatView(name: "Total Goals",
+                                     value: viewModel.totalGoals.description,
+                                     iconResource: .statsTotalGoals)
                             
-                            StatView(name: .constant("ddd"), descritpion: .constant("ddd"), iconResource: .constant(.tabGoals))
+                            StatView(name: "Active Goals",
+                                     value: viewModel.activeGoals.description,
+                                     iconResource: .statsActiveGoals)
                         }
                         
                         HStack(spacing: 8) {
-                            StatView(name: .constant("ddd"), descritpion: .constant("ddd"), iconResource: .constant(.tabGoals))
+                            StatView(name: "Avg Progress",
+                                     value: viewModel.averageProgress.description,
+                                     iconResource: .statsAvgProgress)
                             
-                            StatView(name: .constant("ddd"), descritpion: .constant("ddd"), iconResource: .constant(.tabGoals))
+                            StatView(name: "Active Goals",
+                                     value: viewModel.activeGoals.description,
+                                     iconResource: .statsActiveGoals)
                         }
                     }
                     
@@ -68,6 +76,9 @@ struct StatsView: View {
             }
             .background(Color.bg)
             .navigationTitle("stats.title")
+            .onAppear {
+                viewModel.fetchModels()
+            }
         }
     }
 }

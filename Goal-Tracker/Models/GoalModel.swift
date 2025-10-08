@@ -24,6 +24,14 @@ class GoalModel {
     
     @Relationship(deleteRule: .cascade) var records: [RecordModel]
     
+    var currentValue: Double {
+        records.reduce(0) { $0 + $1.value }
+    }
+    
+    var isActive: Bool {
+        currentValue < targetValue
+    }
+    
     convenience init() {
         self.init(name: "",
                   creationDate: .now,
@@ -61,7 +69,7 @@ class GoalModel {
             return 0.5
         }
         
-        let progress = initialValue / targetValue
+        let progress = currentValue / targetValue
         
         if progress.isInfinite {
             return 0.5
