@@ -48,7 +48,7 @@ struct StatsView: View {
                                 y: .value("Value", item.value)
                             )
                             .interpolationMethod(.catmullRom)
-                            .foregroundStyle(.primaryBlue)
+                            .foregroundStyle(.iconBlue)
                             .lineStyle(StrokeStyle(lineWidth: 3))
                         }
                         .chartXAxis {
@@ -68,13 +68,13 @@ struct StatsView: View {
                     .padding(20)
                     .background {
                         RoundedRectangle(cornerRadius: 20)
-                            .fill(.white)
+                            .fill(.bgWhite)
                     }
                     .shadow(color: Color.black.opacity(0.06), radius: 10, x: 0, y: 0)
                 }
                 .padding(.horizontal, 24)
             }
-            .background(Color.bg)
+            .background(Color.bgMain)
             .navigationTitle("stats.title")
             .onAppear {
                 viewModel.fetchModels()

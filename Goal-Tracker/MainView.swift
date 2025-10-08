@@ -33,7 +33,7 @@ struct MainView: View {
                 EmptyView()
             }
         }
-        .tint(.primaryBlue)
+        .tint(.textBlue)
         .onChange(of: selectedTab, { oldValue, newValue in
             if newValue == .newGoal {
                 didTapNewGoalTab = true

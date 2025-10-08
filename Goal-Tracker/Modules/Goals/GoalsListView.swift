@@ -17,7 +17,7 @@ struct GoalsListView: View {
                 GoalProgressView(model: model)
                     .listRowSeparator(.hidden)
                     .listRowInsets(.init(top: 0, leading: 24, bottom: 0, trailing: 24))
-                    .listRowBackground(Color.white)
+                    .listRowBackground(Color.bgMain)
                     .swipeActions(edge: .trailing) {
                         Button("goals.delete.action.title", role: .destructive) {
                             viewModel.deleteModel(model)
@@ -25,7 +25,7 @@ struct GoalsListView: View {
                     }
                     
             }
-            .background(Color.bg)
+            .background(Color.bgMain)
             .listRowSpacing(8)
             .listStyle(.plain)
             .navigationTitle(Text("goals.title"))

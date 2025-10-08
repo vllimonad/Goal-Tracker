@@ -103,6 +103,8 @@ struct NewGoalView: View {
                         .listRowInsets(EdgeInsets())
                 }
             }
+            .scrollContentBackground(.hidden)
+            .background(Color.bgMain)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button(role: .close) {
