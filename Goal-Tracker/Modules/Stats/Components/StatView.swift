@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StatView: View {
     
-    var name: String
+    var name: LocalizedStringKey
     var value: String
     var iconResource: ImageResource
     

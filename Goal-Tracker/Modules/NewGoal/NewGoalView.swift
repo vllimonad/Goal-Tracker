@@ -114,7 +114,7 @@ struct NewGoalView: View {
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Save") {
+                    Button("save") {
                         viewModel.saveModel()
                         dismiss()
                     }

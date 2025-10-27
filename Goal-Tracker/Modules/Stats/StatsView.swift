@@ -15,24 +15,24 @@ struct StatsView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack(spacing: 8) {
-                    VStack(spacing: 8) {
-                        HStack(spacing: 8) {
-                            StatView(name: "Total Goals",
+                VStack {
+                    VStack {
+                        HStack {
+                            StatView(name: "total.goals",
                                      value: viewModel.totalGoals.description,
                                      iconResource: .statsTotalGoals)
                             
-                            StatView(name: "Active Goals",
+                            StatView(name: "active.goals",
                                      value: viewModel.activeGoals.description,
                                      iconResource: .statsActiveGoals)
                         }
                         
                         HStack(spacing: 8) {
-                            StatView(name: "Avg Progress",
+                            StatView(name: "avg.progress",
                                      value: viewModel.averageProgress.description,
                                      iconResource: .statsAvgProgress)
                             
-                            StatView(name: "Active Goals",
+                            StatView(name: "active.goals",
                                      value: viewModel.activeGoals.description,
                                      iconResource: .statsActiveGoals)
                         }
@@ -56,8 +56,8 @@ struct StatsView: View {
                         
                         Chart(viewModel.selectedGoal?.records ?? []) { item in
                             LineMark(
-                                x: .value("Date", item.date),
-                                y: .value("Value", item.value)
+                                x: .value("date", item.date),
+                                y: .value("value", item.value)
                             )
                             .interpolationMethod(.catmullRom)
                             .foregroundStyle(.iconBlue)
