@@ -39,10 +39,22 @@ struct StatsView: View {
                     }
                     
                     VStack(alignment: .leading, spacing: 16) {
-                        Text("Goal 111")
-                            .font(.title3.weight(.medium))
+                        Picker(selection: $viewModel.selectedGoal) {
+                            ForEach(viewModel.goals, id: \.self) { goal in
+                                Text(goal.name)
+                                    .foregroundStyle(.textPrimary)
+                                    .tag(goal)
+                            }
+                        } label: {
+                            Text(viewModel.selectedGoal?.name ?? "")
+                                .font(.title3.weight(.medium))
+                        }
+                        .background(
+                            Capsule()
+                                .fill(.secondary.opacity(0.12))
+                        )
                         
-                        Chart(viewModel.records) { item in
+                        Chart(viewModel.selectedGoal?.records ?? []) { item in
                             LineMark(
                                 x: .value("Date", item.date),
                                 y: .value("Value", item.value)
@@ -70,7 +82,10 @@ struct StatsView: View {
                         RoundedRectangle(cornerRadius: 20)
                             .fill(.bgWhite)
                     }
-                    .shadow(color: Color.black.opacity(0.06), radius: 10, x: 0, y: 0)
+                    .shadow(color: Color.black.opacity(0.06),
+                            radius: 10,
+                            x: 0,
+                            y: 0)
                 }
                 .padding(.horizontal, 24)
             }

@@ -19,7 +19,7 @@ final class GoalsListViewModel {
     }
     
     func fetchModels() {
-        self.models = GoalStorage.shared.fetchModels()
+        models = GoalStorage.shared.fetchModels()
     }
     
     func deleteModel(_ model: GoalModel) {

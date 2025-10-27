@@ -105,6 +105,7 @@ struct NewGoalView: View {
             }
             .scrollContentBackground(.hidden)
             .background(Color.bgMain)
+            .shadow(color: .black.opacity(0.1), radius: 20)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button(role: .close) {

@@ -12,7 +12,7 @@ import Foundation
 final class StatsViewModel {
     
     var goals: [GoalModel]
-    var records: [RecordModel]
+    var selectedGoal: GoalModel?
     
     var totalGoals: Int { goals.count }
     var activeGoals: Int { goals.filter(\.isActive).count }
@@ -22,10 +22,10 @@ final class StatsViewModel {
     
     init() {
         self.goals = []
-        self.records = []
     }
     
     func fetchModels() {
         self.goals = GoalStorage.shared.fetchModels()
+        self.selectedGoal = goals.first
     }
 }

@@ -15,19 +15,19 @@ struct MainView: View {
     var body: some View {
         TabView(selection: $selectedTab) {
             Tab("goals.title",
-                image: selectedTab == .goals ? "tab.goals.colored" : "tab.goals",
+                image: selectedTab == .goals ? "tab_goals_colored" : "tab_goals",
                 value: .goals) {
                 GoalsListView()
             }
                         
             Tab("stats.title",
-                image: selectedTab == .stats ? "tab.stats.colored" : "tab.stats",
+                image: selectedTab == .stats ? "tab_stats_colored" : "tab_stats",
                 value: .stats) {
-                GoalsListView()
+                StatsView()
             }
             
             Tab("new.goal.title",
-                image: "tab.new.goal",
+                image: "tab_new_goal",
                 value: .newGoal,
                 role: .search) {
                 EmptyView()
