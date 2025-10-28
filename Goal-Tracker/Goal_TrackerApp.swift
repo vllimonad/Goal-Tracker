@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct Goal_TrackerApp: App {
@@ -13,5 +14,6 @@ struct Goal_TrackerApp: App {
         WindowGroup {
             MainView()
         }
+        .modelContainer(for: [GoalModel.self])
     }
 }

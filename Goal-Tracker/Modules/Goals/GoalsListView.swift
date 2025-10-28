@@ -6,21 +6,24 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct GoalsListView: View {
     
-    @State private var viewModel = GoalsListViewModel()
+    @Environment(\.modelContext) private var modelContext
+    
+    @Query private var goals: [GoalModel]
     
     var body: some View {
         NavigationView {
-            List(viewModel.models) { model in
-                GoalProgressView(model: model)
+            List(goals) { goal in
+                GoalProgressView(model: goal)
                     .listRowSeparator(.hidden)
                     .listRowInsets(.init(top: 0, leading: 24, bottom: 0, trailing: 24))
                     .listRowBackground(Color.bgMain)
                     .swipeActions(edge: .trailing) {
                         Button("goals.delete.action.title", role: .destructive) {
-                            viewModel.deleteModel(model)
+                            modelContext.delete(goal)
                         }
                     }
                     
@@ -29,9 +32,6 @@ struct GoalsListView: View {
             .listRowSpacing(8)
             .listStyle(.plain)
             .navigationTitle(Text("goals.title"))
-            .onAppear {
-                viewModel.fetchModels()
-            }
         }
     }
 }

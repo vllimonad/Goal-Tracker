@@ -6,11 +6,19 @@
 //
 
 import SwiftUI
+import SwiftData
 import Charts
 
 struct StatsView: View {
     
-    @State private var viewModel = StatsViewModel()
+    @Query private var goals: [GoalModel]
+    @State private var selectedGoal: GoalModel? = nil
+    
+    var totalGoals: Int { goals.count }
+    var activeGoals: Int { goals.filter(\.isActive).count }
+    var averageProgress: Double {
+        goals.reduce(0) { $0 + $1.getProgress() } / Double(goals.count) * 100
+    }
     
     var body: some View {
         NavigationView {
@@ -19,34 +27,34 @@ struct StatsView: View {
                     VStack {
                         HStack {
                             StatView(name: "total.goals",
-                                     value: viewModel.totalGoals.description,
+                                     value: totalGoals.description,
                                      iconResource: .statsTotalGoals)
                             
                             StatView(name: "active.goals",
-                                     value: viewModel.activeGoals.description,
+                                     value: activeGoals.description,
                                      iconResource: .statsActiveGoals)
                         }
                         
                         HStack(spacing: 8) {
                             StatView(name: "avg.progress",
-                                     value: viewModel.averageProgress.description,
+                                     value: averageProgress.description,
                                      iconResource: .statsAvgProgress)
                             
                             StatView(name: "active.goals",
-                                     value: viewModel.activeGoals.description,
+                                     value: activeGoals.description,
                                      iconResource: .statsActiveGoals)
                         }
                     }
                     
                     VStack(alignment: .leading, spacing: 16) {
-                        Picker(selection: $viewModel.selectedGoal) {
-                            ForEach(viewModel.goals, id: \.self) { goal in
+                        Picker(selection: $selectedGoal) {
+                            ForEach(goals, id: \.self) { goal in
                                 Text(goal.name)
                                     .foregroundStyle(.textPrimary)
                                     .tag(goal)
                             }
                         } label: {
-                            Text(viewModel.selectedGoal?.name ?? "")
+                            Text(selectedGoal?.name ?? "")
                                 .font(.title3.weight(.medium))
                         }
                         .background(
@@ -54,7 +62,7 @@ struct StatsView: View {
                                 .fill(.secondary.opacity(0.12))
                         )
                         
-                        Chart(viewModel.selectedGoal?.records ?? []) { item in
+                        Chart(selectedGoal?.records ?? []) { item in
                             LineMark(
                                 x: .value("date", item.date),
                                 y: .value("value", item.value)
@@ -91,8 +99,8 @@ struct StatsView: View {
             }
             .background(Color.bgMain)
             .navigationTitle("stats.title")
-            .onAppear {
-                viewModel.fetchModels()
+            .onChange(of: goals) { old, new in
+                selectedGoal = new.first
             }
         }
     }

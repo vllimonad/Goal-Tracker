@@ -6,18 +6,22 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct NewGoalView: View {
     
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var modelContext
+    
     @FocusState private var focusedTextField: NewGoalTextFieldType?
-    @State private var viewModel = NewGoalViewModel()
+
+    @State private var newGoal = GoalModel()
     
     var body: some View {
         NavigationView {
             Form {
                 Section {
-                    TextField("goal.name.placeholder", text: $viewModel.model.name)
+                    TextField("goal.name.placeholder", text: $newGoal.name)
                         .keyboardType(.default)
                         .focused($focusedTextField, equals: .name)
                         .onTapGesture {
@@ -32,7 +36,7 @@ struct NewGoalView: View {
                         Spacer()
                         
                         TextField("",
-                                  value: $viewModel.model.initialValue,
+                                  value: $newGoal.initialValue,
                                   format: .number)
                         .keyboardType(.decimalPad)
                         .multilineTextAlignment(.trailing)
@@ -48,7 +52,7 @@ struct NewGoalView: View {
                         Spacer()
                         
                         TextField("",
-                                  value: $viewModel.model.targetValue,
+                                  value: $newGoal.targetValue,
                                   format: .number)
                         .keyboardType(.decimalPad)
                         .multilineTextAlignment(.trailing)
@@ -59,14 +63,14 @@ struct NewGoalView: View {
                     }
                     
                     NavigationLink {
-                        UnitPickerView(unit: $viewModel.model.unitType)
+                        UnitPickerView(unit: $newGoal.unitType)
                     } label: {
                         HStack {
                             Text("goal.unit")
                             
                             Spacer()
                             
-                            Text(viewModel.model.unitType.name)
+                            Text(newGoal.unitType.name)
                         }
                     }
                 }
@@ -75,31 +79,31 @@ struct NewGoalView: View {
                     ColorPicker("goal.progress.color",
                                 selection: Binding(
                                     get: {
-                                        viewModel.model.progressColor.color
+                                        newGoal.progressColor.color
                                     },
                                     set: {
-                                        viewModel.model.progressColor = .init(color: $0)
+                                        newGoal.progressColor = .init(color: $0)
                                     }))
                     ColorPicker("goal.background.color",
                                 selection: Binding(
                                     get: {
-                                        viewModel.model.backgroundColor.color
+                                        newGoal.backgroundColor.color
                                     },
                                     set: {
-                                        viewModel.model.backgroundColor = .init(color: $0)
+                                        newGoal.backgroundColor = .init(color: $0)
                                     }))
                     ColorPicker("goal.text.color",
                                 selection: Binding(
                                     get: {
-                                        viewModel.model.textColor.color
+                                        newGoal.textColor.color
                                     },
                                     set: {
-                                        viewModel.model.textColor = .init(color: $0)
+                                        newGoal.textColor = .init(color: $0)
                                     }))
                 }
                 
                 Section("goal.preview.section.title") {
-                    GoalProgressView(model: viewModel.model)
+                    GoalProgressView(model: newGoal)
                         .listRowInsets(EdgeInsets())
                 }
             }
@@ -115,7 +119,7 @@ struct NewGoalView: View {
                 
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("save") {
-                        viewModel.saveModel()
+                        modelContext.insert(newGoal)
                         dismiss()
                     }
                 }
