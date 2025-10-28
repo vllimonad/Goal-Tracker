@@ -103,7 +103,7 @@ struct NewGoalView: View {
                 }
                 
                 Section("goal.preview.section.title") {
-                    GoalProgressView(model: newGoal)
+                    GoalProgressView(goal: newGoal)
                         .listRowInsets(EdgeInsets())
                 }
             }
@@ -111,7 +111,7 @@ struct NewGoalView: View {
             .background(Color.bgMain)
             .navigationTitle("new.goal")
             .navigationBarTitleDisplayMode(.inline)
-            .shadow(color: .black.opacity(0.1), radius: 20)
+            .systemShadow()
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button(role: .close) {

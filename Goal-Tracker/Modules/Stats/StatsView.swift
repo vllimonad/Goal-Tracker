@@ -11,13 +11,13 @@ import Charts
 
 struct StatsView: View {
     
-    @Query private var goals: [GoalModel]
+    @Query(sort: \GoalModel.creationDate) private var goals: [GoalModel]
     @State private var selectedGoal: GoalModel? = nil
     
     var totalGoals: Int { goals.count }
     var activeGoals: Int { goals.filter(\.isActive).count }
-    var averageProgress: Double {
-        goals.reduce(0) { $0 + $1.getProgress() } / Double(goals.count) * 100
+    var averageProgress: Int {
+        Int(goals.reduce(0) { $0 + $1.getProgress() } * 100 / Double(goals.count))
     }
     
     var body: some View {
@@ -26,27 +26,27 @@ struct StatsView: View {
                 VStack {
                     VStack {
                         HStack {
-                            StatView(name: "total.goals",
-                                     value: totalGoals.description,
-                                     iconResource: .statsTotalGoals)
+                            SingleValueStatsView(title: "total.goals",
+                                                 value: totalGoals.description,
+                                                 iconResource: .statsTotalGoals)
                             
-                            StatView(name: "active.goals",
-                                     value: activeGoals.description,
-                                     iconResource: .statsActiveGoals)
+                            SingleValueStatsView(title: "active.goals",
+                                                 value: activeGoals.description,
+                                                 iconResource: .statsActiveGoals)
                         }
                         
-                        HStack(spacing: 8) {
-                            StatView(name: "avg.progress",
-                                     value: averageProgress.description,
-                                     iconResource: .statsAvgProgress)
+                        HStack {
+                            SingleValueStatsView(title: "avg.progress",
+                                                 value: "\(averageProgress)%",
+                                                 iconResource: .statsAvgProgress)
                             
-                            StatView(name: "active.goals",
-                                     value: activeGoals.description,
-                                     iconResource: .statsActiveGoals)
+                            SingleValueStatsView(title: "active.goals",
+                                                 value: activeGoals.description,
+                                                 iconResource: .statsActiveGoals)
                         }
                     }
                     
-                    VStack(alignment: .leading, spacing: 16) {
+                    VStack(alignment: .leading, spacing: 18) {
                         Picker(selection: $selectedGoal) {
                             ForEach(goals) { goal in
                                 Text(goal.name)
@@ -55,19 +55,21 @@ struct StatsView: View {
                             }
                         } label: {
                             Text(selectedGoal?.name ?? "")
-                                .font(.title3.weight(.medium))
                         }
+                        .tint(.black)
+                        .padding(2)
                         .background(
                             Capsule()
-                                .fill(.secondary.opacity(0.12))
+                                .fill(.bgWhite)
+
                         )
                         
-                        Chart(selectedGoal?.records ?? []) { item in
+                        Chart(selectedGoal?.valuesHistory ?? []) { item in
                             LineMark(
                                 x: .value("date", item.date),
                                 y: .value("value", item.value)
                             )
-                            .interpolationMethod(.catmullRom)
+                            .interpolationMethod(.monotone)
                             .foregroundStyle(.iconBlue)
                             .lineStyle(StrokeStyle(lineWidth: 3))
                         }
@@ -79,7 +81,8 @@ struct StatsView: View {
                         .chartYAxis {
                             AxisMarks {
                                 AxisGridLine(centered: true,
-                                             stroke: StrokeStyle(lineWidth: 1, dash: [7, 7]))
+                                             stroke: StrokeStyle(lineWidth: 1,
+                                                                 dash: [7, 7]))
                                 AxisValueLabel()
                             }
                         }
@@ -90,17 +93,14 @@ struct StatsView: View {
                         RoundedRectangle(cornerRadius: 20)
                             .fill(.bgWhite)
                     }
-                    .shadow(color: Color.black.opacity(0.06),
-                            radius: 10,
-                            x: 0,
-                            y: 0)
+                    .systemShadow()
                 }
                 .padding(.horizontal, 24)
             }
             .background(Color.bgMain)
             .navigationTitle("stats.title")
-            .onChange(of: goals) { old, new in
-                selectedGoal = new.first
+            .onAppear {
+                selectedGoal = goals.first
             }
         }
     }

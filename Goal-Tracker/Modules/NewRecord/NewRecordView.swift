@@ -30,25 +30,34 @@ struct NewRecordView: View {
                 }
                 .pickerStyle(.segmented)
                 
-                TextField("enter.value", value: $inputValue, format: .number)
-                    .multilineTextAlignment(.center)
-                    .keyboardType(.decimalPad)
-                    .padding()
-                    .background(
-                        Capsule()
-                            .fill(.bgWhite)
-                    )
-                    .shadow(color: Color.black.opacity(0.06),
-                            radius: 10,
-                            x: 0,
-                            y: 0)
-                    .focused($isInputFocused)
-                    
+                HStack {
+                    TextField("enter.value", value: $inputValue, format: .number)
+                        .multilineTextAlignment(.center)
+                        .keyboardType(.decimalPad)
+                        .focused($isInputFocused)
+                        .padding()
+                        .background(
+                            Capsule()
+                                .fill(.bgWhite)
+                        )
+                        .systemShadow()
+                        
+                    Text(goal.unitType.abbreviation)
+                        .font(.subheadline)
+                        .foregroundColor(.textPrimary)
+                        .padding()
+                        .background(
+                            Capsule()
+                                .fill(.bgWhite)
+                        )
+                        .systemShadow()
+                }
                 Spacer()
             }
             .padding(.horizontal, 24)
             .padding(.top, 24)
             .navigationTitle(goal.name)
+            .navigationSubtitle("new.record")
             .navigationBarTitleDisplayMode(.inline)
             .background(
                 Color.bgMain
@@ -59,17 +68,19 @@ struct NewRecordView: View {
                     Button(role: .close) {
                         dismiss()
                     }
+                    .tint(.textPrimary)
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("add.record") {
+                    Button("save") {
                         saveRecord()
                         dismiss()
                     }
+                    .tint(.textPrimary)
                 }
             }
+            .toolbarColorScheme(.light)
             .onAppear {
-                isInputFocused = true
                 configureSegmentedPickerAppearance()
             }
         }

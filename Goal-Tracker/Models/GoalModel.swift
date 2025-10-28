@@ -32,6 +32,18 @@ class GoalModel {
         currentValue < targetValue
     }
     
+    var valuesHistory: [RecordModel] {
+        var totalPerRecord = initialValue
+        
+        var history = records.map {
+            totalPerRecord += $0.value
+            return RecordModel(date: $0.date, value: totalPerRecord)
+        }
+        history.insert(RecordModel(date: creationDate, value: initialValue), at: 0)
+        
+        return history
+    }
+    
     convenience init() {
         self.init(name: "",
                   creationDate: .now,

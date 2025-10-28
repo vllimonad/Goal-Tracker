@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct StatView: View {
+struct SingleValueStatsView: View {
     
-    var name: LocalizedStringKey
+    var title: LocalizedStringKey
     var value: String
     var iconResource: ImageResource
     
@@ -17,8 +17,8 @@ struct StatView: View {
         HStack(spacing: 12) {
             Image(iconResource)
             
-            VStack(alignment: .leading, spacing: 0) {
-                Text(name)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(title)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.subheadline)
                     .foregroundStyle(.textSecondary)
@@ -34,12 +34,11 @@ struct StatView: View {
             RoundedRectangle(cornerRadius: 20)
                 .fill(.bgWhite)
         }
-        .shadow(color: Color.black.opacity(0.06),
-                radius: 10, x: 0, y: 0)
+        .systemShadow()
     }
 }
 
 #Preview {
-    StatView(name: "dddsfvgfs", value: "ddd", iconResource: .tabGoals)
+    SingleValueStatsView(title: "dddsfvgfs", value: "34.0", iconResource: .tabGoals)
         .background(.black)
 }

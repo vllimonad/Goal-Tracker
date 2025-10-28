@@ -19,7 +19,7 @@ struct GoalsListView: View {
     var body: some View {
         NavigationView {
             List(goals) { goal in
-                GoalProgressView(model: goal)
+                GoalProgressView(goal: goal)
                     .listRowSeparator(.hidden)
                     .listRowInsets(.init(top: 0, leading: 24, bottom: 0, trailing: 24))
                     .listRowBackground(Color.bgMain)
@@ -27,15 +27,17 @@ struct GoalsListView: View {
                         Button("goals.delete.action.title", role: .destructive) {
                             modelContext.delete(goal)
                         }
+                        .tint(.red)
                     }
                     .onTapGesture {
                         selectedGoal = goal
                     }
             }
             .background(Color.bgMain)
-            .listRowSpacing(8)
+            .listRowSpacing(12)
             .listStyle(.plain)
-            .navigationTitle(Text("goals.title"))
+            .navigationTitle(LocalizedStringKey("goals.title"))
+            .toolbarTitleDisplayMode(.inlineLarge)
             .sheet(item: $selectedGoal) { goal in
                 NewRecordView(goal: goal)
                     .presentationDetents([.height(180)])
