@@ -25,7 +25,7 @@ class GoalModel {
     @Relationship(deleteRule: .cascade) var records: [RecordModel]
     
     var currentValue: Double {
-        records.reduce(0) { $0 + $1.value }
+        records.reduce(initialValue) { $0 + $1.value }
     }
     
     var isActive: Bool {

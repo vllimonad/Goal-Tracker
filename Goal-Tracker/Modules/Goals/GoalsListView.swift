@@ -12,7 +12,9 @@ struct GoalsListView: View {
     
     @Environment(\.modelContext) private var modelContext
     
-    @Query private var goals: [GoalModel]
+    @Query(sort: \GoalModel.creationDate) private var goals: [GoalModel]
+    
+    @State private var selectedGoal: GoalModel? = nil
     
     var body: some View {
         NavigationView {
@@ -26,12 +28,17 @@ struct GoalsListView: View {
                             modelContext.delete(goal)
                         }
                     }
-                    
+                    .onTapGesture {
+                        selectedGoal = goal
+                    }
             }
             .background(Color.bgMain)
             .listRowSpacing(8)
             .listStyle(.plain)
             .navigationTitle(Text("goals.title"))
+            .sheet(item: $selectedGoal) { goal in
+                NewRecordView(goal: goal)
+            }
         }
     }
 }

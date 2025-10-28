@@ -48,7 +48,7 @@ struct StatsView: View {
                     
                     VStack(alignment: .leading, spacing: 16) {
                         Picker(selection: $selectedGoal) {
-                            ForEach(goals, id: \.self) { goal in
+                            ForEach(goals) { goal in
                                 Text(goal.name)
                                     .foregroundStyle(.textPrimary)
                                     .tag(goal)

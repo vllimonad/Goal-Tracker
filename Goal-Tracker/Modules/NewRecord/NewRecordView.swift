@@ -9,28 +9,33 @@ import SwiftUI
 
 struct NewRecordView: View {
     
-    enum OperationType: String, CaseIterable {
+    enum RecordOperationType: String, CaseIterable {
         case add = "+"
         case remove = "-"
     }
     
     @Environment(\.dismiss) var dismiss
+    @Environment(\.modelContext) private var modelContext
     
-    @State private var selectedOperationType: OperationType = .add
-    @State private var inputValue: Int = 0
+    @State private var selectedOperationType: RecordOperationType = .add
+    @State private var inputValue: Double? = nil
+    
+    @FocusState private var isInputFocused: Bool
+    
+    var goal: GoalModel
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 12) {
+            VStack(spacing: 16) {
                 Picker("select.operation", selection: $selectedOperationType) {
-                    ForEach(OperationType.allCases, id: \.rawValue) {
+                    ForEach(RecordOperationType.allCases, id: \.rawValue) {
                         Text($0.rawValue)
                             .tag($0)
                     }
                 }
                 .pickerStyle(.segmented)
                 
-                TextField("value", value: $inputValue, format: .number)
+                TextField("enter.value", value: $inputValue, format: .number)
                     .multilineTextAlignment(.center)
                     .keyboardType(.decimalPad)
                     .padding()
@@ -42,10 +47,16 @@ struct NewRecordView: View {
                             radius: 10,
                             x: 0,
                             y: 0)
+                    .focused($isInputFocused)
                     
+                Spacer()
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.horizontal, 24)
+            .padding(.top, 24)
             .background(Color.bgMain)
+            .navigationTitle(goal.name)
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button(role: .close) {
@@ -55,15 +66,27 @@ struct NewRecordView: View {
                 
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("save") {
-                        
+                        saveRecord()
                         dismiss()
                     }
                 }
             }
+            .onAppear {
+                isInputFocused = true
+            }
         }
+    }
+    
+    func saveRecord() {
+        guard let inputValue, inputValue != 0 else { return }
+        
+        let record = RecordModel(value: inputValue)
+        goal.records.append(record)
+        
+        try? modelContext.save()
     }
 }
 
 #Preview {
-    NewRecordView()
+    NewRecordView(goal: GoalModel())
 }

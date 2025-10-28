@@ -16,7 +16,7 @@ struct GoalProgressView: View {
             Text(model.name)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .foregroundStyle(model.textColor.color)
-            Text("\(roundToLastNonZero(model.initialValue))/\(roundToLastNonZero(model.targetValue)) \(model.unitType.abbreviation)")
+            Text("\(roundToLastNonZero(model.currentValue)) / \(roundToLastNonZero(model.targetValue)) \(model.unitType.abbreviation)")
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .foregroundStyle(model.textColor.color)
         }
