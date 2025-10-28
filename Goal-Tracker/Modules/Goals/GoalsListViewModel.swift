@@ -8,29 +8,28 @@
 import Foundation
 import Combine
 
+@MainActor
 @Observable
 final class GoalsListViewModel {
     
     var models: [GoalModel]
     
-    init(models: [GoalModel]) {
-        self.models = [
-            GoalModel(name: "ggg",
-                      currentValue: 12,
-                      goalValue: 44,
-                      backgroundColor: ColorModel(color: .blue.opacity(0.3)),
-                      tintColor: ColorModel(color: .blue.opacity(0.5))),
-            GoalModel(name: "ervewr",
-                      currentValue: 323,
-                      goalValue: 436,
-                      backgroundColor: ColorModel(color: .green.opacity(0.3)),
-                      tintColor: ColorModel(color: .green.opacity(0.5)))
-            ]
+    init() {
+        self.models = []
+    }
+    
+    func fetchModels() {
+        models = GoalStorage.shared.fetchModels()
     }
     
     func deleteModel(_ model: GoalModel) {
-        guard let index = models.firstIndex(of: model) else { return }
-        
-        models.remove(at: index)
+        do {
+            guard let index = models.firstIndex(of: model) else { return }
+            
+            try GoalStorage.shared.deleteModel(model)
+            models.remove(at: index)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }

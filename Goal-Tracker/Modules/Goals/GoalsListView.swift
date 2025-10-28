@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GoalsListView: View {
     
-    @State private var viewModel = GoalsListViewModel(models: [])
+    @State private var viewModel = GoalsListViewModel()
     
     var body: some View {
         NavigationView {
@@ -17,16 +17,21 @@ struct GoalsListView: View {
                 GoalProgressView(model: model)
                     .listRowSeparator(.hidden)
                     .listRowInsets(.init(top: 0, leading: 24, bottom: 0, trailing: 24))
-                    .listRowBackground(Color.white)
+                    .listRowBackground(Color.bgMain)
                     .swipeActions(edge: .trailing) {
-                        Button("Delete", role: .destructive) {
+                        Button("goals.delete.action.title", role: .destructive) {
                             viewModel.deleteModel(model)
                         }
                     }
+                    
             }
+            .background(Color.bgMain)
             .listRowSpacing(8)
             .listStyle(.plain)
             .navigationTitle(Text("goals.title"))
+            .onAppear {
+                viewModel.fetchModels()
+            }
         }
     }
 }
