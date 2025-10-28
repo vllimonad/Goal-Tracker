@@ -38,6 +38,7 @@ struct GoalsListView: View {
             .navigationTitle(Text("goals.title"))
             .sheet(item: $selectedGoal) { goal in
                 NewRecordView(goal: goal)
+                    .presentationDetents([.height(180)])
             }
         }
     }

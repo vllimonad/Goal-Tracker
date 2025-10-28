@@ -35,7 +35,7 @@ struct NewGoalView: View {
                         
                         Spacer()
                         
-                        TextField("",
+                        TextField("Enter",
                                   value: $newGoal.initialValue,
                                   format: .number)
                         .keyboardType(.decimalPad)
@@ -51,7 +51,7 @@ struct NewGoalView: View {
                         
                         Spacer()
                         
-                        TextField("",
+                        TextField("Enter",
                                   value: $newGoal.targetValue,
                                   format: .number)
                         .keyboardType(.decimalPad)
@@ -109,6 +109,8 @@ struct NewGoalView: View {
             }
             .scrollContentBackground(.hidden)
             .background(Color.bgMain)
+            .navigationTitle("new.goal")
+            .navigationBarTitleDisplayMode(.inline)
             .shadow(color: .black.opacity(0.1), radius: 20)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {

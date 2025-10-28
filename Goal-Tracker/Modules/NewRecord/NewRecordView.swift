@@ -9,17 +9,12 @@ import SwiftUI
 
 struct NewRecordView: View {
     
-    enum RecordOperationType: String, CaseIterable {
-        case add = "+"
-        case remove = "-"
-    }
-    
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) private var modelContext
     
     @State private var selectedOperationType: RecordOperationType = .add
     @State private var inputValue: Double? = nil
-    
+
     @FocusState private var isInputFocused: Bool
     
     var goal: GoalModel
@@ -51,12 +46,14 @@ struct NewRecordView: View {
                     
                 Spacer()
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.horizontal, 24)
             .padding(.top, 24)
-            .background(Color.bgMain)
             .navigationTitle(goal.name)
             .navigationBarTitleDisplayMode(.inline)
+            .background(
+                Color.bgMain
+                    .ignoresSafeArea()
+            )
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button(role: .close) {
@@ -65,7 +62,7 @@ struct NewRecordView: View {
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("save") {
+                    Button("add.record") {
                         saveRecord()
                         dismiss()
                     }
@@ -73,14 +70,28 @@ struct NewRecordView: View {
             }
             .onAppear {
                 isInputFocused = true
+                configureSegmentedPickerAppearance()
             }
         }
     }
     
-    func saveRecord() {
+    private func configureSegmentedPickerAppearance() {
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 18, weight: .semibold)
+        ]
+        UISegmentedControl.appearance()
+            .setTitleTextAttributes(attributes, for: .normal)
+        UISegmentedControl.appearance()
+            .setTitleTextAttributes(attributes, for: .selected)
+    }
+    
+    private func saveRecord() {
         guard let inputValue, inputValue != 0 else { return }
         
-        let record = RecordModel(value: inputValue)
+        let multiplier = selectedOperationType == .add ? 1.0 : -1.0
+        let value = inputValue * multiplier
+        
+        let record = RecordModel(value: value)
         goal.records.append(record)
         
         try? modelContext.save()
