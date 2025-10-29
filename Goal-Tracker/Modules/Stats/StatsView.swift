@@ -47,22 +47,35 @@ struct StatsView: View {
                     }
                     
                     VStack(alignment: .leading, spacing: 18) {
-                        Picker(selection: $selectedGoal) {
-                            ForEach(goals) { goal in
-                                Text(goal.name)
-                                    .foregroundStyle(.textPrimary)
-                                    .tag(goal)
+                        HStack(alignment: .top) {
+                            VStack(alignment: .leading) {
+                                Text(selectedGoal?.getProgress() ?? 0, format: .percent.rounded(increment: 0.01))
+                                    .font(.system(size: 24, weight: .semibold))
+                                    .foregroundStyle(.textBlue)
+                                
+                                Text("progress")
+                                    .font(.system(size: 14, weight: .medium))
+                                    .foregroundStyle(.textSecondary)
                             }
-                        } label: {
-                            Text(selectedGoal?.name ?? "")
+                            
+                            Spacer()
+                            
+                            Picker(selection: $selectedGoal) {
+                                ForEach(goals) { goal in
+                                    Text(goal.name)
+                                        .foregroundStyle(.textPrimary)
+                                        .tag(goal)
+                                }
+                            } label: {
+                                Text(selectedGoal?.name ?? "")
+                            }
+                            .tint(.black)
+                            .padding(2)
+                            .background(
+                                Capsule()
+                                    .fill(.iconBlue.opacity(0.14))
+                            )
                         }
-                        .tint(.black)
-                        .padding(2)
-                        .background(
-                            Capsule()
-                                .fill(.bgWhite)
-
-                        )
                         
                         Chart(selectedGoal?.valuesHistory ?? []) { item in
                             LineMark(
@@ -83,6 +96,8 @@ struct StatsView: View {
                                 AxisGridLine(centered: true,
                                              stroke: StrokeStyle(lineWidth: 1,
                                                                  dash: [7, 7]))
+                                .foregroundStyle(.secondary.opacity(0.4))
+                                
                                 AxisValueLabel()
                             }
                         }

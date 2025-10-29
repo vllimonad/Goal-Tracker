@@ -136,7 +136,7 @@ enum OtherUnitType: CaseIterable, Codable {
     
     var abbreviation: String {
         switch self {
-        case .none: "N"
+        case .none: "?"
         }
     }
 }

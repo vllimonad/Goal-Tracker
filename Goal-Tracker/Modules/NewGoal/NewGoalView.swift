@@ -108,7 +108,7 @@ struct NewGoalView: View {
                 }
             }
             .scrollContentBackground(.hidden)
-            .background(Color.bgMain)
+            .background(.bgMain)
             .navigationTitle("new.goal")
             .navigationBarTitleDisplayMode(.inline)
             .systemShadow()

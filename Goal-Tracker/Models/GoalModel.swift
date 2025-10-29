@@ -17,6 +17,7 @@ class GoalModel {
     var initialValue: Double
     var targetValue: Double
     var unitType: UnitType
+    var isArchived: Bool
     
     var progressColor: ColorModel
     var backgroundColor: ColorModel
@@ -50,6 +51,7 @@ class GoalModel {
                   initialValue: 0,
                   targetValue: 0,
                   unitType: .other(.none),
+                  isArchived: false,
                   progressColor: ColorModel(color: .blue.opacity(0.7)),
                   backgroundColor: ColorModel(color: .blue.opacity(0.4)),
                   textColor: ColorModel(color: .black),
@@ -61,6 +63,7 @@ class GoalModel {
          initialValue: Double,
          targetValue: Double,
          unitType: UnitType,
+         isArchived: Bool,
          progressColor: ColorModel,
          backgroundColor: ColorModel,
          textColor: ColorModel,
@@ -70,6 +73,7 @@ class GoalModel {
         self.initialValue = initialValue
         self.targetValue = targetValue
         self.unitType = unitType
+        self.isArchived = isArchived
         self.progressColor = progressColor
         self.backgroundColor = backgroundColor
         self.textColor = textColor

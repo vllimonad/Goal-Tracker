@@ -12,22 +12,40 @@ struct GoalsListView: View {
     
     @Environment(\.modelContext) private var modelContext
     
-    @Query(sort: \GoalModel.creationDate) private var goals: [GoalModel]
+    @Query(
+        filter: #Predicate<GoalModel> {
+            !$0.isArchived
+        },
+        sort: \GoalModel.creationDate
+    )
+    private var goals: [GoalModel]
     
     @State private var selectedGoal: GoalModel? = nil
+    @State private var isArchivePresented: Bool? = nil
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List(goals) { goal in
                 GoalProgressView(goal: goal)
                     .listRowSeparator(.hidden)
                     .listRowInsets(.init(top: 0, leading: 24, bottom: 0, trailing: 24))
                     .listRowBackground(Color.bgMain)
                     .swipeActions(edge: .trailing) {
-                        Button("goals.delete.action.title", role: .destructive) {
-                            modelContext.delete(goal)
+                        Button("delete", role: .destructive) {
+                            deleteGoal(goal)
                         }
                         .tint(.red)
+                        
+                        Button("change", role: .close) {
+                            
+                        }
+                        .tint(.iconBlue)
+                    }
+                    .swipeActions(edge: .leading) {
+                        Button("archive") {
+                            archiveGoal(goal)
+                        }
+                        .tint(.orange)
                     }
                     .onTapGesture {
                         selectedGoal = goal
@@ -38,11 +56,32 @@ struct GoalsListView: View {
             .listStyle(.plain)
             .navigationTitle(LocalizedStringKey("goals.title"))
             .toolbarTitleDisplayMode(.inlineLarge)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        isArchivePresented = true
+                    } label: {
+                        Image(systemName: "archivebox")
+                            .foregroundStyle(.black)
+                    }
+                }
+            }
+            .navigationDestination(item: $isArchivePresented, destination: { _ in
+                ArchievedGoalsListView()
+            })
             .sheet(item: $selectedGoal) { goal in
                 NewRecordView(goal: goal)
                     .presentationDetents([.height(180)])
             }
         }
+    }
+    
+    func deleteGoal(_ goal: GoalModel) {
+        modelContext.delete(goal)
+    }
+    
+    func archiveGoal(_ goal: GoalModel) {
+        goal.isArchived = true
     }
 }
 
