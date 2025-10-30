@@ -28,15 +28,16 @@ struct GoalsListView: View {
             List(goals) { goal in
                 GoalProgressView(goal: goal)
                     .listRowSeparator(.hidden)
-                    .listRowInsets(.init(top: 0, leading: 24, bottom: 0, trailing: 24))
-                    .listRowBackground(Color.bgMain)
+                    .listRowInsets(.vertical, 0)
+                    .listRowInsets(.horizontal, 24)
+                    .listRowBackground(Color.clear)
                     .swipeActions(edge: .trailing) {
                         Button("delete", role: .destructive) {
                             deleteGoal(goal)
                         }
                         .tint(.red)
                         
-                        Button("change", role: .close) {
+                        Button("edit", role: .close) {
                             
                         }
                         .tint(.iconBlue)
@@ -49,6 +50,25 @@ struct GoalsListView: View {
                     }
                     .onTapGesture {
                         selectedGoal = goal
+                    }
+                    .contextMenu {
+                        Button("edit", systemImage: "pencil", role: .confirm) {
+                            
+                        }
+                        .tint(.black)
+                        
+                        Button("archive", systemImage: "archivebox") {
+                            archiveGoal(goal)
+                        }
+                        .tint(.black)
+                        
+                        Button("delete", systemImage: "xmark.bin", role: .destructive) {
+                            deleteGoal(goal)
+                        }
+                        .tint(.red)
+                    } preview: {
+                        GoalProgressView(goal: goal)
+                            .frame(width: 300)
                     }
             }
             .background(Color.bgMain)
@@ -71,7 +91,9 @@ struct GoalsListView: View {
             })
             .sheet(item: $selectedGoal) { goal in
                 NewRecordView(goal: goal)
-                    .presentationDetents([.height(180)])
+                    .presentationDetents([
+                        .height(180)
+                    ])
             }
         }
     }
