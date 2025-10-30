@@ -13,14 +13,14 @@ struct GoalsListView: View {
     @Environment(\.modelContext) private var modelContext
     
     @Query(
-        filter: #Predicate<GoalModel> {
-            !$0.isArchived
-        },
+        filter: #Predicate<GoalModel> { !$0.isArchived && !$0.isDeleted },
         sort: \GoalModel.creationDate
     )
     private var goals: [GoalModel]
     
     @State private var selectedGoal: GoalModel? = nil
+    @State private var deleteAlertGoal: GoalModel? = nil
+    @State private var isDeleteAlertPresented: Bool = false
     @State private var isArchivePresented: Bool? = nil
     
     var body: some View {
@@ -32,18 +32,18 @@ struct GoalsListView: View {
                     .listRowInsets(.horizontal, 24)
                     .listRowBackground(Color.clear)
                     .swipeActions(edge: .trailing) {
-                        Button("delete", role: .destructive) {
-                            deleteGoal(goal)
+                        Button("delete") {
+                            prepareForDeletion(goal)
                         }
                         .tint(.red)
                         
-                        Button("edit", role: .close) {
+                        Button("edit") {
                             
                         }
                         .tint(.iconBlue)
                     }
                     .swipeActions(edge: .leading) {
-                        Button("archive") {
+                        Button("archive", role: .destructive) {
                             archiveGoal(goal)
                         }
                         .tint(.orange)
@@ -52,7 +52,7 @@ struct GoalsListView: View {
                         selectedGoal = goal
                     }
                     .contextMenu {
-                        Button("edit", systemImage: "pencil", role: .confirm) {
+                        Button("edit", systemImage: "pencil") {
                             
                         }
                         .tint(.black)
@@ -62,8 +62,8 @@ struct GoalsListView: View {
                         }
                         .tint(.black)
                         
-                        Button("delete", systemImage: "xmark.bin", role: .destructive) {
-                            deleteGoal(goal)
+                        Button("delete", systemImage: "xmark.bin") {
+                            prepareForDeletion(goal)
                         }
                         .tint(.red)
                     } preview: {
@@ -86,24 +86,37 @@ struct GoalsListView: View {
                     }
                 }
             }
-            .navigationDestination(item: $isArchivePresented, destination: { _ in
+            .navigationDestination(item: $isArchivePresented) { _ in
                 ArchievedGoalsListView()
-            })
+            }
             .sheet(item: $selectedGoal) { goal in
                 NewRecordView(goal: goal)
                     .presentationDetents([
                         .height(180)
                     ])
             }
+            .alert("delete.goal '\(deleteAlertGoal?.name ?? "")'?", isPresented: $isDeleteAlertPresented) {
+                Button(role: .cancel) { }
+                Button("delete", role: .destructive, action: deleteGoal)
+            }
         }
     }
     
-    func deleteGoal(_ goal: GoalModel) {
+    private func deleteGoal() {
+        guard let goal = deleteAlertGoal else { return }
+        
         modelContext.delete(goal)
+        
+        deleteAlertGoal = nil
     }
     
-    func archiveGoal(_ goal: GoalModel) {
+    private func archiveGoal(_ goal: GoalModel) {
         goal.isArchived = true
+    }
+    
+    private func prepareForDeletion(_ goal: GoalModel) {
+        deleteAlertGoal = goal
+        isDeleteAlertPresented = true
     }
 }
 

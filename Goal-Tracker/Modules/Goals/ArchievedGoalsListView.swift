@@ -13,9 +13,7 @@ struct ArchievedGoalsListView: View {
     @Environment(\.modelContext) private var modelContext
     
     @Query(
-        filter: #Predicate<GoalModel> {
-            $0.isArchived
-        },
+        filter: #Predicate<GoalModel> { $0.isArchived },
         sort: \GoalModel.creationDate
     )
     private var goals: [GoalModel]
@@ -31,16 +29,29 @@ struct ArchievedGoalsListView: View {
                 .listRowInsets(.init(top: 0, leading: 24, bottom: 0, trailing: 24))
                 .listRowBackground(Color.bgMain)
                 .swipeActions(edge: .trailing) {
-                    Button("delete", role: .destructive) {
-                        selectedGoal = goal
-                        isDeleteAlertPresented = true
+                    Button("delete") {
+                        prepareForDeletion(goal)
                     }
                     .tint(.red)
                     
-                    Button("unarchive") {
+                    Button("unarchive", role: .destructive) {
                         unarchiveGoal(goal)
                     }
                     .tint(.orange)
+                }
+                .contextMenu {
+                    Button("unarchive", systemImage: "archivebox") {
+                        unarchiveGoal(goal)
+                    }
+                    .tint(.black)
+                    
+                    Button("delete", systemImage: "xmark.bin") {
+                        prepareForDeletion(goal)
+                    }
+                    .tint(.red)
+                } preview: {
+                    GoalProgressView(goal: goal)
+                        .frame(width: 300)
                 }
         }
         .background(Color.bgMain)
@@ -67,6 +78,11 @@ struct ArchievedGoalsListView: View {
             Button(role: .cancel) { }
             Button("delete", role: .destructive, action: deleteGoal)
         }
+    }
+    
+    private func prepareForDeletion(_ goal: GoalModel) {
+        selectedGoal = goal
+        isDeleteAlertPresented = true
     }
     
     private func deleteGoal() {
