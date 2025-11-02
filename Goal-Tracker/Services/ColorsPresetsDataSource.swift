@@ -1,8 +1,10 @@
 import SwiftUI
 
-struct ColorsPresetsDataSource {
+struct PresetsDataSource {
     
-    static func getPresets() -> [ColorsModel] {
+    static let initialIndex: Int = 0
+    
+    static func getAll() -> [ColorsModel] {
          [
             ColorsModel(
                 progress: ColorModel(color: .blue),
@@ -55,5 +57,11 @@ struct ColorsPresetsDataSource {
                 text: ColorModel(color: .white)
             )
         ]
+    }
+    
+    static func getInitial() -> ColorsModel {
+        let presets = getAll()
+        
+        return presets[initialIndex]
     }
 }

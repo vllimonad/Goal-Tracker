@@ -10,17 +10,24 @@ import SwiftUI
 struct ColorsPreset: View {
     
     var colorsModel: ColorsModel
+    var isSelected: Bool
     
     var body: some View {
         HStack(spacing: 0) {
             colorsModel.background.color
             colorsModel.progress.color
         }
+        .clipShape(
+            Capsule()
+        )
+        .overlay {
+            Capsule()
+                .stroke(isSelected ? Color.iconBlue : Color.clear, lineWidth: 2)
+        }
         .frame(width: 50, height: 30)
-        .clipShape(Capsule())
     }
 }
 
 #Preview {
-    ColorsPreset(colorsModel: ColorsModel())
+    ColorsPreset(colorsModel: ColorsModel(), isSelected: true)
 }
