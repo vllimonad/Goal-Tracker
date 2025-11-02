@@ -17,12 +17,12 @@ struct GoalProgressView: View {
                 Text(goal.name)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.headline)
-                    .foregroundStyle(goal.textColor.color)
+                    .foregroundStyle(goal.colors.text.color)
                 
                 Text("\(roundToLastNonZero(goal.currentValue)) / \(roundToLastNonZero(goal.targetValue)) \(goal.unitType.abbreviation)")
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.subheadline)
-                    .foregroundStyle(goal.textColor.color)
+                    .foregroundStyle(goal.colors.text.color)
             }
             
             Text(goal.getProgress(), format: .percent.rounded(increment: 0.1))
@@ -32,9 +32,9 @@ struct GoalProgressView: View {
         .background {
             GeometryReader { geometry in
                 HStack(spacing: 0) {
-                    goal.progressColor.color
+                    goal.colors.progress.color
                         .frame(width: geometry.size.width * goal.getProgress())
-                    goal.backgroundColor.color
+                    goal.colors.background.color
                 }
             }
         }
@@ -54,5 +54,11 @@ struct GoalProgressView: View {
 }
 
 #Preview {
-    GoalProgressView(goal: GoalModel())
+    GoalProgressView(goal: GoalModel(
+        name: "A",
+        initialValue: 0,
+        targetValue: 0,
+        unitType: .currency(.eur),
+        colors: ColorsModel()
+    ))
 }

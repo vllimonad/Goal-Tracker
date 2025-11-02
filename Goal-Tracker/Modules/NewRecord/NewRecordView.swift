@@ -110,5 +110,11 @@ struct NewRecordView: View {
 }
 
 #Preview {
-    NewRecordView(goal: GoalModel())
+    NewRecordView(goal: GoalModel(
+        name: "A",
+        initialValue: 0,
+        targetValue: 0,
+        unitType: .currency(.eur),
+        colors: ColorsModel()
+    ))
 }

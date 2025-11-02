@@ -20,9 +20,7 @@ class GoalModel {
     var isArchived: Bool
     var isDeleted: Bool
     
-    var progressColor: ColorModel
-    var backgroundColor: ColorModel
-    var textColor: ColorModel
+    var colors: ColorsModel
     
     @Relationship(deleteRule: .cascade) var records: [RecordModel]
     
@@ -46,31 +44,37 @@ class GoalModel {
         return history
     }
     
-    convenience init() {
-        self.init(name: "",
-                  creationDate: .now,
-                  initialValue: 0,
-                  targetValue: 0,
-                  unitType: .other(.none),
-                  isArchived: false,
-                  isDeleted: false,
-                  progressColor: ColorModel(color: .blue.opacity(0.7)),
-                  backgroundColor: ColorModel(color: .blue.opacity(0.4)),
-                  textColor: ColorModel(color: .black),
-                  records: [])
+    convenience init(
+        name: String,
+        initialValue: Double,
+        targetValue: Double,
+        unitType: UnitType,
+        colors: ColorsModel
+    ) {
+        self.init(
+            name: name,
+            creationDate: .now,
+            initialValue: initialValue,
+            targetValue: targetValue,
+            unitType: unitType,
+            isArchived: false,
+            isDeleted: false,
+            colors: colors,
+            records: []
+        )
     }
     
-    init(name: String,
-         creationDate: Date,
-         initialValue: Double,
-         targetValue: Double,
-         unitType: UnitType,
-         isArchived: Bool,
-         isDeleted: Bool,
-         progressColor: ColorModel,
-         backgroundColor: ColorModel,
-         textColor: ColorModel,
-         records: [RecordModel]) {
+    init(
+        name: String,
+        creationDate: Date,
+        initialValue: Double,
+        targetValue: Double,
+        unitType: UnitType,
+        isArchived: Bool,
+        isDeleted: Bool,
+        colors: ColorsModel,
+        records: [RecordModel]
+    ) {
         self.name = name
         self.creationDate = creationDate
         self.initialValue = initialValue
@@ -78,9 +82,7 @@ class GoalModel {
         self.unitType = unitType
         self.isDeleted = isDeleted
         self.isArchived = isArchived
-        self.progressColor = progressColor
-        self.backgroundColor = backgroundColor
-        self.textColor = textColor
+        self.colors = colors
         self.records = records
     }
     
