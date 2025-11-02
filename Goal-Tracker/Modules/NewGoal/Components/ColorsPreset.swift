@@ -17,14 +17,14 @@ struct ColorsPreset: View {
             colorsModel.background.color
             colorsModel.progress.color
         }
+        .frame(width: 50, height: 30)
         .clipShape(
             Capsule()
         )
         .overlay {
             Capsule()
-                .stroke(isSelected ? Color.iconBlue : Color.clear, lineWidth: 2)
+                .stroke(isSelected ? Color.black : Color.clear, lineWidth: 2.5)
         }
-        .frame(width: 50, height: 30)
     }
 }
 

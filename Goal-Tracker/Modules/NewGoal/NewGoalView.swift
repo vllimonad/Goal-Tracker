@@ -17,7 +17,7 @@ struct NewGoalView: View {
 
     private let presets = PresetsDataSource.getAll()
     private let presetsColumns = [
-        GridItem(.adaptive(minimum: 50)),
+        GridItem(.adaptive(minimum: 54)),
     ]
     
     @State private var name: String = ""
@@ -101,11 +101,14 @@ struct NewGoalView: View {
                                     colorsModel: preset,
                                     isSelected: index == selectedPresetIndex
                                 )
+                                .frame(height: 34)
                                 .onTapGesture {
                                     selectPreset(index)
                                 }
+                                .animation(.default, value: selectedPresetIndex)
                             }
                         }
+                        .scrollDisabled(true)
                     }
                 }
                 
@@ -144,7 +147,6 @@ struct NewGoalView: View {
             .background(.bgMain)
             .navigationTitle("new.goal.title")
             .navigationBarTitleDisplayMode(.inline)
-            .animation(.default, value: selectedPresetIndex)
             .systemShadow()
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
