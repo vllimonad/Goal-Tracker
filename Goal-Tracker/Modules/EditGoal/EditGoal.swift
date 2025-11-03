@@ -10,10 +10,9 @@ import SwiftUI
 struct EditGoal: View {
     
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.modelContext) private var modelContext
     @FocusState private var focusedTextField: NewGoalTextFieldType?
     
-    @Binding var goal: GoalModel
+    var goal: GoalModel
     
     @State private var name: String = ""
     @State private var targetValue: Double = 0
@@ -24,7 +23,7 @@ struct EditGoal: View {
     
     var body: some View {
         Form {
-            Section {
+            Section("edit.goal.name.section.title") {
                 TextField("edit.goal.name.value.placeholder", text: $name)
                     .keyboardType(.default)
                     .focused($focusedTextField, equals: .name)
@@ -80,18 +79,14 @@ struct EditGoal: View {
         .navigationTitle("edit.goal.title")
         .navigationBarTitleDisplayMode(.inline)
         .systemShadow()
+        .toolbarVisibility(.hidden, for: .tabBar)
         .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Button(role: .cancel) {
-                    dismiss()
-                }
-            }
-            
             ToolbarItem(placement: .topBarTrailing) {
                 Button("edit.goal.save.action.title") {
                     saveChanges()
                     dismiss()
                 }
+                .foregroundStyle(Color.black)
             }
         }
         .onScrollPhaseChange { _, _ in
@@ -136,11 +131,11 @@ struct EditGoal: View {
 }
 
 #Preview {
-    EditGoal(goal: .constant(GoalModel(
+    EditGoal(goal: GoalModel(
         name: "A",
         initialValue: 0,
         targetValue: 1,
         unitType: .currency(.eur),
         colors: ColorsModel()
-    )))
+    ))
 }

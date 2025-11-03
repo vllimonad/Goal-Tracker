@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct ArchievedGoalsListView: View {
+struct ArchivedGoalsListView: View {
     
     @Environment(\.modelContext) private var modelContext
     
@@ -26,7 +26,8 @@ struct ArchievedGoalsListView: View {
         List(goals) { goal in
             GoalProgressView(goal: goal)
                 .listRowSeparator(.hidden)
-                .listRowInsets(.init(top: 0, leading: 24, bottom: 0, trailing: 24))
+                .listRowInsets(.vertical, 0)
+                .listRowInsets(.horizontal, 24)
                 .listRowBackground(Color.bgMain)
                 .swipeActions(edge: .trailing) {
                     Button("delete") {
@@ -104,5 +105,5 @@ struct ArchievedGoalsListView: View {
 }
 
 #Preview {
-    ArchievedGoalsListView()
+    ArchivedGoalsListView()
 }

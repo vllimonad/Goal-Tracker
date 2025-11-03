@@ -19,9 +19,10 @@ struct GoalsListView: View {
     private var goals: [GoalModel]
     
     @State private var selectedGoal: GoalModel? = nil
-    @State private var deleteAlertGoal: GoalModel? = nil
+    @State private var goalToDelete: GoalModel? = nil
+    @State private var goalToEdit: GoalModel? = nil
+
     @State private var isDeleteAlertPresented: Bool = false
-    @State private var isArchivePresented: Bool? = nil
     
     var body: some View {
         NavigationStack {
@@ -38,7 +39,7 @@ struct GoalsListView: View {
                         .tint(.red)
                         
                         Button("edit") {
-                            
+                            editGoal(goal)
                         }
                         .tint(.iconBlue)
                     }
@@ -48,12 +49,9 @@ struct GoalsListView: View {
                         }
                         .tint(.orange)
                     }
-                    .onTapGesture {
-                        selectedGoal = goal
-                    }
                     .contextMenu {
                         Button("edit", systemImage: "pencil") {
-                            
+                            editGoal(goal)
                         }
                         .tint(.black)
                         
@@ -70,6 +68,9 @@ struct GoalsListView: View {
                         GoalProgressView(goal: goal)
                             .frame(width: 300)
                     }
+                    .onTapGesture {
+                        selectedGoal = goal
+                    }
             }
             .background(Color.bgMain)
             .listRowSpacing(12)
@@ -78,16 +79,16 @@ struct GoalsListView: View {
             .toolbarTitleDisplayMode(.inlineLarge)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        isArchivePresented = true
+                    NavigationLink {
+                        ArchivedGoalsListView()
                     } label: {
                         Image(systemName: "archivebox")
                             .foregroundStyle(.black)
                     }
                 }
             }
-            .navigationDestination(item: $isArchivePresented) { _ in
-                ArchievedGoalsListView()
+            .navigationDestination(item: $goalToEdit) { goal in
+                EditGoal(goal: goal)
             }
             .sheet(item: $selectedGoal) { goal in
                 NewRecordView(goal: goal)
@@ -95,19 +96,22 @@ struct GoalsListView: View {
                         .height(180)
                     ])
             }
-            .alert("delete.goal '\(deleteAlertGoal?.name ?? "")'?", isPresented: $isDeleteAlertPresented) {
+            .alert("delete.goal '\(goalToDelete?.name ?? "")'?", isPresented: $isDeleteAlertPresented) {
                 Button(role: .cancel) { }
                 Button("delete", role: .destructive, action: deleteGoal)
             }
         }
     }
     
+    private func editGoal(_ goal: GoalModel) {
+        goalToEdit = goal
+    }
+    
     private func deleteGoal() {
-        guard let goal = deleteAlertGoal else { return }
+        guard let goal = goalToDelete else { return }
         
         modelContext.delete(goal)
-        
-        deleteAlertGoal = nil
+        goalToDelete = nil
     }
     
     private func archiveGoal(_ goal: GoalModel) {
@@ -115,7 +119,7 @@ struct GoalsListView: View {
     }
     
     private func prepareForDeletion(_ goal: GoalModel) {
-        deleteAlertGoal = goal
+        goalToDelete = goal
         isDeleteAlertPresented = true
     }
 }
