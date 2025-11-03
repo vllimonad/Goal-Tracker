@@ -6,18 +6,36 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct NewGoalView: View {
     
-    @Environment(\.dismiss) var dismiss
-    @FocusState private var focusedTextField: NewGoalTextFieldType?
-    @State private var viewModel = NewGoalViewModel()
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var modelContext
     
+    @FocusState private var focusedTextField: NewGoalTextFieldType?
+
+    private let presets = PresetsDataSource.getAll()
+    private let presetsColumns = [
+        GridItem(.adaptive(minimum: 54)),
+    ]
+    
+    @State private var name: String = ""
+    
+    @State private var initialValue: Double? = nil
+    @State private var targetValue: Double? = nil
+    @State private var unitType: UnitType = .other(.none)
+    
+    @State private var selectedPresetIndex: Int? = PresetsDataSource.initialIndex
+    @State private var progressColor: Color = PresetsDataSource.getInitial().progress.color
+    @State private var backgroundColor: Color = PresetsDataSource.getInitial().background.color
+    @State private var textColor: Color = PresetsDataSource.getInitial().text.color
+        
     var body: some View {
         NavigationView {
             Form {
                 Section {
-                    TextField("goal.name.placeholder", text: $viewModel.model.name)
+                    TextField("new.goal.name.value.placeholder", text: $name)
                         .keyboardType(.default)
                         .focused($focusedTextField, equals: .name)
                         .onTapGesture {
@@ -25,15 +43,17 @@ struct NewGoalView: View {
                         }
                 }
                 
-                Section("goal.data.section.title") {
+                Section("new.goal.data.section.title") {
                     HStack {
-                        Text("goal.initial.value")
+                        Text("new.goal.initial.title")
                         
                         Spacer()
                         
-                        TextField("",
-                                  value: $viewModel.model.initialValue,
-                                  format: .number)
+                        TextField(
+                            "new.goal.initial.value.placeholder",
+                            value: $initialValue,
+                            format: .number
+                        )
                         .keyboardType(.decimalPad)
                         .multilineTextAlignment(.trailing)
                         .focused($focusedTextField, equals: .initial)
@@ -43,13 +63,15 @@ struct NewGoalView: View {
                     }
                     
                     HStack {
-                        Text("goal.target.value")
+                        Text("new.goal.target.title")
                         
                         Spacer()
                         
-                        TextField("",
-                                  value: $viewModel.model.targetValue,
-                                  format: .number)
+                        TextField(
+                            "new.goal.target.value.placeholder",
+                            value: $targetValue,
+                            format: .number
+                        )
                         .keyboardType(.decimalPad)
                         .multilineTextAlignment(.trailing)
                         .focused($focusedTextField, equals: .target)
@@ -59,53 +81,73 @@ struct NewGoalView: View {
                     }
                     
                     NavigationLink {
-                        UnitPickerView(unit: $viewModel.model.unitType)
+                        UnitPickerView(unit: $unitType)
                     } label: {
                         HStack {
-                            Text("goal.unit")
+                            Text("new.goal.unit.picker.title")
                             
                             Spacer()
                             
-                            Text(viewModel.model.unitType.name)
+                            Text(unitType.name)
                         }
                     }
                 }
                 
-                Section("goal.colors.section.title") {
-                    ColorPicker("goal.progress.color",
-                                selection: Binding(
-                                    get: {
-                                        viewModel.model.progressColor.color
-                                    },
-                                    set: {
-                                        viewModel.model.progressColor = .init(color: $0)
-                                    }))
-                    ColorPicker("goal.background.color",
-                                selection: Binding(
-                                    get: {
-                                        viewModel.model.backgroundColor.color
-                                    },
-                                    set: {
-                                        viewModel.model.backgroundColor = .init(color: $0)
-                                    }))
-                    ColorPicker("goal.text.color",
-                                selection: Binding(
-                                    get: {
-                                        viewModel.model.textColor.color
-                                    },
-                                    set: {
-                                        viewModel.model.textColor = .init(color: $0)
-                                    }))
+                Section("new.goal.presets.section.title") {
+                    ScrollView {
+                        LazyVGrid(columns: presetsColumns) {
+                            ForEach(Array(presets.enumerated()), id: \.offset) { index, preset in
+                                ColorsPreset(
+                                    colorsModel: preset,
+                                    isSelected: index == selectedPresetIndex
+                                )
+                                .frame(height: 34)
+                                .onTapGesture {
+                                    selectPreset(index)
+                                }
+                                .animation(.default, value: selectedPresetIndex)
+                            }
+                        }
+                        .scrollDisabled(true)
+                    }
                 }
                 
-                Section("goal.preview.section.title") {
-                    GoalProgressView(model: viewModel.model)
-                        .listRowInsets(EdgeInsets())
+                Section("new.goal.colors.section.title") {
+                    ColorPicker(
+                        "new.goal.progress.color.picker.title",
+                        selection: $progressColor
+                    )
+                    .onChange(of: progressColor) { _, _ in
+                        validateColorChange()
+                    }
+                    
+                    ColorPicker(
+                        "new.goal.background.color.picker.title",
+                        selection: $backgroundColor
+                    )
+                    .onChange(of: backgroundColor) { _, _ in
+                        validateColorChange()
+                    }
+                    
+                    ColorPicker(
+                        "new.goal.text.color.picker.title",
+                        selection: $textColor
+                    )
+                    .onChange(of: textColor) { _, _ in
+                        validateColorChange()
+                    }
+                }
+                
+                Section("new.goal.preview.section.title") {
+                    GoalProgressView(goal: createGoalModel())
+                    .listRowInsets(EdgeInsets())
                 }
             }
             .scrollContentBackground(.hidden)
-            .background(Color.bgMain)
-            .shadow(color: .black.opacity(0.1), radius: 20)
+            .background(.bgMain)
+            .navigationTitle("new.goal.title")
+            .navigationBarTitleDisplayMode(.inline)
+            .systemShadow()
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button(role: .close) {
@@ -114,8 +156,8 @@ struct NewGoalView: View {
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("save") {
-                        viewModel.saveModel()
+                    Button("new.goal.save.action.title") {
+                        saveGoal()
                         dismiss()
                     }
                 }
@@ -124,6 +166,51 @@ struct NewGoalView: View {
                 focusedTextField = nil
             }
         }
+    }
+    
+    private func selectPreset(_ index: Int) {
+        let preset = presets[index]
+        
+        progressColor = preset.progress.color
+        backgroundColor = preset.background.color
+        textColor = preset.text.color
+        
+        selectedPresetIndex = index
+    }
+    
+    private func validateColorChange() {
+        guard let selectedPresetIndex = selectedPresetIndex else { return }
+        
+        let preset = presets[selectedPresetIndex]
+        
+        guard
+            preset.progress.color != progressColor
+                || preset.background.color != backgroundColor
+                || preset.text.color != textColor
+        else {
+            return
+        }
+        
+        self.selectedPresetIndex = nil
+    }
+    
+    private func createGoalModel() -> GoalModel {
+        GoalModel(
+            name: name,
+            initialValue: initialValue ?? 0,
+            targetValue: targetValue ?? 0,
+            unitType: unitType,
+            colors: ColorsModel(
+                progress: ColorModel(color: progressColor),
+                background: ColorModel(color: backgroundColor),
+                text: ColorModel(color: textColor)
+            )
+        )
+    }
+    
+    private func saveGoal() {
+        let goal = createGoalModel()
+        modelContext.insert(goal)
     }
 }
 

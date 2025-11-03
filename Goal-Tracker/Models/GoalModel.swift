@@ -17,50 +17,72 @@ class GoalModel {
     var initialValue: Double
     var targetValue: Double
     var unitType: UnitType
+    var isArchived: Bool
+    var isDeleted: Bool
     
-    var progressColor: ColorModel
-    var backgroundColor: ColorModel
-    var textColor: ColorModel
+    var colors: ColorsModel
     
     @Relationship(deleteRule: .cascade) var records: [RecordModel]
     
     var currentValue: Double {
-        records.reduce(0) { $0 + $1.value }
+        records.reduce(initialValue) { $0 + $1.value }
     }
     
     var isActive: Bool {
         currentValue < targetValue
     }
     
-    convenience init() {
-        self.init(name: "",
-                  creationDate: .now,
-                  initialValue: 0,
-                  targetValue: 0,
-                  unitType: .other(.none),
-                  progressColor: ColorModel(color: .blue.opacity(0.7)),
-                  backgroundColor: ColorModel(color: .blue.opacity(0.4)),
-                  textColor: ColorModel(color: .black),
-                  records: [])
+    var valuesHistory: [RecordModel] {
+        var totalPerRecord = initialValue
+        
+        var history = records.map {
+            totalPerRecord += $0.value
+            return RecordModel(date: $0.date, value: totalPerRecord)
+        }
+        history.insert(RecordModel(date: creationDate, value: initialValue), at: 0)
+        
+        return history
     }
     
-    init(name: String,
-         creationDate: Date,
-         initialValue: Double,
-         targetValue: Double,
-         unitType: UnitType,
-         progressColor: ColorModel,
-         backgroundColor: ColorModel,
-         textColor: ColorModel,
-         records: [RecordModel]) {
+    convenience init(
+        name: String,
+        initialValue: Double,
+        targetValue: Double,
+        unitType: UnitType,
+        colors: ColorsModel
+    ) {
+        self.init(
+            name: name,
+            creationDate: .now,
+            initialValue: initialValue,
+            targetValue: targetValue,
+            unitType: unitType,
+            isArchived: false,
+            isDeleted: false,
+            colors: colors,
+            records: []
+        )
+    }
+    
+    init(
+        name: String,
+        creationDate: Date,
+        initialValue: Double,
+        targetValue: Double,
+        unitType: UnitType,
+        isArchived: Bool,
+        isDeleted: Bool,
+        colors: ColorsModel,
+        records: [RecordModel]
+    ) {
         self.name = name
         self.creationDate = creationDate
         self.initialValue = initialValue
         self.targetValue = targetValue
         self.unitType = unitType
-        self.progressColor = progressColor
-        self.backgroundColor = backgroundColor
-        self.textColor = textColor
+        self.isDeleted = isDeleted
+        self.isArchived = isArchived
+        self.colors = colors
         self.records = records
     }
     
