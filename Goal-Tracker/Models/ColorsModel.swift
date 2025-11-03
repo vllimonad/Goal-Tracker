@@ -5,7 +5,7 @@
 //  Created by Vlad Klunduk on 02/11/2025.
 //
 
-import Foundation
+import SwiftUI
 import SwiftData
 
 @Model
@@ -17,6 +17,26 @@ class ColorsModel {
     
     var text: ColorModel
     
+    convenience init() {
+        self.init(
+            progress: ColorModel(red: 0.90, green: 0.94, blue: 1.0),
+            background: ColorModel(color: .blue),
+            text: ColorModel(color: .black)
+        )
+    }
+    
+    convenience init(
+        progress: Color,
+        background: Color,
+        text: Color
+    ) {
+        self.init(
+            progress: ColorModel(color: progress),
+            background: ColorModel(color: background),
+            text: ColorModel(color: text)
+        )
+    }
+    
     init(
         progress: ColorModel,
         background: ColorModel,
@@ -25,14 +45,6 @@ class ColorsModel {
         self.progress = progress
         self.background = background
         self.text = text
-    }
-    
-    convenience init() {
-        self.init(
-            progress: ColorModel(red: 0.90, green: 0.94, blue: 1.0),
-            background: ColorModel(color: .blue),
-            text: ColorModel(color: .black)
-        )
     }
 }
 
