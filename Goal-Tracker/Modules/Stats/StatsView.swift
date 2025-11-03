@@ -14,8 +14,14 @@ struct StatsView: View {
     @Query(sort: \GoalModel.creationDate) private var goals: [GoalModel]
     @State private var selectedGoal: GoalModel? = nil
     
-    var totalGoals: Int { goals.count }
-    var activeGoals: Int { goals.filter(\.isActive).count }
+    var totalGoals: Int {
+        goals.count
+    }
+    
+    var activeGoals: Int {
+        goals.filter(\.isActive).count
+    }
+    
     var averageProgress: Int {
         Int(goals.reduce(0) { $0 + $1.getProgress() } * 100 / Double(goals.count))
     }
@@ -26,23 +32,31 @@ struct StatsView: View {
                 VStack {
                     VStack {
                         HStack {
-                            SingleValueStatsView(title: "total.goals",
-                                                 value: totalGoals.description,
-                                                 iconResource: .statsTotalGoals)
+                            SingleValueStatsView(
+                                title: "stats.total.goals.title",
+                                value: totalGoals.description,
+                                iconResource: .statsTotalGoals
+                            )
                             
-                            SingleValueStatsView(title: "active.goals",
-                                                 value: activeGoals.description,
-                                                 iconResource: .statsActiveGoals)
+                            SingleValueStatsView(
+                                title: "stats.active.goals.title",
+                                value: activeGoals.description,
+                                iconResource: .statsActiveGoals
+                            )
                         }
                         
                         HStack {
-                            SingleValueStatsView(title: "avg.progress",
-                                                 value: "\(averageProgress)%",
-                                                 iconResource: .statsAvgProgress)
+                            SingleValueStatsView(
+                                title: "stats.avg.progress.title",
+                                value: "\(averageProgress)%",
+                                iconResource: .statsAvgProgress
+                            )
                             
-                            SingleValueStatsView(title: "active.goals",
-                                                 value: activeGoals.description,
-                                                 iconResource: .statsActiveGoals)
+                            SingleValueStatsView(
+                                title: "stats.active.goals.title",
+                                value: activeGoals.description,
+                                iconResource: .statsActiveGoals
+                            )
                         }
                     }
                     
@@ -53,7 +67,7 @@ struct StatsView: View {
                                     .font(.system(size: 24, weight: .semibold))
                                     .foregroundStyle(.textBlue)
                                 
-                                Text("progress")
+                                Text("stats.progress.title")
                                     .font(.system(size: 14, weight: .medium))
                                     .foregroundStyle(.textSecondary)
                             }
@@ -93,9 +107,13 @@ struct StatsView: View {
                         }
                         .chartYAxis {
                             AxisMarks {
-                                AxisGridLine(centered: true,
-                                             stroke: StrokeStyle(lineWidth: 1,
-                                                                 dash: [7, 7]))
+                                AxisGridLine(
+                                    centered: true,
+                                    stroke: StrokeStyle(
+                                        lineWidth: 1,
+                                        dash: [7, 7]
+                                    )
+                                )
                                 .foregroundStyle(.secondary.opacity(0.4))
                                 
                                 AxisValueLabel()

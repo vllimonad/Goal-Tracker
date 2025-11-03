@@ -22,7 +22,7 @@ struct NewRecordView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 16) {
-                Picker("select.operation", selection: $selectedOperationType) {
+                Picker("new.record.operation.picker.title", selection: $selectedOperationType) {
                     ForEach(RecordOperationType.allCases, id: \.rawValue) {
                         Text($0.rawValue)
                             .tag($0)
@@ -31,16 +31,20 @@ struct NewRecordView: View {
                 .pickerStyle(.segmented)
                 
                 HStack {
-                    TextField("enter.value", value: $inputValue, format: .number)
-                        .multilineTextAlignment(.center)
-                        .keyboardType(.decimalPad)
-                        .focused($isInputFocused)
-                        .padding()
-                        .background(
-                            Capsule()
-                                .fill(.bgWhite)
-                        )
-                        .systemShadow()
+                    TextField(
+                        "new.record.value.field.title",
+                        value: $inputValue,
+                        format: .number
+                    )
+                    .multilineTextAlignment(.center)
+                    .keyboardType(.decimalPad)
+                    .focused($isInputFocused)
+                    .padding()
+                    .background(
+                        Capsule()
+                            .fill(.bgWhite)
+                    )
+                    .systemShadow()
                         
                     Text(goal.unitType.abbreviation)
                         .font(.subheadline)
@@ -57,7 +61,7 @@ struct NewRecordView: View {
             .padding(.horizontal, 24)
             .padding(.top, 24)
             .navigationTitle(goal.name)
-            .navigationSubtitle("new.record")
+            .navigationSubtitle("new.record.title")
             .navigationBarTitleDisplayMode(.inline)
             .background(
                 Color.bgMain
@@ -72,7 +76,7 @@ struct NewRecordView: View {
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("save") {
+                    Button("new.record.save.action.title") {
                         saveRecord()
                         dismiss()
                     }
