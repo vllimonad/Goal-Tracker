@@ -33,34 +33,34 @@ struct GoalsListView: View {
                     .listRowInsets(.horizontal, 24)
                     .listRowBackground(Color.clear)
                     .swipeActions(edge: .trailing) {
-                        Button("delete") {
+                        Button("goal.delete.action.title") {
                             prepareForDeletion(goal)
                         }
                         .tint(.red)
                         
-                        Button("edit") {
+                        Button("goal.edit.action.title") {
                             editGoal(goal)
                         }
                         .tint(.iconBlue)
                     }
                     .swipeActions(edge: .leading) {
-                        Button("archive", role: .destructive) {
+                        Button("goal.archive.action.title", role: .destructive) {
                             archiveGoal(goal)
                         }
                         .tint(.orange)
                     }
                     .contextMenu {
-                        Button("edit", systemImage: "pencil") {
+                        Button("goal.edit.action.title", systemImage: "pencil") {
                             editGoal(goal)
                         }
                         .tint(.black)
                         
-                        Button("archive", systemImage: "archivebox") {
+                        Button("goal.archive.action.title", systemImage: "archivebox") {
                             archiveGoal(goal)
                         }
                         .tint(.black)
                         
-                        Button("delete", systemImage: "xmark.bin") {
+                        Button("goal.delete.action.title", systemImage: "xmark.bin") {
                             prepareForDeletion(goal)
                         }
                         .tint(.red)
@@ -98,7 +98,7 @@ struct GoalsListView: View {
             }
             .alert("delete.goal '\(goalToDelete?.name ?? "")'?", isPresented: $isDeleteAlertPresented) {
                 Button(role: .cancel) { }
-                Button("delete", role: .destructive, action: deleteGoal)
+                Button("goals.alert.delete.action.title", role: .destructive, action: deleteGoal)
             }
         }
     }

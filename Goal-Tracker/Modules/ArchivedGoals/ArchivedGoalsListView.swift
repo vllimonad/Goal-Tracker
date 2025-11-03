@@ -30,23 +30,23 @@ struct ArchivedGoalsListView: View {
                 .listRowInsets(.horizontal, 24)
                 .listRowBackground(Color.bgMain)
                 .swipeActions(edge: .trailing) {
-                    Button("delete") {
+                    Button("goal.delete.action.title") {
                         prepareForDeletion(goal)
                     }
                     .tint(.red)
                     
-                    Button("unarchive", role: .destructive) {
+                    Button("goal.unarchive.action.title", role: .destructive) {
                         unarchiveGoal(goal)
                     }
                     .tint(.orange)
                 }
                 .contextMenu {
-                    Button("unarchive", systemImage: "archivebox") {
+                    Button("goal.unarchive.action.title", systemImage: "archivebox") {
                         unarchiveGoal(goal)
                     }
                     .tint(.black)
                     
-                    Button("delete", systemImage: "xmark.bin") {
+                    Button("goal.delete.action.title", systemImage: "xmark.bin") {
                         prepareForDeletion(goal)
                     }
                     .tint(.red)
@@ -58,7 +58,7 @@ struct ArchivedGoalsListView: View {
         .background(Color.bgMain)
         .listRowSpacing(12)
         .listStyle(.plain)
-        .navigationTitle(LocalizedStringKey("archived.goals"))
+        .navigationTitle(LocalizedStringKey("archived.goals.title"))
         .toolbarTitleDisplayMode(.inline)
         .toolbarVisibility(.hidden, for: .tabBar)
         .toolbar {
@@ -71,11 +71,11 @@ struct ArchivedGoalsListView: View {
                 }
             }
         }
-        .alert("delete.all.archived.goals?", isPresented: $isDeleteAllAlertPresented) {
+        .alert("archived.goals.delete.all.alert.title", isPresented: $isDeleteAllAlertPresented) {
             Button(role: .cancel) { }
             Button("delete.all", role: .destructive, action: deleteAllGoals)
         }
-        .alert("delete.this.goal?", isPresented: $isDeleteAlertPresented) {
+        .alert("archived.goals.delete.alert.title", isPresented: $isDeleteAlertPresented) {
             Button(role: .cancel) { }
             Button("delete", role: .destructive, action: deleteGoal)
         }

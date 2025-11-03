@@ -39,6 +39,10 @@ struct SingleValueStatsView: View {
 }
 
 #Preview {
-    SingleValueStatsView(title: "dddsfvgfs", value: "34.0", iconResource: .tabGoals)
-        .background(.black)
+    SingleValueStatsView(
+        title: "dddsfvgfs",
+        value: "34.0",
+        iconResource: .tabGoals
+    )
+    .background(.black)
 }
