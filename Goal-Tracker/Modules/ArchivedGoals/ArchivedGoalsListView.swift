@@ -79,6 +79,15 @@ struct ArchivedGoalsListView: View {
             Button(role: .cancel) { }
             Button("delete", role: .destructive, action: deleteGoal)
         }
+        .overlay {
+            if goals.isEmpty {
+                ContentUnavailableView(
+                    "archived.goals.empty.title",
+                    systemImage: "zzz",
+                    description: Text("archived.goals.empty.description")
+                )
+            }
+        }
     }
     
     private func prepareForDeletion(_ goal: GoalModel) {

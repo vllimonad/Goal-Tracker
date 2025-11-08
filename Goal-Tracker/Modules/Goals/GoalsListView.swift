@@ -100,6 +100,15 @@ struct GoalsListView: View {
                 Button(role: .cancel) { }
                 Button("goals.alert.delete.action.title", role: .destructive, action: deleteGoal)
             }
+            .overlay {
+                if goals.isEmpty {
+                    ContentUnavailableView(
+                        "goals.empty.title",
+                        systemImage: "zzz",
+                        description: Text("goals.empty.description")
+                    )
+                }
+            }
         }
     }
     
