@@ -53,12 +53,12 @@ struct GoalsListView: View {
                         Button("goal.edit.action.title", systemImage: "pencil") {
                             editGoal(goal)
                         }
-                        .tint(.black)
+                        .tint(.iconPrimary)
                         
                         Button("goal.archive.action.title", systemImage: "archivebox") {
                             archiveGoal(goal)
                         }
-                        .tint(.black)
+                        .tint(.iconPrimary)
                         
                         Button("goal.delete.action.title", systemImage: "xmark.bin") {
                             prepareForDeletion(goal)
@@ -83,7 +83,7 @@ struct GoalsListView: View {
                         ArchivedGoalsListView()
                     } label: {
                         Image(systemName: "archivebox")
-                            .foregroundStyle(.black)
+                            .foregroundStyle(.iconPrimary)
                     }
                 }
             }

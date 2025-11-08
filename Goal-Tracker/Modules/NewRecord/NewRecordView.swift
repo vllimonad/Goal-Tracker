@@ -42,7 +42,7 @@ struct NewRecordView: View {
                     .padding()
                     .background(
                         Capsule()
-                            .fill(.bgWhite)
+                            .fill(.bgPrimary)
                     )
                     .systemShadow()
                         
@@ -52,10 +52,11 @@ struct NewRecordView: View {
                         .padding()
                         .background(
                             Capsule()
-                                .fill(.bgWhite)
+                                .fill(.bgPrimary)
                         )
                         .systemShadow()
                 }
+                
                 Spacer()
             }
             .padding(.horizontal, 24)
@@ -64,7 +65,7 @@ struct NewRecordView: View {
             .navigationSubtitle("new.record.title")
             .navigationBarTitleDisplayMode(.inline)
             .background(
-                Color.bgMain
+                Color.t
                     .ignoresSafeArea()
             )
             .toolbar {

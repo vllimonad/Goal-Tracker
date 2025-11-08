@@ -87,13 +87,12 @@ struct StatsView: View {
                                 Picker(selection: $selectedGoal) {
                                     ForEach(goals) { goal in
                                         Text(goal.name)
-                                            .foregroundStyle(.textPrimary)
                                             .tag(goal)
                                     }
                                 } label: {
                                     Text(selectedGoal?.name ?? "")
                                 }
-                                .tint(.black)
+                                .foregroundStyle(.textPrimary)
                                 .padding(2)
                                 .background(
                                     Capsule()
@@ -135,7 +134,7 @@ struct StatsView: View {
                     .padding(20)
                     .background {
                         RoundedRectangle(cornerRadius: 20)
-                            .fill(.bgWhite)
+                            .fill(.bgPrimary)
                     }
                     .systemShadow()
                 }
