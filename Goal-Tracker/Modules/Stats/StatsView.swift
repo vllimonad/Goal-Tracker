@@ -67,7 +67,7 @@ struct StatsView: View {
                         if goals.isEmpty {
                             ContentUnavailableView(
                                 "stats.empty.title",
-                                systemImage: "zzz",
+                                systemImage: "chart.line.uptrend.xyaxis",
                                 description: Text("stats.empty.description")
                             )
                         } else {

@@ -83,7 +83,7 @@ struct ArchivedGoalsListView: View {
             if goals.isEmpty {
                 ContentUnavailableView(
                     "archived.goals.empty.title",
-                    systemImage: "zzz",
+                    systemImage: "archivebox",
                     description: Text("archived.goals.empty.description")
                 )
             }
