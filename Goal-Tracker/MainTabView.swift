@@ -7,7 +7,11 @@
 
 import SwiftUI
 
-struct MainView: View {
+struct MainTabView: View {
+    
+    enum TabType {
+        case goals, stats, newGoal
+    }
     
     @State private var selectedTab: TabType = .goals
     @State private var didTapNewGoalTab: Bool = false
@@ -32,7 +36,7 @@ struct MainView: View {
             
             Tab(
                 "new.goal.title",
-                image: "tab_new_goal",
+                systemImage: "plus",
                 value: .newGoal,
                 role: .search
             ) {
@@ -52,10 +56,6 @@ struct MainView: View {
     }
 }
 
-enum TabType {
-    case goals, stats, newGoal
-}
-
 #Preview {
-    MainView()
+    MainTabView()
 }

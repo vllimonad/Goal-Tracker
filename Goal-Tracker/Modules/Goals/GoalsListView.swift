@@ -38,16 +38,15 @@ struct GoalsListView: View {
                         }
                         .tint(.red)
                         
-                        Button("goal.edit.action.title") {
-                            editGoal(goal)
-                        }
-                        .tint(.iconBlue)
-                    }
-                    .swipeActions(edge: .leading) {
                         Button("goal.archive.action.title", role: .destructive) {
                             archiveGoal(goal)
                         }
                         .tint(.orange)
+                        
+                        Button("goal.edit.action.title") {
+                            editGoal(goal)
+                        }
+                        .tint(.iconBlue)
                     }
                     .contextMenu {
                         Button("goal.edit.action.title", systemImage: "pencil") {

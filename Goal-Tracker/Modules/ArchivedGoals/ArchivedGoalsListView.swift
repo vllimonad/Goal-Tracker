@@ -44,12 +44,13 @@ struct ArchivedGoalsListView: View {
                     Button("goal.unarchive.action.title", systemImage: "archivebox") {
                         unarchiveGoal(goal)
                     }
-                    .tint(.black)
+                    .tint(.iconPrimary)
                     
                     Button("goal.delete.action.title", systemImage: "xmark.bin") {
                         prepareForDeletion(goal)
                     }
                     .tint(.red)
+                    
                 } preview: {
                     GoalProgressView(goal: goal)
                         .frame(width: 300)

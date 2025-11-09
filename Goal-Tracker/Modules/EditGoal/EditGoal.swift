@@ -31,6 +31,7 @@ struct EditGoal: View {
                         focusedTextField = .name
                     }
             }
+            .listRowBackground(Color.bgSecondary)
             
             Section("edit.goal.data.section.title") {
                 HStack {
@@ -51,6 +52,7 @@ struct EditGoal: View {
                     focusedTextField = .target
                 }
             }
+            .listRowBackground(Color.bgSecondary)
             
             Section("edit.goal.colors.section.title") {
                 ColorPicker(
@@ -68,6 +70,7 @@ struct EditGoal: View {
                     selection: $textColor
                 )
             }
+            .listRowBackground(Color.bgSecondary)
             
             Section("edit.goal.preview.section.title") {
                 GoalProgressView(goal: createPreviewGoal())
@@ -75,7 +78,7 @@ struct EditGoal: View {
             }
         }
         .scrollContentBackground(.hidden)
-        .background(.bgMain)
+        .background(.bgPrimary)
         .navigationTitle("edit.goal.title")
         .navigationBarTitleDisplayMode(.inline)
         .systemShadow()
@@ -86,7 +89,7 @@ struct EditGoal: View {
                     saveChanges()
                     dismiss()
                 }
-                .foregroundStyle(Color.black)
+                .foregroundStyle(.textPrimary)
             }
         }
         .onScrollPhaseChange { _, _ in

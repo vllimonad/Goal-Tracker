@@ -12,7 +12,7 @@ import SwiftData
 struct Goal_TrackerApp: App {
     var body: some Scene {
         WindowGroup {
-            MainView()
+            MainTabView()
         }
         .modelContainer(for: [GoalModel.self])
     }
