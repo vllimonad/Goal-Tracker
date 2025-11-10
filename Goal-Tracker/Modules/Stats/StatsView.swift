@@ -91,12 +91,13 @@ struct StatsView: View {
                                     }
                                 } label: {
                                     Text(selectedGoal?.name ?? "")
+                                        .foregroundStyle(.textPrimary)
                                 }
-                                .foregroundStyle(.textPrimary)
+                                .tint(.textPrimary)
                                 .padding(2)
                                 .background(
                                     Capsule()
-                                        .fill(.iconBlue.opacity(0.14))
+                                        .fill(.bgBlue)
                                 )
                             }
                             
@@ -136,7 +137,7 @@ struct StatsView: View {
                                 }
                             } label: {
                                 HStack {
-                                    Text("Records history")
+                                    Text("stats.records.history.title")
                                         .foregroundStyle(.textPrimary)
 
                                     Spacer()
@@ -148,8 +149,9 @@ struct StatsView: View {
                             }
                             .padding(.vertical, 16)
                             .padding(.horizontal, 12)
-                            .background(Color.iconBlue.opacity(0.14))
+                            .background(Color.bgBlue)
                             .clipShape(RoundedRectangle(cornerRadius: 20))
+                            .padding(.top, 8)
                         }
                     }
                     .padding(20)
@@ -163,6 +165,7 @@ struct StatsView: View {
             }
             .background(Color.bgMain)
             .navigationTitle("stats.title")
+            .navigationBarTitleDisplayMode(.large)
             .onAppear {
                 selectedGoal = goals.first
             }

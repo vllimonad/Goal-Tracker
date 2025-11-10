@@ -26,12 +26,34 @@ struct RecordsHistoryView: View {
             }
             .listRowBackground(Color.bgPrimary)
             .listRowInsets(.vertical, 16)
+            .swipeActions {
+                Button("record.delete.action.title") {
+                    deleteRecord(record)
+                }
+                .tint(.red)
+            }
+            .contextMenu {
+                Button(
+                    "record.delete.action.title",
+                    systemImage: "xmark.bin",
+                    role: .destructive
+                ) {
+                    deleteRecord(record)
+                }
+                .tint(.red)
+            }
         }
-        .navigationTitle(Text("'\(goal.name)' records"))
+        .navigationTitle("'\(goal.name)' records")
         .navigationBarTitleDisplayMode(.inline)
         .scrollContentBackground(.hidden)
         .background(Color.bgMain)
         .toolbarVisibility(.hidden, for: .tabBar)
+    }
+    
+    private func deleteRecord(_ record: RecordModel) {
+        guard let index = goal.records.firstIndex(of: record) else { return }
+        
+        goal.records.remove(at: index)
     }
 }
 

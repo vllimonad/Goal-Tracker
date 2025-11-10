@@ -46,7 +46,11 @@ struct ArchivedGoalsListView: View {
                     }
                     .tint(.iconPrimary)
                     
-                    Button("goal.delete.action.title", systemImage: "xmark.bin") {
+                    Button(
+                        "goal.delete.action.title",
+                        systemImage: "xmark.bin",
+                        role: .destructive
+                    ) {
                         prepareForDeletion(goal)
                     }
                     .tint(.red)

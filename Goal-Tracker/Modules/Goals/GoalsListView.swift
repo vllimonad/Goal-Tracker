@@ -59,7 +59,11 @@ struct GoalsListView: View {
                         }
                         .tint(.iconPrimary)
                         
-                        Button("goal.delete.action.title", systemImage: "xmark.bin") {
+                        Button(
+                            "goal.delete.action.title",
+                            systemImage: "xmark.bin",
+                            role: .destructive
+                        ) {
                             prepareForDeletion(goal)
                         }
                         .tint(.red)
@@ -76,6 +80,7 @@ struct GoalsListView: View {
             .listStyle(.plain)
             .navigationTitle(LocalizedStringKey("goals.title"))
             .toolbarTitleDisplayMode(.inlineLarge)
+            .toolbarVisibility(.visible, for: .tabBar)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     NavigationLink {
