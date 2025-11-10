@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ColorsPreset: View {
+struct ColorsPresetView: View {
     
     var colorsModel: ColorsModel
     var isSelected: Bool
@@ -33,5 +33,5 @@ struct ColorsPreset: View {
 }
 
 #Preview {
-    ColorsPreset(colorsModel: ColorsModel(), isSelected: true)
+    ColorsPresetView(colorsModel: ColorsModel(), isSelected: true)
 }

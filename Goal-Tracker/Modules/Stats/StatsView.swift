@@ -129,6 +129,27 @@ struct StatsView: View {
                                 }
                             }
                             .frame(height: 200)
+                            
+                            NavigationLink {
+                                if let goal = selectedGoal {
+                                    RecordsHistoryView(goal: goal)
+                                }
+                            } label: {
+                                HStack {
+                                    Text("Records history")
+                                        .foregroundStyle(.textPrimary)
+
+                                    Spacer()
+
+                                    Image(systemName: "chevron.right")
+                                        .font(.system(size: 16, weight: .semibold))
+                                        .foregroundStyle(.textSecondary)
+                                }
+                            }
+                            .padding(.vertical, 16)
+                            .padding(.horizontal, 12)
+                            .background(Color.iconBlue.opacity(0.14))
+                            .clipShape(RoundedRectangle(cornerRadius: 20))
                         }
                     }
                     .padding(20)

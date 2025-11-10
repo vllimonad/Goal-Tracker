@@ -87,7 +87,7 @@ struct GoalsListView: View {
                 }
             }
             .navigationDestination(item: $goalToEdit) { goal in
-                EditGoal(goal: goal)
+                EditGoalView(goal: goal)
             }
             .sheet(item: $selectedGoal) { goal in
                 NewRecordView(goal: goal)

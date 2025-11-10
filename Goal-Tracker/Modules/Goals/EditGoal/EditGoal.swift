@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EditGoal: View {
+struct EditGoalView: View {
     
     @Environment(\.dismiss) private var dismiss
     @FocusState private var focusedTextField: NewGoalTextFieldType?
@@ -134,7 +134,7 @@ struct EditGoal: View {
 }
 
 #Preview {
-    EditGoal(goal: GoalModel(
+    EditGoalView(goal: GoalModel(
         name: "A",
         initialValue: 0,
         targetValue: 1,

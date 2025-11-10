@@ -99,7 +99,7 @@ struct NewGoalView: View {
                     ScrollView {
                         LazyVGrid(columns: presetsColumns) {
                             ForEach(Array(presets.enumerated()), id: \.offset) { index, preset in
-                                ColorsPreset(
+                                ColorsPresetView(
                                     colorsModel: preset,
                                     isSelected: index == selectedPresetIndex
                                 )
