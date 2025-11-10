@@ -38,27 +38,26 @@ struct GoalsListView: View {
                         }
                         .tint(.red)
                         
+                        Button("goal.archive.action.title", role: .destructive) {
+                            archiveGoal(goal)
+                        }
+                        .tint(.orange)
+                        
                         Button("goal.edit.action.title") {
                             editGoal(goal)
                         }
                         .tint(.iconBlue)
                     }
-                    .swipeActions(edge: .leading) {
-                        Button("goal.archive.action.title", role: .destructive) {
-                            archiveGoal(goal)
-                        }
-                        .tint(.orange)
-                    }
                     .contextMenu {
                         Button("goal.edit.action.title", systemImage: "pencil") {
                             editGoal(goal)
                         }
-                        .tint(.black)
+                        .tint(.iconPrimary)
                         
                         Button("goal.archive.action.title", systemImage: "archivebox") {
                             archiveGoal(goal)
                         }
-                        .tint(.black)
+                        .tint(.iconPrimary)
                         
                         Button("goal.delete.action.title", systemImage: "xmark.bin") {
                             prepareForDeletion(goal)
@@ -83,7 +82,7 @@ struct GoalsListView: View {
                         ArchivedGoalsListView()
                     } label: {
                         Image(systemName: "archivebox")
-                            .foregroundStyle(.black)
+                            .foregroundStyle(.iconPrimary)
                     }
                 }
             }
@@ -99,6 +98,15 @@ struct GoalsListView: View {
             .alert("delete.goal '\(goalToDelete?.name ?? "")'?", isPresented: $isDeleteAlertPresented) {
                 Button(role: .cancel) { }
                 Button("goals.alert.delete.action.title", role: .destructive, action: deleteGoal)
+            }
+            .overlay {
+                if goals.isEmpty {
+                    ContentUnavailableView(
+                        "goals.empty.title",
+                        systemImage: "zzz",
+                        description: Text("goals.empty.description")
+                    )
+                }
             }
         }
     }

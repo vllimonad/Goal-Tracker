@@ -21,9 +21,13 @@ struct ColorsPreset: View {
         .clipShape(
             Capsule()
         )
+        .padding(4)
         .overlay {
             Capsule()
-                .stroke(isSelected ? Color.black : Color.clear, lineWidth: 2.5)
+                .stroke(
+                    isSelected ? Color.bgPrimaryAlt : Color.clear,
+                    lineWidth: 2
+                )
         }
     }
 }

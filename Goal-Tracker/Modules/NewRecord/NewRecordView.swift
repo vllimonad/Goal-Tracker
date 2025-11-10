@@ -42,20 +42,21 @@ struct NewRecordView: View {
                     .padding()
                     .background(
                         Capsule()
-                            .fill(.bgWhite)
+                            .fill(.bgSecondary)
                     )
                     .systemShadow()
-                        
+                    
                     Text(goal.unitType.abbreviation)
                         .font(.subheadline)
                         .foregroundColor(.textPrimary)
                         .padding()
                         .background(
                             Capsule()
-                                .fill(.bgWhite)
+                                .fill(.bgSecondary)
                         )
                         .systemShadow()
                 }
+                
                 Spacer()
             }
             .padding(.horizontal, 24)
@@ -64,26 +65,33 @@ struct NewRecordView: View {
             .navigationSubtitle("new.record.title")
             .navigationBarTitleDisplayMode(.inline)
             .background(
-                Color.bgMain
+                Color.bgPrimary
                     .ignoresSafeArea()
             )
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button(role: .close) {
+                    Button {
                         dismiss()
+                    } label: {
+                        Image(systemName: "xmark")
+                            .foregroundStyle(.iconPrimary)
                     }
-                    .tint(.textPrimary)
+                    .buttonStyle(.glassProminent)
+                    .tint(.bgSecondary)
                 }
-                
+                                
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("new.record.save.action.title") {
+                    Button {
                         saveRecord()
                         dismiss()
+                    } label: {
+                        Text("new.record.save.action.title")
+                            .foregroundStyle(.textPrimary)
                     }
-                    .tint(.textPrimary)
+                    .buttonStyle(.glassProminent)
+                    .tint(.bgSecondary)
                 }
             }
-            .toolbarColorScheme(.light)
             .onAppear {
                 configureSegmentedPickerAppearance()
             }

@@ -42,6 +42,7 @@ struct NewGoalView: View {
                             focusedTextField = .name
                         }
                 }
+                .listRowBackground(Color.bgSecondary)
                 
                 Section("new.goal.data.section.title") {
                     HStack {
@@ -92,6 +93,7 @@ struct NewGoalView: View {
                         }
                     }
                 }
+                .listRowBackground(Color.bgSecondary)
                 
                 Section("new.goal.presets.section.title") {
                     ScrollView {
@@ -101,7 +103,7 @@ struct NewGoalView: View {
                                     colorsModel: preset,
                                     isSelected: index == selectedPresetIndex
                                 )
-                                .frame(height: 34)
+                                .frame(height: 40)
                                 .onTapGesture {
                                     selectPreset(index)
                                 }
@@ -111,6 +113,7 @@ struct NewGoalView: View {
                         .scrollDisabled(true)
                     }
                 }
+                .listRowBackground(Color.bgSecondary)
                 
                 Section("new.goal.colors.section.title") {
                     ColorPicker(
@@ -137,6 +140,7 @@ struct NewGoalView: View {
                         validateColorChange()
                     }
                 }
+                .listRowBackground(Color.bgSecondary)
                 
                 Section("new.goal.preview.section.title") {
                     GoalProgressView(goal: createGoalModel())
@@ -144,7 +148,7 @@ struct NewGoalView: View {
                 }
             }
             .scrollContentBackground(.hidden)
-            .background(.bgMain)
+            .background(.bgPrimary)
             .navigationTitle("new.goal.title")
             .navigationBarTitleDisplayMode(.inline)
             .systemShadow()

@@ -23,7 +23,10 @@ struct StatsView: View {
     }
     
     var averageProgress: Int {
-        Int(goals.reduce(0) { $0 + $1.getProgress() } * 100 / Double(goals.count))
+        let sum = goals.reduce(0) { $0 + $1.getProgress() }
+        let count = Double(goals.count) == 0 ? 1 : Double(goals.count)
+        let average = Int(sum * 100 / count)
+        return average
     }
     
     var body: some View {
@@ -61,70 +64,77 @@ struct StatsView: View {
                     }
                     
                     VStack(alignment: .leading, spacing: 18) {
-                        HStack(alignment: .top) {
-                            VStack(alignment: .leading) {
-                                Text(selectedGoal?.getProgress() ?? 0, format: .percent.rounded(increment: 0.01))
-                                    .font(.system(size: 24, weight: .semibold))
-                                    .foregroundStyle(.textBlue)
-                                
-                                Text("stats.progress.title")
-                                    .font(.system(size: 14, weight: .medium))
-                                    .foregroundStyle(.textSecondary)
-                            }
-                            
-                            Spacer()
-                            
-                            Picker(selection: $selectedGoal) {
-                                ForEach(goals) { goal in
-                                    Text(goal.name)
-                                        .foregroundStyle(.textPrimary)
-                                        .tag(goal)
+                        if goals.isEmpty {
+                            ContentUnavailableView(
+                                "stats.empty.title",
+                                systemImage: "chart.line.uptrend.xyaxis",
+                                description: Text("stats.empty.description")
+                            )
+                        } else {
+                            HStack(alignment: .top) {
+                                VStack(alignment: .leading) {
+                                    Text(selectedGoal?.getProgress() ?? 0, format: .percent.rounded(increment: 0.01))
+                                        .font(.system(size: 24, weight: .semibold))
+                                        .foregroundStyle(.textBlue)
+                                    
+                                    Text("stats.progress.title")
+                                        .font(.system(size: 14, weight: .medium))
+                                        .foregroundStyle(.textSecondary)
                                 }
-                            } label: {
-                                Text(selectedGoal?.name ?? "")
-                            }
-                            .tint(.black)
-                            .padding(2)
-                            .background(
-                                Capsule()
-                                    .fill(.iconBlue.opacity(0.14))
-                            )
-                        }
-                        
-                        Chart(selectedGoal?.valuesHistory ?? []) { item in
-                            LineMark(
-                                x: .value("date", item.date),
-                                y: .value("value", item.value)
-                            )
-                            .interpolationMethod(.monotone)
-                            .foregroundStyle(.iconBlue)
-                            .lineStyle(StrokeStyle(lineWidth: 3))
-                        }
-                        .chartXAxis {
-                            AxisMarks {
-                                AxisValueLabel()
-                            }
-                        }
-                        .chartYAxis {
-                            AxisMarks {
-                                AxisGridLine(
-                                    centered: true,
-                                    stroke: StrokeStyle(
-                                        lineWidth: 1,
-                                        dash: [7, 7]
-                                    )
-                                )
-                                .foregroundStyle(.secondary.opacity(0.4))
                                 
-                                AxisValueLabel()
+                                Spacer()
+                                
+                                Picker(selection: $selectedGoal) {
+                                    ForEach(goals) { goal in
+                                        Text(goal.name)
+                                            .tag(goal)
+                                    }
+                                } label: {
+                                    Text(selectedGoal?.name ?? "")
+                                }
+                                .foregroundStyle(.textPrimary)
+                                .padding(2)
+                                .background(
+                                    Capsule()
+                                        .fill(.iconBlue.opacity(0.14))
+                                )
                             }
+                            
+                            Chart(selectedGoal?.valuesHistory ?? []) { item in
+                                LineMark(
+                                    x: .value("date", item.date),
+                                    y: .value("value", item.value)
+                                )
+                                .interpolationMethod(.monotone)
+                                .foregroundStyle(.iconBlue)
+                                .lineStyle(StrokeStyle(lineWidth: 3))
+                            }
+                            .chartXAxis {
+                                AxisMarks {
+                                    AxisValueLabel()
+                                }
+                            }
+                            .chartYAxis {
+                                AxisMarks {
+                                    AxisGridLine(
+                                        centered: true,
+                                        stroke: StrokeStyle(
+                                            lineWidth: 1,
+                                            dash: [7, 7]
+                                        )
+                                    )
+                                    .foregroundStyle(.secondary.opacity(0.4))
+                                    
+                                    AxisValueLabel()
+                                }
+                            }
+                            .frame(height: 200)
                         }
-                        .frame(height: 200)
                     }
                     .padding(20)
                     .background {
                         RoundedRectangle(cornerRadius: 20)
-                            .fill(.bgWhite)
+                            .fill(.bgPrimary)
                     }
                     .systemShadow()
                 }

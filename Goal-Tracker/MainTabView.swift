@@ -7,29 +7,39 @@
 
 import SwiftUI
 
-struct MainView: View {
+struct MainTabView: View {
+    
+    enum TabType {
+        case goals, stats, newGoal
+    }
     
     @State private var selectedTab: TabType = .goals
     @State private var didTapNewGoalTab: Bool = false
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            Tab("goals.title",
+            Tab(
+                "goals.title",
                 image: selectedTab == .goals ? "tab_goals_colored" : "tab_goals",
-                value: .goals) {
+                value: .goals
+            ) {
                 GoalsListView()
             }
                         
-            Tab("stats.title",
+            Tab(
+                "stats.title",
                 image: selectedTab == .stats ? "tab_stats_colored" : "tab_stats",
-                value: .stats) {
+                value: .stats
+            ) {
                 StatsView()
             }
             
-            Tab("new.goal.title",
-                image: "tab_new_goal",
+            Tab(
+                "new.goal.title",
+                systemImage: "plus",
                 value: .newGoal,
-                role: .search) {
+                role: .search
+            ) {
                 EmptyView()
             }
         }
@@ -46,10 +56,6 @@ struct MainView: View {
     }
 }
 
-enum TabType {
-    case goals, stats, newGoal
-}
-
 #Preview {
-    MainView()
+    MainTabView()
 }

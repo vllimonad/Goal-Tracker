@@ -44,12 +44,13 @@ struct ArchivedGoalsListView: View {
                     Button("goal.unarchive.action.title", systemImage: "archivebox") {
                         unarchiveGoal(goal)
                     }
-                    .tint(.black)
+                    .tint(.iconPrimary)
                     
                     Button("goal.delete.action.title", systemImage: "xmark.bin") {
                         prepareForDeletion(goal)
                     }
                     .tint(.red)
+                    
                 } preview: {
                     GoalProgressView(goal: goal)
                         .frame(width: 300)
@@ -78,6 +79,15 @@ struct ArchivedGoalsListView: View {
         .alert("archived.goals.delete.alert.title", isPresented: $isDeleteAlertPresented) {
             Button(role: .cancel) { }
             Button("delete", role: .destructive, action: deleteGoal)
+        }
+        .overlay {
+            if goals.isEmpty {
+                ContentUnavailableView(
+                    "archived.goals.empty.title",
+                    systemImage: "archivebox",
+                    description: Text("archived.goals.empty.description")
+                )
+            }
         }
     }
     

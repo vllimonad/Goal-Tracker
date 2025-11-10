@@ -32,7 +32,7 @@ struct SingleValueStatsView: View {
         .padding(16)
         .background {
             RoundedRectangle(cornerRadius: 20)
-                .fill(.bgWhite)
+                .fill(.bgPrimary)
         }
         .systemShadow()
     }

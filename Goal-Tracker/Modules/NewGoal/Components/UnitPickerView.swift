@@ -24,6 +24,7 @@ struct UnitPickerView: View {
                 .pickerStyle(.inline)
                 .labelsHidden()
             }
+            .listRowBackground(Color.bgSecondary)
             
             Section("goal.unit.currency.section.title") {
                 Picker("", selection: $unit) {
@@ -35,6 +36,7 @@ struct UnitPickerView: View {
                 .pickerStyle(.inline)
                 .labelsHidden()
             }
+            .listRowBackground(Color.bgSecondary)
             
             Section("goal.unit.weight.section.title") {
                 Picker("", selection: $unit) {
@@ -46,6 +48,7 @@ struct UnitPickerView: View {
                 .pickerStyle(.inline)
                 .labelsHidden()
             }
+            .listRowBackground(Color.bgSecondary)
             
             Section("goal.unit.distance.section.title") {
                 Picker("", selection: $unit) {
@@ -57,7 +60,11 @@ struct UnitPickerView: View {
                 .pickerStyle(.inline)
                 .labelsHidden()
             }
+            .listRowBackground(Color.bgSecondary)
         }
+        .scrollContentBackground(.hidden)
+        .navigationTitle("goal.unit.title")
+        .background(.bgPrimary)
         .onChange(of: unit) { _, _ in
             dismiss()
         }
