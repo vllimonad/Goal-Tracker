@@ -13,6 +13,7 @@ struct StatsView: View {
     
     @Query(sort: \GoalModel.creationDate) private var goals: [GoalModel]
     @State private var selectedGoal: GoalModel? = nil
+    @State private var showRecordsHistory: Bool = false
     
     var totalGoals: Int {
         goals.count
@@ -120,6 +121,25 @@ struct StatsView: View {
                             }
                         }
                         .frame(height: 200)
+                        
+                        HStack {
+                            Text("Records history")
+                                .foregroundStyle(.textPrimary)
+                            
+                            Spacer()
+                            
+                            Image(systemName: "chevron.right")
+                        }
+                        .padding(.vertical, 16)
+                        .padding(.horizontal, 12)
+                        .background(Color.iconBlue.opacity(0.14))
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        .onTapGesture {
+                            showRecordsHistory = true
+                        }
+                        .navigationDestination(isPresented: $showRecordsHistory) {
+                            RecordsHistory()
+                        }
                     }
                     .padding(20)
                     .background {
