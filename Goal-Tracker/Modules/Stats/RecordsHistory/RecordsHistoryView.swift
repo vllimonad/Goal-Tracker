@@ -43,17 +43,15 @@ struct RecordsHistoryView: View {
                 .tint(.red)
             }
         }
+        .scrollContentBackground(.hidden)
+        .background(Color.bgPage)
+        .systemShadow()
         .navigationTitle("'\(goal.name)' records")
         .navigationBarTitleDisplayMode(.inline)
-        .scrollContentBackground(.hidden)
-        .background(Color.bgMain)
-        .toolbarVisibility(.hidden, for: .tabBar)
     }
     
-    private func deleteRecord(_ record: RecordModel) {
-        guard let index = goal.records.firstIndex(of: record) else { return }
-        
-        goal.records.remove(at: index)
+    private func deleteRecord(_ record: RecordModel) {        
+        goal.records.removeAll { record.id == $0.id }
     }
 }
 

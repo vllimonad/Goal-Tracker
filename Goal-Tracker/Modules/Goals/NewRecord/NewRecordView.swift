@@ -76,9 +76,11 @@ struct NewRecordView: View {
                         Image(systemName: "xmark")
                             .foregroundStyle(.iconPrimary)
                     }
-                    .buttonStyle(.glassProminent)
-                    .tint(.bgSecondary)
+                    .padding(4)
+                    .background(.bgTertiary)
+                    .clipShape(Capsule())
                 }
+                .sharedBackgroundVisibility(.hidden)
                                 
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
@@ -88,9 +90,11 @@ struct NewRecordView: View {
                         Text("new.record.save.action.title")
                             .foregroundStyle(.textPrimary)
                     }
-                    .buttonStyle(.glassProminent)
-                    .tint(.bgSecondary)
+                    .padding(4)
+                    .background(.bgTertiary)
+                    .clipShape(Capsule())
                 }
+                .sharedBackgroundVisibility(.hidden)
             }
             .onAppear {
                 configureSegmentedPickerAppearance()

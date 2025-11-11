@@ -30,7 +30,7 @@ struct GoalsListView: View {
                 GoalProgressView(goal: goal)
                     .listRowSeparator(.hidden)
                     .listRowInsets(.vertical, 0)
-                    .listRowInsets(.horizontal, 24)
+                    .listRowInsets(.horizontal, 20)
                     .listRowBackground(Color.clear)
                     .swipeActions(edge: .trailing) {
                         Button("goal.delete.action.title") {
@@ -75,12 +75,11 @@ struct GoalsListView: View {
                         selectedGoal = goal
                     }
             }
-            .background(Color.bgMain)
+            .background(Color.bgPage)
             .listRowSpacing(12)
             .listStyle(.plain)
-            .navigationTitle(LocalizedStringKey("goals.title"))
+            .navigationTitle("goals.title")
             .toolbarTitleDisplayMode(.inlineLarge)
-            .toolbarVisibility(.visible, for: .tabBar)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     NavigationLink {
@@ -93,6 +92,7 @@ struct GoalsListView: View {
             }
             .navigationDestination(item: $goalToEdit) { goal in
                 EditGoalView(goal: goal)
+                    .toolbarVisibility(.hidden, for: .tabBar)
             }
             .sheet(item: $selectedGoal) { goal in
                 NewRecordView(goal: goal)

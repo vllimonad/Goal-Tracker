@@ -27,8 +27,8 @@ struct ArchivedGoalsListView: View {
             GoalProgressView(goal: goal)
                 .listRowSeparator(.hidden)
                 .listRowInsets(.vertical, 0)
-                .listRowInsets(.horizontal, 24)
-                .listRowBackground(Color.bgMain)
+                .listRowInsets(.horizontal, 20)
+                .listRowBackground(Color.bgPage)
                 .swipeActions(edge: .trailing) {
                     Button("goal.delete.action.title") {
                         prepareForDeletion(goal)
@@ -60,10 +60,10 @@ struct ArchivedGoalsListView: View {
                         .frame(width: 300)
                 }
         }
-        .background(Color.bgMain)
+        .background(Color.bgPage)
         .listRowSpacing(12)
         .listStyle(.plain)
-        .navigationTitle(LocalizedStringKey("archived.goals.title"))
+        .navigationTitle("archived.goals.title")
         .toolbarTitleDisplayMode(.inline)
         .toolbarVisibility(.hidden, for: .tabBar)
         .toolbar {

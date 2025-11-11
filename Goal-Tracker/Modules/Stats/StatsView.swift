@@ -12,17 +12,21 @@ import Charts
 struct StatsView: View {
     
     @Query(sort: \GoalModel.creationDate) private var goals: [GoalModel]
-    @State private var selectedGoal: GoalModel? = nil
+    @State private var selectedGoalId: UUID? = nil
     
-    var totalGoals: Int {
+    private var selectedGoal: GoalModel? {
+        goals.first(where: { $0.id == selectedGoalId })
+    }
+    
+    private var totalGoals: Int {
         goals.count
     }
     
-    var activeGoals: Int {
+    private var activeGoals: Int {
         goals.filter(\.isActive).count
     }
     
-    var averageProgress: Int {
+    private var averageProgress: Int {
         let sum = goals.reduce(0) { $0 + $1.getProgress() }
         let count = Double(goals.count) == 0 ? 1 : Double(goals.count)
         let average = Int(sum * 100 / count)
@@ -33,8 +37,8 @@ struct StatsView: View {
         NavigationView {
             ScrollView {
                 VStack {
-                    VStack {
-                        HStack {
+                    Grid {
+                        GridRow {
                             SingleValueStatsView(
                                 title: "stats.total.goals.title",
                                 value: totalGoals.description,
@@ -48,7 +52,7 @@ struct StatsView: View {
                             )
                         }
                         
-                        HStack {
+                        GridRow {
                             SingleValueStatsView(
                                 title: "stats.avg.progress.title",
                                 value: "\(averageProgress)%",
@@ -70,12 +74,15 @@ struct StatsView: View {
                                 systemImage: "chart.line.uptrend.xyaxis",
                                 description: Text("stats.empty.description")
                             )
-                        } else {
+                        } else if let selectedGoal = selectedGoal {
                             HStack(alignment: .top) {
                                 VStack(alignment: .leading) {
-                                    Text(selectedGoal?.getProgress() ?? 0, format: .percent.rounded(increment: 0.01))
-                                        .font(.system(size: 24, weight: .semibold))
-                                        .foregroundStyle(.textBlue)
+                                    Text(
+                                        selectedGoal.getProgress(),
+                                        format: .percent.rounded(increment: 0.01)
+                                    )
+                                    .font(.system(size: 24, weight: .semibold))
+                                    .foregroundStyle(.textBlue)
                                     
                                     Text("stats.progress.title")
                                         .font(.system(size: 14, weight: .medium))
@@ -84,24 +91,24 @@ struct StatsView: View {
                                 
                                 Spacer()
                                 
-                                Picker(selection: $selectedGoal) {
+                                Picker(selection: $selectedGoalId) {
                                     ForEach(goals) { goal in
                                         Text(goal.name)
-                                            .tag(goal)
+                                            .tag(goal.id)
                                     }
                                 } label: {
-                                    Text(selectedGoal?.name ?? "")
+                                    Text(selectedGoal.name)
                                         .foregroundStyle(.textPrimary)
                                 }
                                 .tint(.textPrimary)
-                                .padding(2)
+                                .padding(4)
                                 .background(
                                     Capsule()
-                                        .fill(.bgBlue)
+                                        .fill(.bgSecondary)
                                 )
                             }
                             
-                            Chart(selectedGoal?.valuesHistory ?? []) { item in
+                            Chart(selectedGoal.valuesHistory) { item in
                                 LineMark(
                                     x: .value("date", item.date),
                                     y: .value("value", item.value)
@@ -132,12 +139,12 @@ struct StatsView: View {
                             .frame(height: 200)
                             
                             NavigationLink {
-                                if let goal = selectedGoal {
-                                    RecordsHistoryView(goal: goal)
-                                }
+                                RecordsHistoryView(goal: selectedGoal)
+                                    .toolbarVisibility(.hidden, for: .tabBar)
                             } label: {
                                 HStack {
                                     Text("stats.records.history.title")
+                                        .font(.subheadline)
                                         .foregroundStyle(.textPrimary)
 
                                     Spacer()
@@ -149,7 +156,7 @@ struct StatsView: View {
                             }
                             .padding(.vertical, 16)
                             .padding(.horizontal, 12)
-                            .background(Color.bgBlue)
+                            .background(Color.bgSecondary)
                             .clipShape(RoundedRectangle(cornerRadius: 20))
                             .padding(.top, 8)
                         }
@@ -161,13 +168,13 @@ struct StatsView: View {
                     }
                     .systemShadow()
                 }
-                .padding(.horizontal, 24)
+                .padding(.horizontal, 20)
             }
-            .background(Color.bgMain)
+            .background(Color.bgPage)
             .navigationTitle("stats.title")
             .navigationBarTitleDisplayMode(.large)
             .onAppear {
-                selectedGoal = goals.first
+                selectedGoalId = selectedGoalId ?? goals.first?.id
             }
         }
     }

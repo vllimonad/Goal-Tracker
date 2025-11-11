@@ -96,21 +96,18 @@ struct NewGoalView: View {
                 .listRowBackground(Color.bgSecondary)
                 
                 Section("new.goal.presets.section.title") {
-                    ScrollView {
-                        LazyVGrid(columns: presetsColumns) {
-                            ForEach(Array(presets.enumerated()), id: \.offset) { index, preset in
-                                ColorsPresetView(
-                                    colorsModel: preset,
-                                    isSelected: index == selectedPresetIndex
-                                )
-                                .frame(height: 40)
-                                .onTapGesture {
-                                    selectPreset(index)
-                                }
-                                .animation(.default, value: selectedPresetIndex)
+                    LazyVGrid(columns: presetsColumns) {
+                        ForEach(Array(presets.enumerated()), id: \.offset) { index, preset in
+                            ColorsPresetView(
+                                colorsModel: preset,
+                                isSelected: index == selectedPresetIndex
+                            )
+                            .frame(height: 40)
+                            .onTapGesture {
+                                selectPreset(index)
                             }
+                            .animation(.default, value: selectedPresetIndex)
                         }
-                        .scrollDisabled(true)
                     }
                 }
                 .listRowBackground(Color.bgSecondary)
