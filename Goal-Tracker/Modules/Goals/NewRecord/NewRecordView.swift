@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct NewRecordView: View {
     
@@ -44,7 +45,6 @@ struct NewRecordView: View {
                         Capsule()
                             .fill(.bgSecondary)
                     )
-                    .systemShadow()
                     
                     Text(goal.unitType.abbreviation)
                         .font(.subheadline)
@@ -54,7 +54,6 @@ struct NewRecordView: View {
                             Capsule()
                                 .fill(.bgSecondary)
                         )
-                        .systemShadow()
                 }
                 
                 Spacer()
@@ -65,7 +64,7 @@ struct NewRecordView: View {
             .navigationSubtitle("new.record.title")
             .navigationBarTitleDisplayMode(.inline)
             .background(
-                Color.bgPrimary
+                Color.bgModalPage
                     .ignoresSafeArea()
             )
             .toolbar {

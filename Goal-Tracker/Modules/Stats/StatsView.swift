@@ -154,8 +154,7 @@ struct StatsView: View {
                                         .foregroundStyle(.textSecondary)
                                 }
                             }
-                            .padding(.vertical, 16)
-                            .padding(.horizontal, 12)
+                            .padding(16)
                             .background(Color.bgSecondary)
                             .clipShape(RoundedRectangle(cornerRadius: 20))
                             .padding(.top, 8)

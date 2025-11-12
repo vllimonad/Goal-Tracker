@@ -42,7 +42,7 @@ struct NewGoalView: View {
                             focusedTextField = .name
                         }
                 }
-                .listRowBackground(Color.bgSecondary)
+                .listRowBackground(Color.bgModalPrimary)
                 
                 Section("new.goal.data.section.title") {
                     HStack {
@@ -93,7 +93,7 @@ struct NewGoalView: View {
                         }
                     }
                 }
-                .listRowBackground(Color.bgSecondary)
+                .listRowBackground(Color.bgModalPrimary)
                 
                 Section("new.goal.presets.section.title") {
                     LazyVGrid(columns: presetsColumns) {
@@ -110,7 +110,7 @@ struct NewGoalView: View {
                         }
                     }
                 }
-                .listRowBackground(Color.bgSecondary)
+                .listRowBackground(Color.bgModalPrimary)
                 
                 Section("new.goal.colors.section.title") {
                     ColorPicker(
@@ -137,7 +137,7 @@ struct NewGoalView: View {
                         validateColorChange()
                     }
                 }
-                .listRowBackground(Color.bgSecondary)
+                .listRowBackground(Color.bgModalPrimary)
                 
                 Section("new.goal.preview.section.title") {
                     GoalProgressView(goal: createGoalModel())
@@ -145,7 +145,7 @@ struct NewGoalView: View {
                 }
             }
             .scrollContentBackground(.hidden)
-            .background(.bgPrimary)
+            .background(.bgModalPage)
             .navigationTitle("new.goal.title")
             .navigationBarTitleDisplayMode(.inline)
             .systemShadow()
