@@ -20,6 +20,12 @@
             "value" : "%1$@ / %2$@ %3$@"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ / %2$@ %3$@"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -53,6 +59,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
+            "value" : "%1$@ %2$@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "%1$@ %2$@"
           }
         },
@@ -92,6 +104,12 @@
             "value" : "%1$@ records"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ registros"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -101,7 +119,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "rekordy %1$@"
+            "value" : "Rekordy %1$@"
           }
         },
         "ru" : {
@@ -126,6 +144,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Delete this goal?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Eliminar esta meta?"
           }
         },
         "fr" : {
@@ -164,6 +188,12 @@
             "value" : "Delete All archived goals?"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Eliminar todas las metas archivadas?"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -198,6 +228,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "You can view archived goals here"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aquí puedes ver las metas archivadas"
           }
         },
         "fr" : {
@@ -236,6 +272,12 @@
             "value" : "No Archived Goals"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay metas archivadas"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -270,6 +312,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Archived Goals"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metas archivadas"
           }
         },
         "fr" : {
@@ -308,6 +356,12 @@
             "value" : "Date"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fecha"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -342,6 +396,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Delete"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar"
           }
         },
         "fr" : {
@@ -380,6 +440,12 @@
             "value" : "Delete All"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar todo"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -414,6 +480,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Delete goal %1$@?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Eliminar la meta %1$@?"
           }
         },
         "fr" : {
@@ -452,6 +524,12 @@
             "value" : "Background"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fondo"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -486,6 +564,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Colors"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Colores"
           }
         },
         "fr" : {
@@ -524,6 +608,12 @@
             "value" : "Data"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datos"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -558,6 +648,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Name"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre"
           }
         },
         "fr" : {
@@ -596,6 +692,12 @@
             "value" : "Goal’s name"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre de la meta"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -630,6 +732,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Preview"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vista previa"
           }
         },
         "fr" : {
@@ -668,6 +776,12 @@
             "value" : "Progress"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Progreso"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -702,6 +816,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Save"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardar"
           }
         },
         "fr" : {
@@ -740,6 +860,12 @@
             "value" : "Target value"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valor objetivo"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -771,6 +897,12 @@
           }
         },
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "0"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "0"
@@ -812,6 +944,12 @@
             "value" : "Text"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Texto"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -846,6 +984,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Edit Goal"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar meta"
           }
         },
         "fr" : {
@@ -884,6 +1028,12 @@
             "value" : "Archive"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archivar"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -918,6 +1068,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Delete"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar"
           }
         },
         "fr" : {
@@ -956,6 +1112,12 @@
             "value" : "Edit"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -990,6 +1152,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Unarchive"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desarchivar"
           }
         },
         "fr" : {
@@ -1028,6 +1196,12 @@
             "value" : "Currency"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Moneda"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1062,6 +1236,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Distance"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Distancia"
           }
         },
         "fr" : {
@@ -1100,6 +1280,12 @@
             "value" : "Unit type"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipo de unidad"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1134,6 +1320,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Weight"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Peso"
           }
         },
         "fr" : {
@@ -1172,6 +1364,12 @@
             "value" : "Delete"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1206,6 +1404,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Create your first goal to begin"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crea tu primera meta para comenzar"
           }
         },
         "fr" : {
@@ -1244,6 +1448,12 @@
             "value" : "No Active Goals"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay metas activas"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1278,6 +1488,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Goals"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metas"
           }
         },
         "fr" : {
@@ -1316,6 +1532,12 @@
             "value" : "Background"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fondo"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1352,6 +1574,12 @@
             "value" : "Custom Colors"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Colores personalizados"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1384,6 +1612,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Data"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datos"
           }
         },
         "fr" : {
@@ -1422,6 +1656,12 @@
             "value" : "Initial value"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valor inicial"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1453,6 +1693,12 @@
           }
         },
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "0"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "0"
@@ -1494,6 +1740,12 @@
             "value" : "Goal’s name"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre de la meta"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1528,6 +1780,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Presets"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preajustes"
           }
         },
         "fr" : {
@@ -1566,6 +1824,12 @@
             "value" : "Preview"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vista previa"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1600,6 +1864,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Progress"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Progreso"
           }
         },
         "fr" : {
@@ -1638,6 +1908,12 @@
             "value" : "Save"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardar"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1672,6 +1948,12 @@
             "value" : "Target value"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valor objetivo"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1703,6 +1985,12 @@
           }
         },
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "0"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "0"
@@ -1744,6 +2032,12 @@
             "value" : "Text"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Texto"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1780,6 +2074,12 @@
             "value" : "New Goal"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nueva meta"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1812,6 +2112,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Unit"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unidad"
           }
         },
         "fr" : {
@@ -1850,6 +2156,12 @@
             "value" : "Select operation"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleccionar operación"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1884,6 +2196,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Save"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardar"
           }
         },
         "fr" : {
@@ -1922,6 +2240,12 @@
             "value" : "New Record"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nueva entrada"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1956,6 +2280,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Enter value"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingrese valor"
           }
         },
         "fr" : {
@@ -1994,6 +2324,12 @@
             "value" : "Delete"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2028,6 +2364,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Active"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activas"
           }
         },
         "fr" : {
@@ -2066,6 +2408,12 @@
             "value" : "Archived"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archivadas"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2100,6 +2448,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Avg Progress"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Progreso promedio"
           }
         },
         "fr" : {
@@ -2138,6 +2492,12 @@
             "value" : "Create first record to view chart"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crea la primera entrada para ver el gráfico"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2172,6 +2532,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No Records"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin registros"
           }
         },
         "fr" : {
@@ -2210,6 +2576,12 @@
             "value" : "Create first goal to track statistics"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crea la primera meta para seguir las estadísticas"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2244,6 +2616,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No Goals"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin metas"
           }
         },
         "fr" : {
@@ -2282,6 +2660,12 @@
             "value" : "Progress"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Progreso"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2316,6 +2700,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Records history"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Historial de registro"
           }
         },
         "fr" : {
@@ -2354,6 +2744,12 @@
             "value" : "Statistics"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estadísticas"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2385,6 +2781,12 @@
           }
         },
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Total"
@@ -2444,6 +2846,12 @@
             "value" : "Euro"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Euro"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2496,6 +2904,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "British Pound"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Libra esterlina"
           }
         },
         "fr" : {
@@ -2552,6 +2966,12 @@
             "value" : "Japanese Yen"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yen japonés"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2606,6 +3026,12 @@
             "value" : "Polish Złoty"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zloty polaco"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2658,6 +3084,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "US Dollar"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dólar estadounidense"
           }
         },
         "fr" : {
@@ -2720,6 +3152,12 @@
             "value" : "Centimeters"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Centímetros"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2780,6 +3218,12 @@
             "value" : "Feet"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pies"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2832,6 +3276,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Inches"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pulgadas"
           }
         },
         "fr" : {
@@ -2894,6 +3344,12 @@
             "value" : "Kilometers"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kilómetros"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2952,6 +3408,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Meters"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metros"
           }
         },
         "fr" : {
@@ -3014,6 +3476,12 @@
             "value" : "Miles"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Millas"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3072,6 +3540,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Millimeters"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Milímetros"
           }
         },
         "fr" : {
@@ -3134,6 +3608,12 @@
             "value" : "Yards"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yardas"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3186,6 +3666,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "None"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ninguna"
           }
         },
         "fr" : {
@@ -3248,6 +3734,12 @@
             "value" : "Grams"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gramos"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3308,6 +3800,12 @@
             "value" : "Kilograms"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kilogramos"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3362,6 +3860,12 @@
             "value" : "Pounds"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Libras"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3414,6 +3918,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ounces"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Onzas"
           }
         },
         "fr" : {
@@ -3476,6 +3986,12 @@
             "value" : "Tons"
           }
         },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toneladas"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3510,6 +4026,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Value"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valor"
           }
         },
         "fr" : {
