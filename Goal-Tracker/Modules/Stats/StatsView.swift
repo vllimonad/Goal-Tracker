@@ -42,7 +42,7 @@ struct StatsView: View {
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ScrollView {
                 VStack {
                     Grid {
@@ -75,7 +75,7 @@ struct StatsView: View {
                         }
                     }
                     
-                    VStack(alignment: .leading, spacing: 18) {
+                    VStack(alignment: .leading, spacing: 20) {
                         if goals.isEmpty {
                             ContentUnavailableView(
                                 "stats.empty.title",
@@ -97,8 +97,6 @@ struct StatsView: View {
                                         .foregroundStyle(.textSecondary)
                                 }
                                 
-                                Spacer()
-                                
                                 Picker(selection: $selectedGoalId) {
                                     ForEach(goals) { goal in
                                         Text(goal.name)
@@ -107,6 +105,8 @@ struct StatsView: View {
                                 } label: {
                                     Text(selectedGoal.name)
                                         .foregroundStyle(.textPrimary)
+                                        .lineLimit(1)
+                                        .truncationMode(.tail)
                                 }
                                 .tint(.textPrimary)
                                 .padding(4)
@@ -114,51 +114,42 @@ struct StatsView: View {
                                     Capsule()
                                         .fill(.bgSecondary)
                                 )
-                            }
-                            
-                            Chart(selectedGoal.valuesHistory) { item in
-                                LineMark(
-                                    x: .value("date", item.date),
-                                    y: .value("value", item.value)
-                                )
-                                .interpolationMethod(.monotone)
-                                .foregroundStyle(.iconBlue)
-                                .lineStyle(StrokeStyle(lineWidth: 3))
-                            }
-                            .chartXAxis {
-                                AxisMarks {
-                                    AxisValueLabel()
-                                }
-                            }
-                            .chartYAxis {
-                                AxisMarks {
-                                    AxisGridLine(
-                                        centered: true,
-                                        stroke: StrokeStyle(
-                                            lineWidth: 1,
-                                            dash: [7, 7]
-                                        )
-                                    )
-                                    .foregroundStyle(.secondary.opacity(0.4))
-                                    
-                                    AxisValueLabel()
-                                }
-                            }
-                            .frame(height: 200)
-                            .overlay {
-                                if !isChartPresented {
-                                    ContentUnavailableView(
-                                        "stats.chart.empty.title",
-                                        systemImage: "chart.line.uptrend.xyaxis",
-                                        description: Text("stats.chart.empty.description")
-                                    )
-                                }
+                                .frame(maxWidth: .infinity, alignment: .trailing)
                             }
                             
                             if isChartPresented {
+                                Chart(selectedGoal.valuesHistory) { item in
+                                    LineMark(
+                                        x: .value("date", item.date),
+                                        y: .value("value", item.value)
+                                    )
+                                    .interpolationMethod(.monotone)
+                                    .foregroundStyle(.iconBlue)
+                                    .lineStyle(StrokeStyle(lineWidth: 3))
+                                }
+                                .chartXAxis {
+                                    AxisMarks {
+                                        AxisValueLabel()
+                                    }
+                                }
+                                .chartYAxis {
+                                    AxisMarks {
+                                        AxisGridLine(
+                                            centered: true,
+                                            stroke: StrokeStyle(
+                                                lineWidth: 1,
+                                                dash: [7, 7]
+                                            )
+                                        )
+                                        .foregroundStyle(.secondary.opacity(0.4))
+                                        
+                                        AxisValueLabel()
+                                    }
+                                }
+                                .frame(height: 200)
+                                
                                 NavigationLink {
                                     RecordsHistoryView(goal: selectedGoal)
-                                        .toolbarVisibility(.hidden, for: .tabBar)
                                 } label: {
                                     HStack {
                                         Text("stats.records.history.title")
@@ -173,9 +164,16 @@ struct StatsView: View {
                                     }
                                 }
                                 .padding(16)
-                                .background(Color.bgSecondary)
+                                .background(.bgSecondary)
                                 .clipShape(RoundedRectangle(cornerRadius: 20))
                                 .padding(.top, 8)
+                             } else {
+                                ContentUnavailableView(
+                                    "stats.chart.empty.title",
+                                    systemImage: "chart.line.uptrend.xyaxis",
+                                    description: Text("stats.chart.empty.description")
+                                )
+                                .frame(height: 200)
                             }
                         }
                     }
@@ -193,6 +191,9 @@ struct StatsView: View {
             .navigationBarTitleDisplayMode(.large)
             .onAppear {
                 selectedGoalId = selectedGoalId ?? goals.first?.id
+            }
+            .onChange(of: goals) { _, newValue in
+                selectedGoalId = selectedGoalId ?? newValue.first?.id
             }
         }
     }

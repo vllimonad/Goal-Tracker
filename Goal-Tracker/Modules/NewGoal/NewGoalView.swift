@@ -38,6 +38,11 @@ struct NewGoalView: View {
                     TextField("new.goal.name.value.placeholder", text: $name)
                         .keyboardType(.default)
                         .focused($focusedTextField, equals: .name)
+                        .onChange(of: name) { oldValue, newValue in
+                            if newValue.count > 20 {
+                                name = oldValue
+                            }
+                        }
                         .onTapGesture {
                             focusedTextField = .name
                         }
@@ -210,6 +215,8 @@ struct NewGoalView: View {
     }
     
     private func saveGoal() {
+        guard !name.isEmpty else { return }
+        
         let goal = createGoalModel()
         modelContext.insert(goal)
     }

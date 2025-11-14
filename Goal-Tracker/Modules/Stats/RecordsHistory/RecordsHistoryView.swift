@@ -46,8 +46,9 @@ struct RecordsHistoryView: View {
         .scrollContentBackground(.hidden)
         .background(.bgPage)
         .systemShadow()
-        .navigationTitle("'\(goal.name)' records")
+        .navigationTitle("\(goal.name) records")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbarVisibility(.hidden, for: .tabBar)
     }
     
     private func deleteRecord(_ record: RecordModel) {        

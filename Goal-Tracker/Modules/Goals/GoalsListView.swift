@@ -100,7 +100,7 @@ struct GoalsListView: View {
                         .height(180)
                     ])
             }
-            .alert("delete.goal '\(goalToDelete?.name ?? "")'?", isPresented: $isDeleteAlertPresented) {
+            .alert("delete.goal \(goalToDelete?.name ?? "")?", isPresented: $isDeleteAlertPresented) {
                 Button(role: .cancel) { }
                 Button("goals.alert.delete.action.title", role: .destructive, action: deleteGoal)
             }
