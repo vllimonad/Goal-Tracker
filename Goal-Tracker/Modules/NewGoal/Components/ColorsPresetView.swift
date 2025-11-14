@@ -25,7 +25,7 @@ struct ColorsPresetView: View {
         .overlay {
             Capsule()
                 .stroke(
-                    isSelected ? Color.bgPrimaryAlt : Color.clear,
+                    isSelected ? Color.strokePrimary : Color.clear,
                     lineWidth: 2
                 )
         }

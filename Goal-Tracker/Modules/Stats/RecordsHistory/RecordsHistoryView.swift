@@ -44,7 +44,7 @@ struct RecordsHistoryView: View {
             }
         }
         .scrollContentBackground(.hidden)
-        .background(Color.bgPage)
+        .background(.bgPage)
         .systemShadow()
         .navigationTitle("'\(goal.name)' records")
         .navigationBarTitleDisplayMode(.inline)

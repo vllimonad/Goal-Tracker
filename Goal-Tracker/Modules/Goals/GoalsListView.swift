@@ -75,7 +75,7 @@ struct GoalsListView: View {
                         selectedGoal = goal
                     }
             }
-            .background(Color.bgPage)
+            .background(.bgPage)
             .listRowSpacing(12)
             .listStyle(.plain)
             .navigationTitle("goals.title")

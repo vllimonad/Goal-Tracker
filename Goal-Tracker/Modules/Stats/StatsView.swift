@@ -26,11 +26,19 @@ struct StatsView: View {
         goals.filter(\.isActive).count
     }
     
+    private var archivedGoals: Int {
+        goals.filter(\.isArchived).count
+    }
+    
     private var averageProgress: Int {
         let sum = goals.reduce(0) { $0 + $1.getProgress() }
         let count = Double(goals.count) == 0 ? 1 : Double(goals.count)
         let average = Int(sum * 100 / count)
         return average
+    }
+    
+    private var isChartPresented: Bool {
+        selectedGoal?.valuesHistory.count ?? 0 > 1
     }
     
     var body: some View {
@@ -60,8 +68,8 @@ struct StatsView: View {
                             )
                             
                             SingleValueStatsView(
-                                title: "stats.active.goals.title",
-                                value: activeGoals.description,
+                                title: "stats.archived.goals.title",
+                                value: archivedGoals.description,
                                 iconResource: .statsActiveGoals
                             )
                         }
@@ -71,7 +79,7 @@ struct StatsView: View {
                         if goals.isEmpty {
                             ContentUnavailableView(
                                 "stats.empty.title",
-                                systemImage: "chart.line.uptrend.xyaxis",
+                                systemImage: "chart.bar.xaxis",
                                 description: Text("stats.empty.description")
                             )
                         } else if let selectedGoal = selectedGoal {
@@ -137,27 +145,38 @@ struct StatsView: View {
                                 }
                             }
                             .frame(height: 200)
-                            
-                            NavigationLink {
-                                RecordsHistoryView(goal: selectedGoal)
-                                    .toolbarVisibility(.hidden, for: .tabBar)
-                            } label: {
-                                HStack {
-                                    Text("stats.records.history.title")
-                                        .font(.subheadline)
-                                        .foregroundStyle(.textPrimary)
-
-                                    Spacer()
-
-                                    Image(systemName: "chevron.right")
-                                        .font(.system(size: 16, weight: .semibold))
-                                        .foregroundStyle(.textSecondary)
+                            .overlay {
+                                if !isChartPresented {
+                                    ContentUnavailableView(
+                                        "stats.chart.empty.title",
+                                        systemImage: "chart.line.uptrend.xyaxis",
+                                        description: Text("stats.chart.empty.description")
+                                    )
                                 }
                             }
-                            .padding(16)
-                            .background(Color.bgSecondary)
-                            .clipShape(RoundedRectangle(cornerRadius: 20))
-                            .padding(.top, 8)
+                            
+                            if isChartPresented {
+                                NavigationLink {
+                                    RecordsHistoryView(goal: selectedGoal)
+                                        .toolbarVisibility(.hidden, for: .tabBar)
+                                } label: {
+                                    HStack {
+                                        Text("stats.records.history.title")
+                                            .font(.subheadline)
+                                            .foregroundStyle(.textPrimary)
+                                        
+                                        Spacer()
+                                        
+                                        Image(systemName: "chevron.right")
+                                            .font(.system(size: 16, weight: .semibold))
+                                            .foregroundStyle(.textSecondary)
+                                    }
+                                }
+                                .padding(16)
+                                .background(Color.bgSecondary)
+                                .clipShape(RoundedRectangle(cornerRadius: 20))
+                                .padding(.top, 8)
+                            }
                         }
                     }
                     .padding(20)
@@ -169,7 +188,7 @@ struct StatsView: View {
                 }
                 .padding(.horizontal, 20)
             }
-            .background(Color.bgPage)
+            .background(.bgPage)
             .navigationTitle("stats.title")
             .navigationBarTitleDisplayMode(.large)
             .onAppear {

@@ -60,7 +60,7 @@ struct ArchivedGoalsListView: View {
                         .frame(width: 300)
                 }
         }
-        .background(Color.bgPage)
+        .background(.bgPage)
         .listRowSpacing(12)
         .listStyle(.plain)
         .navigationTitle("archived.goals.title")
