@@ -31,6 +31,12 @@
             "state" : "translated",
             "value" : "%1$@ / %2$@ %3$@"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ / %2$@ %3$@"
+          }
         }
       }
     },
@@ -57,6 +63,12 @@
           }
         },
         "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ %2$@"
+          }
+        },
+        "ru" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ %2$@"
@@ -89,7 +101,13 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%1$@ rekordów"
+            "value" : "rekordy %1$@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Записи %1$@"
           }
         }
       }
@@ -121,6 +139,12 @@
             "state" : "translated",
             "value" : "Usunąć ten cel?"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить эту цель?"
+          }
         }
       }
     },
@@ -150,6 +174,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Usunąć wszystkie zarchiwizowane cele?"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить все цели из архива?"
           }
         }
       }
@@ -181,6 +211,12 @@
             "state" : "translated",
             "value" : "Tutaj możesz zobaczyć zarchiwizowane cele"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Здесь вы можете просмотреть архивированные цели"
+          }
         }
       }
     },
@@ -210,6 +246,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Brak zarchiwizowanych celów"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Архивных пуст"
           }
         }
       }
@@ -241,6 +283,12 @@
             "state" : "translated",
             "value" : "Zarchiwizowane cele"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Архив"
+          }
         }
       }
     },
@@ -270,6 +318,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Data"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дата"
           }
         }
       }
@@ -301,6 +355,12 @@
             "state" : "translated",
             "value" : "Usuń"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить"
+          }
         }
       }
     },
@@ -330,6 +390,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Usuń wszystkie"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить все"
           }
         }
       }
@@ -361,6 +427,12 @@
             "state" : "translated",
             "value" : "Usunąć cel %1$@?"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить цель %1$@?"
+          }
         }
       }
     },
@@ -390,6 +462,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tło"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фон"
           }
         }
       }
@@ -421,6 +499,12 @@
             "state" : "translated",
             "value" : "Kolory"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Цвета"
+          }
         }
       }
     },
@@ -450,6 +534,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dane"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Данные"
           }
         }
       }
@@ -481,6 +571,12 @@
             "state" : "translated",
             "value" : "Nazwa"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Название"
+          }
         }
       }
     },
@@ -510,6 +606,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nazwa celu"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Название цели"
           }
         }
       }
@@ -541,6 +643,12 @@
             "state" : "translated",
             "value" : "Podgląd"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Предпросмотр"
+          }
         }
       }
     },
@@ -570,6 +678,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Postęp"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Прогресс"
           }
         }
       }
@@ -601,6 +715,12 @@
             "state" : "translated",
             "value" : "Zapisz"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сохранить"
+          }
         }
       }
     },
@@ -631,6 +751,12 @@
             "state" : "translated",
             "value" : "Wartość docelowa"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Целевое значение"
+          }
         }
       }
     },
@@ -657,6 +783,12 @@
           }
         },
         "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "0"
+          }
+        },
+        "ru" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "0"
@@ -691,6 +823,12 @@
             "state" : "translated",
             "value" : "Tekst"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Текст"
+          }
         }
       }
     },
@@ -720,6 +858,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Edytuj cel"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Редактировать цель"
           }
         }
       }
@@ -751,6 +895,12 @@
             "state" : "translated",
             "value" : "Archiwizuj"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Архивировать"
+          }
         }
       }
     },
@@ -780,6 +930,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Usuń"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить"
           }
         }
       }
@@ -811,6 +967,12 @@
             "state" : "translated",
             "value" : "Edytuj"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Редактировать"
+          }
         }
       }
     },
@@ -840,6 +1002,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Przywróć z archiwum"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Восстановить"
           }
         }
       }
@@ -871,6 +1039,12 @@
             "state" : "translated",
             "value" : "Waluta"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Валюта"
+          }
         }
       }
     },
@@ -900,6 +1074,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Odległość"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дистанция"
           }
         }
       }
@@ -931,6 +1111,12 @@
             "state" : "translated",
             "value" : "Typ jednostki"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Единица измерения"
+          }
         }
       }
     },
@@ -960,6 +1146,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Waga"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вес"
           }
         }
       }
@@ -991,6 +1183,12 @@
             "state" : "translated",
             "value" : "Usuń"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить"
+          }
         }
       }
     },
@@ -1020,6 +1218,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Utwórz swój pierwszy cel, aby rozpocząć"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Создайте первую цель, чтобы начать"
           }
         }
       }
@@ -1051,6 +1255,12 @@
             "state" : "translated",
             "value" : "Brak aktywnych celów"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет активных целей"
+          }
         }
       }
     },
@@ -1080,6 +1290,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cele"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Цели"
           }
         }
       }
@@ -1111,6 +1327,12 @@
             "state" : "translated",
             "value" : "Tło"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фон"
+          }
         }
       }
     },
@@ -1141,6 +1363,12 @@
             "state" : "translated",
             "value" : "Kolory niestandardowe"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Цвета"
+          }
         }
       }
     },
@@ -1168,6 +1396,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dane"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Данные"
           }
         }
       }
@@ -1199,6 +1433,12 @@
             "state" : "translated",
             "value" : "Wartość początkowa"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Начальное значение"
+          }
         }
       }
     },
@@ -1225,6 +1465,12 @@
           }
         },
         "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "0"
+          }
+        },
+        "ru" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "0"
@@ -1259,6 +1505,12 @@
             "state" : "translated",
             "value" : "Nazwa celu"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Название цели"
+          }
         }
       }
     },
@@ -1288,6 +1540,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ustawienia wstępne"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пресеты"
           }
         }
       }
@@ -1319,6 +1577,12 @@
             "state" : "translated",
             "value" : "Podgląd"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Предпросмотр"
+          }
         }
       }
     },
@@ -1348,6 +1612,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Postęp"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Прогресс"
           }
         }
       }
@@ -1379,6 +1649,12 @@
             "state" : "translated",
             "value" : "Zapisz"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сохранить"
+          }
         }
       }
     },
@@ -1407,6 +1683,12 @@
             "state" : "translated",
             "value" : "Wartość docelowa"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Целевое значение"
+          }
         }
       }
     },
@@ -1433,6 +1715,12 @@
           }
         },
         "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "0"
+          }
+        },
+        "ru" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "0"
@@ -1467,6 +1755,12 @@
             "state" : "translated",
             "value" : "Tekst"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Текст"
+          }
         }
       }
     },
@@ -1497,6 +1791,12 @@
             "state" : "translated",
             "value" : "Nowy cel"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Новая цель"
+          }
         }
       }
     },
@@ -1524,6 +1824,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Jednostka"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Единица измерения"
           }
         }
       }
@@ -1555,6 +1861,12 @@
             "state" : "translated",
             "value" : "Wybierz operację"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тип операции"
+          }
         }
       }
     },
@@ -1584,6 +1896,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zapisz"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сохранить"
           }
         }
       }
@@ -1615,6 +1933,12 @@
             "state" : "translated",
             "value" : "Nowy rekord"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Новая запись"
+          }
         }
       }
     },
@@ -1644,6 +1968,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wprowadź wartość"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введите значение"
           }
         }
       }
@@ -1675,6 +2005,12 @@
             "state" : "translated",
             "value" : "Usuń"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалить"
+          }
         }
       }
     },
@@ -1704,6 +2040,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aktywne"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Активные"
           }
         }
       }
@@ -1735,6 +2077,12 @@
             "state" : "translated",
             "value" : "Zarchiwizowane"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Архивные"
+          }
         }
       }
     },
@@ -1764,6 +2112,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Średni postęp"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ср. прогресс"
           }
         }
       }
@@ -1795,6 +2149,12 @@
             "state" : "translated",
             "value" : "Utwórz pierwszy rekord, aby zobaczyć wykres"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Создайте первую запись, чтобы увидеть график"
+          }
         }
       }
     },
@@ -1824,6 +2184,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Brak rekordów"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет записей"
           }
         }
       }
@@ -1855,6 +2221,12 @@
             "state" : "translated",
             "value" : "Utwórz pierwszy cel, aby śledzić statystyki"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Создайте первую цель, чтобы отслеживать статистику"
+          }
         }
       }
     },
@@ -1884,6 +2256,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Brak celów"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет целей"
           }
         }
       }
@@ -1915,6 +2293,12 @@
             "state" : "translated",
             "value" : "Postęp"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Прогресс"
+          }
         }
       }
     },
@@ -1944,6 +2328,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Historia rekordów"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "История записей"
           }
         }
       }
@@ -1975,6 +2365,12 @@
             "state" : "translated",
             "value" : "Statystyki"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Статистика"
+          }
         }
       }
     },
@@ -2004,6 +2400,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Łącznie"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Всего"
           }
         }
       }
@@ -2053,6 +2455,12 @@
             "state" : "translated",
             "value" : "Euro"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Евро"
+          }
         }
       }
     },
@@ -2100,6 +2508,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Funt szterling"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фунт стерлингов"
           }
         }
       }
@@ -2149,6 +2563,12 @@
             "state" : "translated",
             "value" : "Jen japoński"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Японская йена"
+          }
         }
       }
     },
@@ -2196,6 +2616,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Złoty"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Польский злотый"
           }
         }
       }
@@ -2245,6 +2671,12 @@
             "state" : "translated",
             "value" : "Dolar amerykański"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Доллар США"
+          }
         }
       }
     },
@@ -2262,6 +2694,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "cm"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "см"
           }
         }
       }
@@ -2293,6 +2731,12 @@
             "state" : "translated",
             "value" : "Centymetry"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сантиметры"
+          }
         }
       }
     },
@@ -2310,6 +2754,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ft"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "фт"
           }
         }
       }
@@ -2340,6 +2790,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Stopy"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Футы"
           }
         }
       }
@@ -2389,6 +2845,12 @@
             "state" : "translated",
             "value" : "Cale"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дюймы"
+          }
         }
       }
     },
@@ -2406,6 +2868,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "km"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "км"
           }
         }
       }
@@ -2437,6 +2905,12 @@
             "state" : "translated",
             "value" : "Kilometry"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Километры"
+          }
         }
       }
     },
@@ -2454,6 +2928,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "m"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "м"
           }
         }
       }
@@ -2485,6 +2965,12 @@
             "state" : "translated",
             "value" : "Metry"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Метры"
+          }
         }
       }
     },
@@ -2502,6 +2988,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "mi"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ми"
           }
         }
       }
@@ -2533,6 +3025,12 @@
             "state" : "translated",
             "value" : "Mile"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Мили"
+          }
         }
       }
     },
@@ -2550,6 +3048,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "mm"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "мм"
           }
         }
       }
@@ -2581,6 +3085,12 @@
             "state" : "translated",
             "value" : "Milimetry"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Миллиметры"
+          }
         }
       }
     },
@@ -2598,6 +3108,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "yd"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ярд"
           }
         }
       }
@@ -2628,6 +3144,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Jardy"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ярды"
           }
         }
       }
@@ -2677,6 +3199,12 @@
             "state" : "translated",
             "value" : "Brak"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет"
+          }
         }
       }
     },
@@ -2694,6 +3222,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "g"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "г"
           }
         }
       }
@@ -2725,6 +3259,12 @@
             "state" : "translated",
             "value" : "Gramy"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Граммы"
+          }
         }
       }
     },
@@ -2742,6 +3282,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "kg"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "кг"
           }
         }
       }
@@ -2772,6 +3318,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kilogramy"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Килограммы"
           }
         }
       }
@@ -2821,6 +3373,12 @@
             "state" : "translated",
             "value" : "Funty"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фунты"
+          }
         }
       }
     },
@@ -2869,6 +3427,12 @@
             "state" : "translated",
             "value" : "Uncje"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Унции"
+          }
         }
       }
     },
@@ -2886,6 +3450,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "t"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "т"
           }
         }
       }
@@ -2917,6 +3487,12 @@
             "state" : "translated",
             "value" : "Tony"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тонны"
+          }
         }
       }
     },
@@ -2946,6 +3522,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wartość"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Значение"
           }
         }
       }
