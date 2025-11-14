@@ -25,6 +25,12 @@
             "state" : "translated",
             "value" : "%1$@ / %2$@ %3$@"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ / %2$@ %3$@"
+          }
         }
       }
     },
@@ -45,6 +51,12 @@
           }
         },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ %2$@"
+          }
+        },
+        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ %2$@"
@@ -73,6 +85,12 @@
             "state" : "translated",
             "value" : "Enregistrements de %1$@"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ rekordów"
+          }
         }
       }
     },
@@ -96,6 +114,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Supprimer cet objectif ?"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usunąć ten cel?"
           }
         }
       }
@@ -121,6 +145,12 @@
             "state" : "translated",
             "value" : "Supprimer tous les objectifs archivés ?"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usunąć wszystkie zarchiwizowane cele?"
+          }
         }
       }
     },
@@ -144,6 +174,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vous pouvez consulter les objectifs archivés ici"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tutaj możesz zobaczyć zarchiwizowane cele"
           }
         }
       }
@@ -169,6 +205,12 @@
             "state" : "translated",
             "value" : "Aucun objectif archivé"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak zarchiwizowanych celów"
+          }
         }
       }
     },
@@ -192,6 +234,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Objectifs archivés"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zarchiwizowane cele"
           }
         }
       }
@@ -217,6 +265,12 @@
             "state" : "translated",
             "value" : "Date"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data"
+          }
         }
       }
     },
@@ -240,6 +294,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Supprimer"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuń"
           }
         }
       }
@@ -265,6 +325,12 @@
             "state" : "translated",
             "value" : "Tout supprimer"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuń wszystkie"
+          }
         }
       }
     },
@@ -288,6 +354,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Supprimer l'objectif %1$@ ?"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usunąć cel %1$@?"
           }
         }
       }
@@ -313,6 +385,12 @@
             "state" : "translated",
             "value" : "Fond"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tło"
+          }
         }
       }
     },
@@ -336,6 +414,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Couleurs"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kolory"
           }
         }
       }
@@ -361,6 +445,12 @@
             "state" : "translated",
             "value" : "Données"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dane"
+          }
         }
       }
     },
@@ -384,6 +474,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nom"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nazwa"
           }
         }
       }
@@ -409,6 +505,12 @@
             "state" : "translated",
             "value" : "Nom de l’objectif"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nazwa celu"
+          }
         }
       }
     },
@@ -432,6 +534,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aperçu"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podgląd"
           }
         }
       }
@@ -457,6 +565,12 @@
             "state" : "translated",
             "value" : "Progression"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Postęp"
+          }
         }
       }
     },
@@ -480,6 +594,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Enregistrer"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zapisz"
           }
         }
       }
@@ -505,6 +625,12 @@
             "state" : "translated",
             "value" : "Valeur cible"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wartość docelowa"
+          }
         }
       }
     },
@@ -525,6 +651,12 @@
           }
         },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "0"
+          }
+        },
+        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "0"
@@ -553,6 +685,12 @@
             "state" : "translated",
             "value" : "Texte"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tekst"
+          }
         }
       }
     },
@@ -576,6 +714,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Modifier l’objectif"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edytuj cel"
           }
         }
       }
@@ -601,6 +745,12 @@
             "state" : "translated",
             "value" : "Archiver"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archiwizuj"
+          }
         }
       }
     },
@@ -624,6 +774,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Supprimer"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuń"
           }
         }
       }
@@ -649,6 +805,12 @@
             "state" : "translated",
             "value" : "Modifier"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edytuj"
+          }
         }
       }
     },
@@ -672,6 +834,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Désarchiver"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przywróć z archiwum"
           }
         }
       }
@@ -697,6 +865,12 @@
             "state" : "translated",
             "value" : "Monnaie"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waluta"
+          }
         }
       }
     },
@@ -720,6 +894,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Distance"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odległość"
           }
         }
       }
@@ -745,6 +925,12 @@
             "state" : "translated",
             "value" : "Type d’unité"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Typ jednostki"
+          }
         }
       }
     },
@@ -768,6 +954,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Poids"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waga"
           }
         }
       }
@@ -793,6 +985,12 @@
             "state" : "translated",
             "value" : "Supprimer"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuń"
+          }
         }
       }
     },
@@ -816,6 +1014,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Créez votre premier objectif pour commencer"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utwórz swój pierwszy cel, aby rozpocząć"
           }
         }
       }
@@ -841,6 +1045,12 @@
             "state" : "translated",
             "value" : "Aucun objectif actif"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak aktywnych celów"
+          }
         }
       }
     },
@@ -864,6 +1074,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Objectifs"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cele"
           }
         }
       }
@@ -889,6 +1105,12 @@
             "state" : "translated",
             "value" : "Fond"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tło"
+          }
         }
       }
     },
@@ -913,6 +1135,12 @@
             "state" : "translated",
             "value" : "Couleurs personnalisées"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kolory niestandardowe"
+          }
         }
       }
     },
@@ -934,6 +1162,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Données"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dane"
           }
         }
       }
@@ -959,6 +1193,12 @@
             "state" : "translated",
             "value" : "Valeur initiale"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wartość początkowa"
+          }
         }
       }
     },
@@ -979,6 +1219,12 @@
           }
         },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "0"
+          }
+        },
+        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "0"
@@ -1007,6 +1253,12 @@
             "state" : "translated",
             "value" : "Nom de l’objectif"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nazwa celu"
+          }
         }
       }
     },
@@ -1030,6 +1282,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Préréglages"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ustawienia wstępne"
           }
         }
       }
@@ -1055,6 +1313,12 @@
             "state" : "translated",
             "value" : "Aperçu"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podgląd"
+          }
         }
       }
     },
@@ -1078,6 +1342,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Progression"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Postęp"
           }
         }
       }
@@ -1103,6 +1373,12 @@
             "state" : "translated",
             "value" : "Enregistrer"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zapisz"
+          }
         }
       }
     },
@@ -1125,6 +1401,12 @@
             "state" : "translated",
             "value" : "Valeur cible"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wartość docelowa"
+          }
         }
       }
     },
@@ -1145,6 +1427,12 @@
           }
         },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "0"
+          }
+        },
+        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "0"
@@ -1173,6 +1461,12 @@
             "state" : "translated",
             "value" : "Texte"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tekst"
+          }
         }
       }
     },
@@ -1197,6 +1491,12 @@
             "state" : "translated",
             "value" : "Nouvel objectif"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nowy cel"
+          }
         }
       }
     },
@@ -1218,6 +1518,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Unité"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jednostka"
           }
         }
       }
@@ -1243,6 +1549,12 @@
             "state" : "translated",
             "value" : "Sélectionner l’opération"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wybierz operację"
+          }
         }
       }
     },
@@ -1266,6 +1578,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Enregistrer"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zapisz"
           }
         }
       }
@@ -1291,6 +1609,12 @@
             "state" : "translated",
             "value" : "Nouvel enregistrement"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nowy rekord"
+          }
         }
       }
     },
@@ -1314,6 +1638,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Entrez une valeur"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wprowadź wartość"
           }
         }
       }
@@ -1339,6 +1669,12 @@
             "state" : "translated",
             "value" : "Supprimer"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuń"
+          }
         }
       }
     },
@@ -1362,6 +1698,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Actifs"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktywne"
           }
         }
       }
@@ -1387,6 +1729,12 @@
             "state" : "translated",
             "value" : "Archivés"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zarchiwizowane"
+          }
         }
       }
     },
@@ -1410,6 +1758,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Progression moyenne"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Średni postęp"
           }
         }
       }
@@ -1435,6 +1789,12 @@
             "state" : "translated",
             "value" : "Créez le premier enregistrement pour voir le graphique"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utwórz pierwszy rekord, aby zobaczyć wykres"
+          }
         }
       }
     },
@@ -1458,6 +1818,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aucun enregistrement"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak rekordów"
           }
         }
       }
@@ -1483,6 +1849,12 @@
             "state" : "translated",
             "value" : "Créez votre premier objectif pour suivre les statistiques"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utwórz pierwszy cel, aby śledzić statystyki"
+          }
         }
       }
     },
@@ -1506,6 +1878,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aucun objectif"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak celów"
           }
         }
       }
@@ -1531,6 +1909,12 @@
             "state" : "translated",
             "value" : "Progression"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Postęp"
+          }
         }
       }
     },
@@ -1554,6 +1938,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Historique des enregistrements"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Historia rekordów"
           }
         }
       }
@@ -1579,6 +1969,12 @@
             "state" : "translated",
             "value" : "Statistiques"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statystyki"
+          }
         }
       }
     },
@@ -1602,6 +1998,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Total"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Łącznie"
           }
         }
       }
@@ -1641,6 +2043,12 @@
           }
         },
         "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Euro"
+          }
+        },
+        "pl" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Euro"
@@ -1687,6 +2095,12 @@
             "state" : "translated",
             "value" : "Livre sterling"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funt szterling"
+          }
         }
       }
     },
@@ -1728,6 +2142,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yen japonais"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jen japoński"
           }
         }
       }
@@ -1771,6 +2191,12 @@
             "state" : "translated",
             "value" : "Złoty polonais"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Złoty"
+          }
         }
       }
     },
@@ -1812,6 +2238,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dollar américain"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dolar amerykański"
           }
         }
       }
@@ -1855,6 +2287,12 @@
             "state" : "translated",
             "value" : "Centimètres"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Centymetry"
+          }
         }
       }
     },
@@ -1896,6 +2334,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pieds"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stopy"
           }
         }
       }
@@ -1939,6 +2383,12 @@
             "state" : "translated",
             "value" : "Pouces"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cale"
+          }
         }
       }
     },
@@ -1980,6 +2430,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kilomètres"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kilometry"
           }
         }
       }
@@ -2023,6 +2479,12 @@
             "state" : "translated",
             "value" : "Mètres"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metry"
+          }
         }
       }
     },
@@ -2064,6 +2526,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Miles"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mile"
           }
         }
       }
@@ -2107,6 +2575,12 @@
             "state" : "translated",
             "value" : "Millimètres"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Milimetry"
+          }
         }
       }
     },
@@ -2148,6 +2622,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yards"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jardy"
           }
         }
       }
@@ -2191,6 +2671,12 @@
             "state" : "translated",
             "value" : "Aucun"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak"
+          }
         }
       }
     },
@@ -2232,6 +2718,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Grammes"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gramy"
           }
         }
       }
@@ -2275,6 +2767,12 @@
             "state" : "translated",
             "value" : "Kilogrammes"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kilogramy"
+          }
         }
       }
     },
@@ -2316,6 +2814,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Livres"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funty"
           }
         }
       }
@@ -2359,6 +2863,12 @@
             "state" : "translated",
             "value" : "Onces"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uncje"
+          }
         }
       }
     },
@@ -2401,6 +2911,12 @@
             "state" : "translated",
             "value" : "Tonnes"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tony"
+          }
         }
       }
     },
@@ -2424,6 +2940,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Valeur"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wartość"
           }
         }
       }
