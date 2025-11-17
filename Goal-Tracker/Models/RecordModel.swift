@@ -11,14 +11,16 @@ import SwiftData
 @Model
 class RecordModel {
     
+    var id: UUID
     var date: Date
     var value: Double
     
     convenience init(value: Double) {
-        self.init(date: .now, value: value)
+        self.init(id: UUID(), date: .now, value: value)
     }
     
-    init(date: Date, value: Double) {
+    init(id: UUID, date: Date, value: Double) {
+        self.id = id
         self.date = date
         self.value = value
     }

@@ -33,94 +33,79 @@ enum UnitType: Codable, Hashable {
 }
 
 enum WeightUnitType: CaseIterable, Codable {
-    case g
-    case kg
-    case t
-    case oz
-    case lb
+    case g, kg, t, oz, lb
     
     var name: String {
         switch self {
-        case .g: "Grams"
-        case .kg: "Kilograms"
-        case .t: "Tons"
-        case .oz: "Ounces"
-        case .lb: "Pounds"
+        case .g:  String(localized: "unit.weight.g.name")
+        case .kg: String(localized: "unit.weight.kg.name")
+        case .t:  String(localized: "unit.weight.t.name")
+        case .oz: String(localized: "unit.weight.oz.name")
+        case .lb: String(localized: "unit.weight.lb.name")
         }
     }
     
     var abbreviation: String {
         switch self {
-        case .g: "g"
-        case .kg: "kg"
-        case .t: "t"
-        case .oz: "oz"
-        case .lb: "lb"
+        case .g:  String(localized: "unit.weight.g.abbreviation")
+        case .kg: String(localized: "unit.weight.kg.abbreviation")
+        case .t:  String(localized: "unit.weight.t.abbreviation")
+        case .oz: String(localized: "unit.weight.oz.abbreviation")
+        case .lb: String(localized: "unit.weight.lb.abbreviation")
         }
     }
 }
 
 enum DistanceUnitType: CaseIterable, Codable {
-    case mm
-    case cm
-    case m
-    case km
-    case inch
-    case ft
-    case yd
-    case mi
+    case mm, cm, m, km, inch, ft, yd, mi
     
     var name: String {
         switch self {
-        case .mm: "Millimeters"
-        case .cm: "Centimeters"
-        case .m: "Meters"
-        case .km: "Kilometers"
-        case .inch: "Inches"
-        case .ft: "Feet"
-        case .yd: "Yards"
-        case .mi: "Miles"
+        case .mm:   String(localized: "unit.distance.mm.name")
+        case .cm:   String(localized: "unit.distance.cm.name")
+        case .m:    String(localized: "unit.distance.m.name")
+        case .km:   String(localized: "unit.distance.km.name")
+        case .inch: String(localized: "unit.distance.inch.name")
+        case .ft:   String(localized: "unit.distance.ft.name")
+        case .yd:   String(localized: "unit.distance.yd.name")
+        case .mi:   String(localized: "unit.distance.mi.name")
         }
     }
     
     var abbreviation: String {
         switch self {
-        case .mm: "mm"
-        case .cm: "cm"
-        case .m: "m"
-        case .km: "km"
-        case .inch: "inch"
-        case .ft: "ft"
-        case .yd: "yd"
-        case .mi: "mi"
+        case .mm:   String(localized: "unit.distance.mm.abbreviation")
+        case .cm:   String(localized: "unit.distance.cm.abbreviation")
+        case .m:    String(localized: "unit.distance.m.abbreviation")
+        case .km:   String(localized: "unit.distance.km.abbreviation")
+        case .inch: String(localized: "unit.distance.inch.abbreviation")
+        case .ft:   String(localized: "unit.distance.ft.abbreviation")
+        case .yd:   String(localized: "unit.distance.yd.abbreviation")
+        case .mi:   String(localized: "unit.distance.mi.abbreviation")
         }
     }
 }
 
 enum CurrencyUnitType: CaseIterable, Codable {
-    case usd
-    case eur
-    case pln
-    case jpy
-    case gbp
+    case usd, eur, pln, jpy, gbp
     
     var name: String {
         switch self {
-        case .usd: "USD"
-        case .eur: "EUR"
-        case .pln: "PLN"
-        case .jpy: "JPY"
-        case .gbp: "GBP"
+        case .usd: String(localized: "unit.currency.usd.name")
+        case .eur: String(localized: "unit.currency.eur.name")
+        case .pln: String(localized: "unit.currency.pln.name")
+        case .jpy: String(localized: "unit.currency.jpy.name")
+        case .gbp: String(localized: "unit.currency.gbp.name")
         }
     }
     
     var abbreviation: String {
         switch self {
-        case .usd: "$"
-        case .eur: "€"
-        case .pln: "zł"
-        case .jpy: "¥"
-        case .gbp: "£"
+        case .usd: String(localized: "unit.currency.usd.abbreviation")
+        case .eur: String(localized: "unit.currency.eur.abbreviation")
+        case .pln: String(localized: "unit.currency.pln.abbreviation")
+        case .jpy: String(localized: "unit.currency.jpy.abbreviation")
+        case .gbp: String(localized: "unit.currency.gbp.abbreviation")
         }
     }
 }
@@ -130,13 +115,13 @@ enum OtherUnitType: CaseIterable, Codable {
     
     var name: String {
         switch self {
-        case .none: "None"
+        case .none: String(localized: "unit.other.none.name")
         }
     }
     
     var abbreviation: String {
         switch self {
-        case .none: "?"
+        case .none: String(localized: "unit.other.none.abbreviation")
         }
     }
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ColorsPreset: View {
+struct ColorsPresetView: View {
     
     var colorsModel: ColorsModel
     var isSelected: Bool
@@ -25,7 +25,7 @@ struct ColorsPreset: View {
         .overlay {
             Capsule()
                 .stroke(
-                    isSelected ? Color.bgPrimaryAlt : Color.clear,
+                    isSelected ? Color.strokePrimary : Color.clear,
                     lineWidth: 2
                 )
         }
@@ -33,5 +33,5 @@ struct ColorsPreset: View {
 }
 
 #Preview {
-    ColorsPreset(colorsModel: ColorsModel(), isSelected: true)
+    ColorsPresetView(colorsModel: ColorsModel(), isSelected: true)
 }

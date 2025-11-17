@@ -30,7 +30,7 @@ struct GoalsListView: View {
                 GoalProgressView(goal: goal)
                     .listRowSeparator(.hidden)
                     .listRowInsets(.vertical, 0)
-                    .listRowInsets(.horizontal, 24)
+                    .listRowInsets(.horizontal, 20)
                     .listRowBackground(Color.clear)
                     .swipeActions(edge: .trailing) {
                         Button("goal.delete.action.title") {
@@ -59,7 +59,11 @@ struct GoalsListView: View {
                         }
                         .tint(.iconPrimary)
                         
-                        Button("goal.delete.action.title", systemImage: "xmark.bin") {
+                        Button(
+                            "goal.delete.action.title",
+                            systemImage: "xmark.bin",
+                            role: .destructive
+                        ) {
                             prepareForDeletion(goal)
                         }
                         .tint(.red)
@@ -71,10 +75,10 @@ struct GoalsListView: View {
                         selectedGoal = goal
                     }
             }
-            .background(Color.bgMain)
+            .background(.bgPage)
             .listRowSpacing(12)
             .listStyle(.plain)
-            .navigationTitle(LocalizedStringKey("goals.title"))
+            .navigationTitle("goals.title")
             .toolbarTitleDisplayMode(.inlineLarge)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -87,7 +91,8 @@ struct GoalsListView: View {
                 }
             }
             .navigationDestination(item: $goalToEdit) { goal in
-                EditGoal(goal: goal)
+                EditGoalView(goal: goal)
+                    .toolbarVisibility(.hidden, for: .tabBar)
             }
             .sheet(item: $selectedGoal) { goal in
                 NewRecordView(goal: goal)
@@ -95,7 +100,7 @@ struct GoalsListView: View {
                         .height(180)
                     ])
             }
-            .alert("delete.goal '\(goalToDelete?.name ?? "")'?", isPresented: $isDeleteAlertPresented) {
+            .alert("delete.goal \(goalToDelete?.name ?? "")?", isPresented: $isDeleteAlertPresented) {
                 Button(role: .cancel) { }
                 Button("goals.alert.delete.action.title", role: .destructive, action: deleteGoal)
             }

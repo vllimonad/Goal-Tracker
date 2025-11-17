@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EditGoal: View {
+struct EditGoalView: View {
     
     @Environment(\.dismiss) private var dismiss
     @FocusState private var focusedTextField: NewGoalTextFieldType?
@@ -31,7 +31,7 @@ struct EditGoal: View {
                         focusedTextField = .name
                     }
             }
-            .listRowBackground(Color.bgSecondary)
+            .listRowBackground(Color.bgPrimary)
             
             Section("edit.goal.data.section.title") {
                 HStack {
@@ -52,7 +52,7 @@ struct EditGoal: View {
                     focusedTextField = .target
                 }
             }
-            .listRowBackground(Color.bgSecondary)
+            .listRowBackground(Color.bgPrimary)
             
             Section("edit.goal.colors.section.title") {
                 ColorPicker(
@@ -70,7 +70,7 @@ struct EditGoal: View {
                     selection: $textColor
                 )
             }
-            .listRowBackground(Color.bgSecondary)
+            .listRowBackground(Color.bgPrimary)
             
             Section("edit.goal.preview.section.title") {
                 GoalProgressView(goal: createPreviewGoal())
@@ -78,11 +78,10 @@ struct EditGoal: View {
             }
         }
         .scrollContentBackground(.hidden)
-        .background(.bgPrimary)
+        .background(.bgPage)
         .navigationTitle("edit.goal.title")
         .navigationBarTitleDisplayMode(.inline)
         .systemShadow()
-        .toolbarVisibility(.hidden, for: .tabBar)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button("edit.goal.save.action.title") {
@@ -134,7 +133,7 @@ struct EditGoal: View {
 }
 
 #Preview {
-    EditGoal(goal: GoalModel(
+    EditGoalView(goal: GoalModel(
         name: "A",
         initialValue: 0,
         targetValue: 1,

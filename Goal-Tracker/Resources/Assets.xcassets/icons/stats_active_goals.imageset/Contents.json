@@ -3,6 +3,16 @@
     {
       "filename" : "stats_active_goals.pdf",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "stats_active_goals 1.pdf",
+      "idiom" : "universal"
     }
   ],
   "info" : {

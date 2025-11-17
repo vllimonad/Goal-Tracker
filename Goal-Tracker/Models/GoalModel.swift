@@ -11,6 +11,7 @@ import SwiftData
 @Model
 class GoalModel {
     
+    var id: UUID
     var name: String
     var creationDate: Date
     
@@ -37,9 +38,15 @@ class GoalModel {
         
         var history = records.map {
             totalPerRecord += $0.value
-            return RecordModel(date: $0.date, value: totalPerRecord)
+            return RecordModel(id: UUID(), date: $0.date, value: totalPerRecord)
         }
-        history.insert(RecordModel(date: creationDate, value: initialValue), at: 0)
+        
+        history.insert(RecordModel(
+            id: UUID(),
+            date: creationDate,
+            value: initialValue),
+                       at: 0
+        )
         
         return history
     }
@@ -52,6 +59,7 @@ class GoalModel {
         colors: ColorsModel
     ) {
         self.init(
+            id: UUID(),
             name: name,
             creationDate: .now,
             initialValue: initialValue,
@@ -65,6 +73,7 @@ class GoalModel {
     }
     
     init(
+        id: UUID,
         name: String,
         creationDate: Date,
         initialValue: Double,
@@ -75,6 +84,7 @@ class GoalModel {
         colors: ColorsModel,
         records: [RecordModel]
     ) {
+        self.id = id
         self.name = name
         self.creationDate = creationDate
         self.initialValue = initialValue
