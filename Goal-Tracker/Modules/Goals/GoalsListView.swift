@@ -34,7 +34,9 @@ struct GoalsListView: View {
             .listStyle(.plain)
             .navigationTitle("goals.title")
             .toolbarTitleDisplayMode(.inlineLarge)
-            .toolbar { toolBar() }
+            .toolbar {
+                toolBarContent()
+            }
             .navigationDestination(item: $goalToEdit) {
                 editGoalView(for: $0)
             }
@@ -87,50 +89,48 @@ struct GoalsListView: View {
             ])
     }
     
+    @ViewBuilder
     private func swipeActions(for goal: GoalModel) -> some View {
-        Group {
-            Button("goal.delete.action.title") {
-                prepareForDeletion(goal)
-            }
-            .tint(.red)
-            
-            Button("goal.archive.action.title", role: .destructive) {
-                archiveGoal(goal)
-            }
-            .tint(.orange)
-            
-            Button("goal.edit.action.title") {
-                editGoal(goal)
-            }
-            .tint(.iconBlue)
+        Button("goal.delete.action.title") {
+            prepareForDeletion(goal)
         }
+        .tint(.red)
+        
+        Button("goal.archive.action.title", role: .destructive) {
+            archiveGoal(goal)
+        }
+        .tint(.orange)
+        
+        Button("goal.edit.action.title") {
+            editGoal(goal)
+        }
+        .tint(.iconBlue)
     }
     
+    @ViewBuilder
     private func contextMenu(for goal: GoalModel) -> some View {
-        Group {
-            Button("goal.edit.action.title", systemImage: "pencil") {
-                editGoal(goal)
-            }
-            .tint(.iconPrimary)
-            
-            Button("goal.archive.action.title", systemImage: "archivebox") {
-                archiveGoal(goal)
-            }
-            .tint(.iconPrimary)
-            
-            Button(
-                "goal.delete.action.title",
-                systemImage: "xmark.bin",
-                role: .destructive
-            ) {
-                prepareForDeletion(goal)
-            }
-            .tint(.red)
+        Button("goal.edit.action.title", systemImage: "pencil") {
+            editGoal(goal)
         }
+        .tint(.iconPrimary)
+        
+        Button("goal.archive.action.title", systemImage: "archivebox") {
+            archiveGoal(goal)
+        }
+        .tint(.iconPrimary)
+        
+        Button(
+            "goal.delete.action.title",
+            systemImage: "xmark.bin",
+            role: .destructive
+        ) {
+            prepareForDeletion(goal)
+        }
+        .tint(.red)
     }
     
     @ToolbarContentBuilder
-    private func toolBar() -> some ToolbarContent {
+    private func toolBarContent() -> some ToolbarContent {
         ToolbarItem(placement: .topBarTrailing) {
             NavigationLink {
                 ArchivedGoalsListView()
@@ -141,16 +141,15 @@ struct GoalsListView: View {
         }
     }
     
+    @ViewBuilder
     private func alertActions() -> some View {
-        Group {
-            Button(role: .cancel) { }
-            
-            Button(
-                "goals.alert.delete.action.title",
-                role: .destructive,
-                action: deleteGoal
-            )
-        }
+        Button(role: .cancel) { }
+        
+        Button(
+            "goals.alert.delete.action.title",
+            role: .destructive,
+            action: deleteGoal
+        )
     }
     
     private func contentUnavailableView() -> some View {

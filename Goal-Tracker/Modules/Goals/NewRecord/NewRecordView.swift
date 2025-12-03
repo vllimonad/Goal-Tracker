@@ -39,7 +39,7 @@ struct NewRecordView: View {
                     .ignoresSafeArea()
             )
             .toolbar {
-                toolBar()
+                toolBarContent()
             }
             .onAppear {
                 configureSegmentedPickerAppearance()
@@ -85,7 +85,7 @@ struct NewRecordView: View {
     }
     
     @ToolbarContentBuilder
-    private func toolBar() -> some ToolbarContent {
+    private func toolBarContent() -> some ToolbarContent {
         ToolbarItem(placement: .topBarLeading) {
             Button {
                 dismiss()
