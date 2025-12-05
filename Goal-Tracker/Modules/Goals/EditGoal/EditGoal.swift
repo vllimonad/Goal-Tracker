@@ -24,57 +24,22 @@ struct EditGoalView: View {
     var body: some View {
         Form {
             Section("edit.goal.name.section.title") {
-                TextField("edit.goal.name.value.placeholder", text: $name)
-                    .keyboardType(.default)
-                    .focused($focusedTextField, equals: .name)
-                    .onTapGesture {
-                        focusedTextField = .name
-                    }
+                nameTextField()
             }
             .listRowBackground(Color.bgPrimary)
             
             Section("edit.goal.data.section.title") {
-                HStack {
-                    Text("edit.goal.target.title")
-                    
-                    Spacer()
-                    
-                    TextField(
-                        "edit.goal.target.value.placeholder",
-                        value: $targetValue,
-                        format: .number
-                    )
-                    .keyboardType(.decimalPad)
-                    .multilineTextAlignment(.trailing)
-                    .focused($focusedTextField, equals: .target)
-                }
-                .onTapGesture {
-                    focusedTextField = .target
-                }
+                targetValueRow()
             }
             .listRowBackground(Color.bgPrimary)
             
             Section("edit.goal.colors.section.title") {
-                ColorPicker(
-                    "edit.goal.progress.color.picker.title",
-                    selection: $progressColor
-                )
-                
-                ColorPicker(
-                    "edit.goal.background.color.picker.title",
-                    selection: $backgroundColor
-                )
-                
-                ColorPicker(
-                    "edit.goal.text.color.picker.title",
-                    selection: $textColor
-                )
+                colorPickers()
             }
             .listRowBackground(Color.bgPrimary)
             
             Section("edit.goal.preview.section.title") {
-                GoalProgressView(goal: createPreviewGoal())
-                    .listRowInsets(EdgeInsets())
+                goalPreview()
             }
         }
         .scrollContentBackground(.hidden)
@@ -83,19 +48,76 @@ struct EditGoalView: View {
         .navigationBarTitleDisplayMode(.inline)
         .systemShadow()
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button("edit.goal.save.action.title") {
-                    saveChanges()
-                    dismiss()
-                }
-                .foregroundStyle(.textPrimary)
-            }
+            toolBarContent()
         }
         .onScrollPhaseChange { _, _ in
             focusedTextField = nil
         }
         .onAppear {
             configureInitialValues()
+        }
+    }
+    
+    private func nameTextField() -> some View {
+        TextField("edit.goal.name.value.placeholder", text: $name)
+            .keyboardType(.default)
+            .focused($focusedTextField, equals: .name)
+            .onTapGesture {
+                focusedTextField = .name
+            }
+    }
+    
+    private func targetValueRow() -> some View {
+        HStack {
+            Text("edit.goal.target.title")
+            
+            Spacer()
+            
+            TextField(
+                "edit.goal.target.value.placeholder",
+                value: $targetValue,
+                format: .number
+            )
+            .keyboardType(.decimalPad)
+            .multilineTextAlignment(.trailing)
+            .focused($focusedTextField, equals: .target)
+        }
+        .onTapGesture {
+            focusedTextField = .target
+        }
+    }
+    
+    @ViewBuilder
+    private func colorPickers() -> some View {
+        ColorPicker(
+            "edit.goal.progress.color.picker.title",
+            selection: $progressColor
+        )
+        
+        ColorPicker(
+            "edit.goal.background.color.picker.title",
+            selection: $backgroundColor
+        )
+        
+        ColorPicker(
+            "edit.goal.text.color.picker.title",
+            selection: $textColor
+        )
+    }
+    
+    private func goalPreview() -> some View {
+        GoalProgressView(goal: createPreviewGoal())
+            .listRowInsets(EdgeInsets())
+    }
+    
+    @ToolbarContentBuilder
+    private func toolBarContent() -> some ToolbarContent {
+        ToolbarItem(placement: .topBarTrailing) {
+            Button("edit.goal.save.action.title") {
+                saveChanges()
+                dismiss()
+            }
+            .foregroundStyle(.textPrimary)
         }
     }
     

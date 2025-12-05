@@ -23,38 +23,9 @@ struct NewRecordView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 16) {
-                Picker("new.record.operation.picker.title", selection: $selectedOperationType) {
-                    ForEach(RecordOperationType.allCases, id: \.rawValue) {
-                        Text($0.rawValue)
-                            .tag($0)
-                    }
-                }
-                .pickerStyle(.segmented)
+                actionPicker()
                 
-                HStack {
-                    TextField(
-                        "new.record.value.field.title",
-                        value: $inputValue,
-                        format: .number
-                    )
-                    .multilineTextAlignment(.center)
-                    .keyboardType(.decimalPad)
-                    .focused($isInputFocused)
-                    .padding()
-                    .background(
-                        Capsule()
-                            .fill(.bgSecondary)
-                    )
-                    
-                    Text(goal.unitType.abbreviation)
-                        .font(.subheadline)
-                        .foregroundColor(.textPrimary)
-                        .padding()
-                        .background(
-                            Capsule()
-                                .fill(.bgSecondary)
-                        )
-                }
+                valueTextField()
                 
                 Spacer()
             }
@@ -68,37 +39,79 @@ struct NewRecordView: View {
                     .ignoresSafeArea()
             )
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Image(systemName: "xmark")
-                            .foregroundStyle(.iconPrimary)
-                    }
-                    .padding(4)
-                    .background(.bgTertiary)
-                    .clipShape(Capsule())
-                }
-                .sharedBackgroundVisibility(.hidden)
-                                
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        saveRecord()
-                        dismiss()
-                    } label: {
-                        Text("new.record.save.action.title")
-                            .foregroundStyle(.textPrimary)
-                    }
-                    .padding(4)
-                    .background(.bgTertiary)
-                    .clipShape(Capsule())
-                }
-                .sharedBackgroundVisibility(.hidden)
+                toolBarContent()
             }
             .onAppear {
                 configureSegmentedPickerAppearance()
             }
         }
+    }
+    
+    private func actionPicker() -> some View {
+        Picker("new.record.operation.picker.title", selection: $selectedOperationType) {
+            ForEach(RecordOperationType.allCases, id: \.rawValue) {
+                Text($0.rawValue)
+                    .tag($0)
+            }
+        }
+        .pickerStyle(.segmented)
+    }
+    
+    private func valueTextField() -> some View {
+        HStack {
+            TextField(
+                "new.record.value.field.title",
+                value: $inputValue,
+                format: .number
+            )
+            .multilineTextAlignment(.center)
+            .keyboardType(.decimalPad)
+            .focused($isInputFocused)
+            .padding()
+            .background(
+                Capsule()
+                    .fill(.bgSecondary)
+            )
+            
+            Text(goal.unitType.abbreviation)
+                .font(.subheadline)
+                .foregroundColor(.textPrimary)
+                .padding()
+                .background(
+                    Capsule()
+                        .fill(.bgSecondary)
+                )
+        }
+    }
+    
+    @ToolbarContentBuilder
+    private func toolBarContent() -> some ToolbarContent {
+        ToolbarItem(placement: .topBarLeading) {
+            Button {
+                dismiss()
+            } label: {
+                Image(systemName: "xmark")
+                    .foregroundStyle(.iconPrimary)
+            }
+            .padding(4)
+            .background(.bgTertiary)
+            .clipShape(Capsule())
+        }
+        .sharedBackgroundVisibility(.hidden)
+                        
+        ToolbarItem(placement: .topBarTrailing) {
+            Button {
+                saveRecord()
+                dismiss()
+            } label: {
+                Text("new.record.save.action.title")
+                    .foregroundStyle(.textPrimary)
+            }
+            .padding(4)
+            .background(.bgTertiary)
+            .clipShape(Capsule())
+        }
+        .sharedBackgroundVisibility(.hidden)
     }
     
     private func configureSegmentedPickerAppearance() {

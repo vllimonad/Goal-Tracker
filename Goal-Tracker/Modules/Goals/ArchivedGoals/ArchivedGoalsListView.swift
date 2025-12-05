@@ -23,42 +23,8 @@ struct ArchivedGoalsListView: View {
     @State private var isDeleteAllAlertPresented: Bool = false
         
     var body: some View {
-        List(goals) { goal in
-            GoalProgressView(goal: goal)
-                .listRowSeparator(.hidden)
-                .listRowInsets(.vertical, 0)
-                .listRowInsets(.horizontal, 20)
-                .listRowBackground(Color.bgPage)
-                .swipeActions(edge: .trailing) {
-                    Button("goal.delete.action.title") {
-                        prepareForDeletion(goal)
-                    }
-                    .tint(.red)
-                    
-                    Button("goal.unarchive.action.title", role: .destructive) {
-                        unarchiveGoal(goal)
-                    }
-                    .tint(.orange)
-                }
-                .contextMenu {
-                    Button("goal.unarchive.action.title", systemImage: "archivebox") {
-                        unarchiveGoal(goal)
-                    }
-                    .tint(.iconPrimary)
-                    
-                    Button(
-                        "goal.delete.action.title",
-                        systemImage: "xmark.bin",
-                        role: .destructive
-                    ) {
-                        prepareForDeletion(goal)
-                    }
-                    .tint(.red)
-                    
-                } preview: {
-                    GoalProgressView(goal: goal)
-                        .frame(width: 300)
-                }
+        List(goals) {
+            goalView(for: $0)
         }
         .background(.bgPage)
         .listRowSpacing(12)
@@ -67,32 +33,106 @@ struct ArchivedGoalsListView: View {
         .toolbarTitleDisplayMode(.inline)
         .toolbarVisibility(.hidden, for: .tabBar)
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    isDeleteAllAlertPresented = true
-                } label: {
-                    Image(systemName: "xmark.bin")
-                        .foregroundStyle(.red)
-                }
-            }
+            toolBarContent()
         }
-        .alert("archived.goals.delete.all.alert.title", isPresented: $isDeleteAllAlertPresented) {
-            Button(role: .cancel) { }
-            Button("delete.all", role: .destructive, action: deleteAllGoals)
+        .alert(
+            "archived.goals.delete.all.alert.title",
+            isPresented: $isDeleteAllAlertPresented
+        ) {
+            deleteAllAlertActions()
         }
-        .alert("archived.goals.delete.alert.title", isPresented: $isDeleteAlertPresented) {
-            Button(role: .cancel) { }
-            Button("delete", role: .destructive, action: deleteGoal)
+        .alert(
+            "archived.goals.delete.alert.title",
+            isPresented: $isDeleteAlertPresented
+        ) {
+            deleteAlertActions()
         }
         .overlay {
             if goals.isEmpty {
-                ContentUnavailableView(
-                    "archived.goals.empty.title",
-                    systemImage: "archivebox",
-                    description: Text("archived.goals.empty.description")
-                )
+                contentUnavailableView()
             }
         }
+    }
+    
+    private func goalView(for goal: GoalModel) -> some View {
+        GoalProgressView(goal: goal)
+            .listRowSeparator(.hidden)
+            .listRowInsets(.vertical, 0)
+            .listRowInsets(.horizontal, 20)
+            .listRowBackground(Color.bgPage)
+            .swipeActions(edge: .trailing) {
+                swipeActions(for: goal)
+            }
+            .contextMenu {
+                contextMenu(for: goal)
+            } preview: {
+                GoalProgressView(goal: goal)
+                    .frame(width: 300)
+            }
+    }
+    
+    @ViewBuilder
+    private func swipeActions(for goal: GoalModel) -> some View {
+        Button("goal.delete.action.title") {
+            prepareForDeletion(goal)
+        }
+        .tint(.red)
+        
+        Button("goal.unarchive.action.title", role: .destructive) {
+            unarchiveGoal(goal)
+        }
+        .tint(.orange)
+    }
+    
+    @ViewBuilder
+    private func contextMenu(for goal: GoalModel) -> some View {
+        Button("goal.unarchive.action.title", systemImage: "archivebox") {
+            unarchiveGoal(goal)
+        }
+        .tint(.iconPrimary)
+        
+        Button(
+            "goal.delete.action.title",
+            systemImage: "xmark.bin",
+            role: .destructive
+        ) {
+            prepareForDeletion(goal)
+        }
+        .tint(.red)
+    }
+    
+    @ToolbarContentBuilder
+    private func toolBarContent() -> some ToolbarContent {
+        ToolbarItem(placement: .topBarTrailing) {
+            Button {
+                isDeleteAllAlertPresented = true
+            } label: {
+                Image(systemName: "xmark.bin")
+                    .foregroundStyle(.red)
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func deleteAllAlertActions() -> some View {
+        Button(role: .cancel) { }
+        
+        Button("delete.all", role: .destructive, action: deleteAllGoals)
+    }
+    
+    @ViewBuilder
+    private func deleteAlertActions() -> some View {
+        Button(role: .cancel) { }
+        
+        Button("delete", role: .destructive, action: deleteGoal)
+    }
+    
+    private func contentUnavailableView() -> some View {
+        ContentUnavailableView(
+            "archived.goals.empty.title",
+            systemImage: "archivebox",
+            description: Text("archived.goals.empty.description")
+        )
     }
     
     private func prepareForDeletion(_ goal: GoalModel) {

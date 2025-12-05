@@ -6,7 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		2B3CB9BA2ECE58F70069EDD9 /* icons.icon in Resources */ = {isa = PBXBuildFile; fileRef = 2B3CB9B92ECE58F70069EDD9 /* icons.icon */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		2B3CB9B92ECE58F70069EDD9 /* icons.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = icons.icon; sourceTree = "<group>"; };
 		2B522AC42E6F8F0F00105245 /* Goal-Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Goal-Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -32,6 +37,7 @@
 		2B522ABB2E6F8F0F00105245 = {
 			isa = PBXGroup;
 			children = (
+				2B3CB9B92ECE58F70069EDD9 /* icons.icon */,
 				2B522AC62E6F8F0F00105245 /* Goal-Tracker */,
 				2B522AC52E6F8F0F00105245 /* Products */,
 			);
@@ -114,6 +120,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B3CB9BA2ECE58F70069EDD9 /* icons.icon in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,8 +261,9 @@
 		2B522AD32E6F8F1100105245 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = icons;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -286,8 +294,9 @@
 		2B522AD42E6F8F1100105245 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = icons;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
