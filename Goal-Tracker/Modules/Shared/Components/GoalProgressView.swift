@@ -23,11 +23,15 @@ struct GoalProgressView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.subheadline)
                     .foregroundStyle(goal.colors.text.color)
+                    .contentTransition(.numericText())
+                    .animation(.snappy, value: goal.currentValue)
             }
             
             Text(goal.getProgress(), format: .percent.precision(.fractionLength(0)))
                 .font(.headline)
                 .foregroundStyle(goal.colors.text.color)
+                .contentTransition(.numericText())
+                .animation(.snappy, value: goal.getProgress())
         }
         .padding(16)
         .background {
@@ -35,7 +39,9 @@ struct GoalProgressView: View {
                 HStack(spacing: 0) {
                     goal.colors.progress.color
                         .frame(width: geometry.size.width * goal.getProgress())
+                        .animation(.spring, value: goal.getProgress())
                     goal.colors.background.color
+                        .animation(.spring, value: goal.getProgress())
                 }
             }
         }

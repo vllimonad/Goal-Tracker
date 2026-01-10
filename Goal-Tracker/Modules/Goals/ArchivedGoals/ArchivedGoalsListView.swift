@@ -144,7 +144,10 @@ struct ArchivedGoalsListView: View {
         guard let goal = selectedGoal else { return }
         
         modelContext.delete(goal)
-        selectedGoal = nil
+        
+        withAnimation(.snappy) {
+            selectedGoal = nil
+        }
     }
     
     private func deleteAllGoals() {

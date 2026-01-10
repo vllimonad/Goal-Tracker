@@ -168,7 +168,10 @@ struct GoalsListView: View {
         guard let goal = goalToDelete else { return }
         
         modelContext.delete(goal)
-        goalToDelete = nil
+        
+        withAnimation(.snappy) {
+            goalToDelete = nil
+        }
     }
     
     private func archiveGoal(_ goal: GoalModel) {
