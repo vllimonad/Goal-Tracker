@@ -10,13 +10,12 @@ import SwiftUI
 struct NewUnitTypeView: View {
     
     @Environment(\.dismiss) var dismiss
+    @Environment(\.modelContext) var context
     
     @State private var name: String = ""
     @State private var nameError: String?
     @State private var abbreviation: String = ""
     @State private var abbreviationError: String?
-
-    @Binding var unit: UnitType
         
     var body: some View {
         Form {
@@ -33,7 +32,6 @@ struct NewUnitTypeView: View {
             Section {
                 Button(action: {
                     createUnitType()
-                    dismiss()
                 }, label: {
                     Text("new.unit.type.action.title")
                         .font(.headline)
@@ -96,14 +94,13 @@ struct NewUnitTypeView: View {
         } else if abbreviation.isEmpty {
             abbreviationError = String(localized: "new.unit.type.abbreviation.error")
         } else {
-            unit = .custom(CustomUnitType(
-                name: name,
-                abbreviation: abbreviation
-            ))
+            let customUnit = CustomUnitType(name: name, abbreviation: abbreviation)
+            context.insert(customUnit)
+            dismiss()
         }
     }
 }
 
 #Preview {
-    NewUnitTypeView(unit: .constant(.currency(.eur)))
+    NewUnitTypeView()
 }

@@ -19,7 +19,7 @@ struct GoalProgressView: View {
                     .font(.headline)
                     .foregroundStyle(goal.colors.text.color)
                 
-                Text("\(roundToLastNonZero(goal.currentValue)) / \(roundToLastNonZero(goal.targetValue)) \(goal.unitType.abbreviation)")
+                Text("\(roundToLastNonZero(goal.currentValue)) / \(roundToLastNonZero(goal.targetValue)) \(goal.unit.abbreviation)")
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.subheadline)
                     .foregroundStyle(goal.colors.text.color)
@@ -59,7 +59,7 @@ struct GoalProgressView: View {
         name: "A",
         initialValue: 0,
         targetValue: 0,
-        unitType: .currency(.eur),
+        unit: UnitModel(systemType: .currency(.eur)),
         colors: ColorsModel()
     ))
 }

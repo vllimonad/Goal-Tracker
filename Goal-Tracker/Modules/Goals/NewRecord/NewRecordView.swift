@@ -73,7 +73,7 @@ struct NewRecordView: View {
                     .fill(.bgSecondary)
             )
             
-            Text(goal.unitType.abbreviation)
+            Text(goal.unit.abbreviation)
                 .font(.subheadline)
                 .foregroundColor(.textPrimary)
                 .padding()
@@ -142,7 +142,7 @@ struct NewRecordView: View {
         name: "A",
         initialValue: 0,
         targetValue: 0,
-        unitType: .currency(.eur),
+        unit: UnitModel(systemType: .currency(.eur)),
         colors: ColorsModel()
     ))
 }

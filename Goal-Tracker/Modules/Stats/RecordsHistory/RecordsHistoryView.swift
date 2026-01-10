@@ -37,7 +37,7 @@ struct RecordsHistoryView: View {
     
     private func recordRow(for record: RecordModel) -> some View {
         HStack {
-            Text("\(String(format: "%+.2f", record.value)) \(goal.unitType.abbreviation)")
+            Text("\(String(format: "%+.2f", record.value)) \(goal.unit.abbreviation)")
                 .font(.headline)
                 .foregroundStyle(.textPrimary)
             
@@ -91,7 +91,7 @@ struct RecordsHistoryView: View {
         name: "A",
         initialValue: 0,
         targetValue: 1,
-        unitType: .currency(.eur),
+        unit: UnitModel(systemType: .currency(.eur)),
         colors: ColorsModel()
     ))
 }
