@@ -19,7 +19,6 @@ class GoalModel {
     var targetValue: Double
     var unitType: UnitType
     var isArchived: Bool
-    var isDeleted: Bool
     
     var colors: ColorsModel
     
@@ -66,7 +65,6 @@ class GoalModel {
             targetValue: targetValue,
             unitType: unitType,
             isArchived: false,
-            isDeleted: false,
             colors: colors,
             records: []
         )
@@ -80,7 +78,6 @@ class GoalModel {
         targetValue: Double,
         unitType: UnitType,
         isArchived: Bool,
-        isDeleted: Bool,
         colors: ColorsModel,
         records: [RecordModel]
     ) {
@@ -90,7 +87,6 @@ class GoalModel {
         self.initialValue = initialValue
         self.targetValue = targetValue
         self.unitType = unitType
-        self.isDeleted = isDeleted
         self.isArchived = isArchived
         self.colors = colors
         self.records = records

@@ -13,7 +13,7 @@ struct GoalsListView: View {
     @Environment(\.modelContext) private var modelContext
     
     @Query(
-        filter: #Predicate<GoalModel> { !$0.isArchived && !$0.isDeleted },
+        filter: #Predicate<GoalModel> { !$0.isArchived },
         sort: \GoalModel.creationDate
     )
     private var goals: [GoalModel]
