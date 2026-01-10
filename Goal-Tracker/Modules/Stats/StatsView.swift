@@ -91,7 +91,7 @@ struct StatsView: View {
     
     private func statsGrid() -> some View {
         Grid {
-            GridRow {
+            GridRow(alignment: .top) {
                 SingleValueStatsView(
                     title: "stats.total.goals.title",
                     value: totalGoals.description,
@@ -105,7 +105,7 @@ struct StatsView: View {
                 )
             }
             
-            GridRow {
+            GridRow(alignment: .top) {
                 SingleValueStatsView(
                     title: "stats.avg.progress.title",
                     value: "\(averageProgress)%",
