@@ -17,20 +17,20 @@ class GoalModel {
     
     var initialValue: Double
     var targetValue: Double
-    var unitType: UnitType
     var isArchived: Bool
-    var isDeleted: Bool
     
     var colors: ColorsModel
     
     @Relationship(deleteRule: .cascade) var records: [RecordModel]
     
+    @Relationship(deleteRule: .cascade) var unit: UnitModel
+    
     var currentValue: Double {
         records.reduce(initialValue) { $0 + $1.value }
     }
     
-    var isActive: Bool {
-        currentValue < targetValue
+    var isCompleted: Bool {
+        currentValue >= targetValue
     }
     
     var valuesHistory: [RecordModel] {
@@ -55,7 +55,7 @@ class GoalModel {
         name: String,
         initialValue: Double,
         targetValue: Double,
-        unitType: UnitType,
+        unit: UnitModel,
         colors: ColorsModel
     ) {
         self.init(
@@ -64,9 +64,8 @@ class GoalModel {
             creationDate: .now,
             initialValue: initialValue,
             targetValue: targetValue,
-            unitType: unitType,
+            unit: unit,
             isArchived: false,
-            isDeleted: false,
             colors: colors,
             records: []
         )
@@ -78,9 +77,8 @@ class GoalModel {
         creationDate: Date,
         initialValue: Double,
         targetValue: Double,
-        unitType: UnitType,
+        unit: UnitModel,
         isArchived: Bool,
-        isDeleted: Bool,
         colors: ColorsModel,
         records: [RecordModel]
     ) {
@@ -89,8 +87,7 @@ class GoalModel {
         self.creationDate = creationDate
         self.initialValue = initialValue
         self.targetValue = targetValue
-        self.unitType = unitType
-        self.isDeleted = isDeleted
+        self.unit = unit
         self.isArchived = isArchived
         self.colors = colors
         self.records = records

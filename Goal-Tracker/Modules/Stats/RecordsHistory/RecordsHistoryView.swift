@@ -11,9 +11,21 @@ struct RecordsHistoryView: View {
     
     var goal: GoalModel
     
+    private var groupedRecordsByMonth: [(key: Date, value: [RecordModel])] {
+        Dictionary(grouping: goal.records) {
+            let calendar = Calendar.current
+            return calendar.date(from: calendar.dateComponents([.month, .year], from: $0.date))!
+        }
+        .sorted { $0.key > $1.key }
+    }
+    
     var body: some View {
-        List(goal.records) {
-            recordRow(for: $0)
+        List(groupedRecordsByMonth, id: \.key) { section in
+            Section(monthName(for: section.key)) {
+                ForEach(section.value) {
+                    recordRow(for: $0)
+                }
+            }
         }
         .scrollContentBackground(.hidden)
         .background(.bgPage)
@@ -25,7 +37,7 @@ struct RecordsHistoryView: View {
     
     private func recordRow(for record: RecordModel) -> some View {
         HStack {
-            Text("\(String(format: "%+.2f", record.value)) \(goal.unitType.abbreviation)")
+            Text("\(String(format: "%+.2f", record.value)) \(goal.unit.abbreviation)")
                 .font(.headline)
                 .foregroundStyle(.textPrimary)
             
@@ -43,6 +55,12 @@ struct RecordsHistoryView: View {
         .contextMenu {
             contextMenu(for: record)
         }
+    }
+    
+    private func monthName(for date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM yyyy"
+        return formatter.string(from: date)
     }
     
     private func swipeActions(for record: RecordModel) -> some View {
@@ -73,7 +91,7 @@ struct RecordsHistoryView: View {
         name: "A",
         initialValue: 0,
         targetValue: 1,
-        unitType: .currency(.eur),
+        unit: UnitModel(systemType: .currency(.eur)),
         colors: ColorsModel()
     ))
 }

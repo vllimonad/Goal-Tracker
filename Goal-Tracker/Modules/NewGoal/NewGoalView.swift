@@ -24,7 +24,7 @@ struct NewGoalView: View {
     
     @State private var initialValue: Double? = nil
     @State private var targetValue: Double? = nil
-    @State private var unitType: UnitType = .other(.none)
+    @State private var unit: UnitModel = UnitModel(systemType: .other(.none))
     
     @State private var selectedPresetIndex: Int? = PresetsDataSource.initialIndex
     @State private var progressColor: Color = PresetsDataSource.getInitial().progress.color
@@ -132,14 +132,14 @@ struct NewGoalView: View {
     
     private func unitPickerView() -> some View {
         NavigationLink {
-            UnitPickerView(unit: $unitType)
+            UnitPickerView(unit: $unit)
         } label: {
             HStack {
                 Text("new.goal.unit.picker.title")
                 
                 Spacer()
                 
-                Text(unitType.name)
+                Text(unit.name)
             }
         }
     }
@@ -239,7 +239,7 @@ struct NewGoalView: View {
             name: name,
             initialValue: initialValue ?? 0,
             targetValue: targetValue ?? 0,
-            unitType: unitType,
+            unit: unit,
             colors: ColorsModel(
                 progress: ColorModel(color: progressColor),
                 background: ColorModel(color: backgroundColor),

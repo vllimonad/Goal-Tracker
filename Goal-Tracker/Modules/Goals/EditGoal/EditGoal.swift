@@ -134,7 +134,7 @@ struct EditGoalView: View {
             name: name,
             initialValue: goal.initialValue,
             targetValue: targetValue,
-            unitType: goal.unitType,
+            unit: goal.unit,
             colors: ColorsModel(
                 progress: progressColor,
                 background: backgroundColor,
@@ -159,7 +159,7 @@ struct EditGoalView: View {
         name: "A",
         initialValue: 0,
         targetValue: 1,
-        unitType: .currency(.eur),
+        unit: UnitModel(systemType: .currency(.eur)),
         colors: ColorsModel()
     ))
 }
