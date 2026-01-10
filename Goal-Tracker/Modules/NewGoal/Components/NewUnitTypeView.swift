@@ -66,6 +66,7 @@ struct NewUnitTypeView: View {
                     .foregroundStyle(.red)
             }
         }
+        .animation(.easeOut, value: nameError)
     }
     
     private func abbreviationTextField() -> some View {
@@ -86,6 +87,7 @@ struct NewUnitTypeView: View {
                     .foregroundStyle(.red)
             }
         }
+        .animation(.easeOut, value: abbreviationError)
     }
     
     private func createUnitType() {

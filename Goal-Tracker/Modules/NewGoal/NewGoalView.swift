@@ -21,6 +21,7 @@ struct NewGoalView: View {
     ]
     
     @State private var name: String = ""
+    @State private var nameError: String?
     
     @State private var initialValue: Double? = nil
     @State private var targetValue: Double? = nil
@@ -77,17 +78,28 @@ struct NewGoalView: View {
     }
     
     private func nameTextField() -> some View {
-        TextField("new.goal.name.value.placeholder", text: $name)
-            .keyboardType(.default)
-            .focused($focusedTextField, equals: .name)
-            .onChange(of: name) { oldValue, newValue in
-                if newValue.count > 20 {
-                    name = oldValue
+        VStack(alignment: .leading, spacing: 8) {
+            TextField("new.goal.name.value.placeholder", text: $name)
+                .keyboardType(.default)
+                .focused($focusedTextField, equals: .name)
+                .onChange(of: name) { oldValue, newValue in
+                    nameError = nil
+                    
+                    if newValue.count > 30 {
+                        name = oldValue
+                    }
                 }
+                .onTapGesture {
+                    focusedTextField = .name
+                }
+            
+            if let error = nameError {
+                Text(error)
+                    .font(.caption)
+                    .foregroundStyle(.red)
             }
-            .onTapGesture {
-                focusedTextField = .name
-            }
+        }
+        .animation(.easeOut, value: nameError)
     }
     
     private func initialValueTextField() -> some View {
@@ -203,7 +215,6 @@ struct NewGoalView: View {
         ToolbarItem(placement: .topBarTrailing) {
             Button("new.goal.save.action.title") {
                 saveGoal()
-                dismiss()
             }
         }
     }
@@ -249,10 +260,14 @@ struct NewGoalView: View {
     }
     
     private func saveGoal() {
-        guard !name.isEmpty else { return }
+        guard !name.isEmpty else {
+            nameError = String(localized: "new.goal.name.value.error")
+            return
+        }
         
         let goal = createGoalModel()
         modelContext.insert(goal)
+        dismiss()
     }
 }
 
