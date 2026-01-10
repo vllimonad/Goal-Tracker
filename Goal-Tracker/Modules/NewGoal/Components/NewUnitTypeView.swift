@@ -75,7 +75,7 @@ struct NewUnitTypeView: View {
                 .onChange(of: abbreviation) { oldValue, newValue in
                     abbreviationError = nil
                     
-                    if newValue.count > 1 {
+                    if newValue.count > 3 {
                         abbreviation = oldValue
                     }
                 }
