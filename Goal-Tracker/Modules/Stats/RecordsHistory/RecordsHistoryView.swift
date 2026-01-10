@@ -81,8 +81,10 @@ struct RecordsHistoryView: View {
         .tint(.red)
     }
     
-    private func deleteRecord(_ record: RecordModel) {        
-        goal.records.removeAll { record.id == $0.id }
+    private func deleteRecord(_ record: RecordModel) {
+        withAnimation {
+            goal.records.removeAll { record.id == $0.id }
+        }
     }
 }
 

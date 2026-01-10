@@ -144,7 +144,7 @@ struct NewGoalView: View {
     
     private func unitPickerView() -> some View {
         NavigationLink {
-            UnitPickerView(unit: $unit)
+            UnitsListView(unit: $unit)
         } label: {
             HStack {
                 Text("new.goal.unit.picker.title")

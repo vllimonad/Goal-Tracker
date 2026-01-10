@@ -10,7 +10,7 @@ import SwiftUI
 struct NewUnitTypeView: View {
     
     @Environment(\.dismiss) var dismiss
-    @Environment(\.modelContext) var context
+    @Environment(\.modelContext) var modelContext
     
     @State private var name: String = ""
     @State private var nameError: String?
@@ -97,7 +97,7 @@ struct NewUnitTypeView: View {
             abbreviationError = String(localized: "new.unit.type.abbreviation.error")
         } else {
             let customUnit = CustomUnitType(name: name, abbreviation: abbreviation)
-            context.insert(customUnit)
+            modelContext.insert(customUnit)
             dismiss()
         }
     }

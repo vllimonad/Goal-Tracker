@@ -137,6 +137,8 @@ struct StatsView: View {
             )
             .font(.system(size: 24, weight: .semibold))
             .foregroundStyle(.textBlue)
+            .contentTransition(.numericText())
+            .animation(.snappy, value: goal.getProgress())
             
             Text("stats.progress.title")
                 .font(.system(size: 14, weight: .medium))

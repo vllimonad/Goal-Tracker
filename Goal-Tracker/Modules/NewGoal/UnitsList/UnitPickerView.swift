@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct UnitPickerView: View {
+struct UnitsListView: View {
     
     @Environment(\.dismiss) var dismiss
     
@@ -155,5 +155,5 @@ struct UnitPickerView: View {
 }
 
 #Preview {
-    UnitPickerView(unit: .constant(UnitModel(systemType: .currency(.eur))))
+    UnitsListView(unit: .constant(UnitModel(systemType: .currency(.eur))))
 }
