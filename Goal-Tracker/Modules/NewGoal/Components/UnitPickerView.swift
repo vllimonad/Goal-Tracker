@@ -33,6 +33,7 @@ struct UnitPickerView: View {
         .scrollContentBackground(.hidden)
         .navigationTitle("goal.unit.title")
         .background(.bgModalPage)
+        .tint(.iconBlue)
         .systemShadow()
         .onChange(of: selectedCustomUnit) { _, _ in
             didSelectCustomUnit()
@@ -82,7 +83,7 @@ struct UnitPickerView: View {
                     Image(systemName: "plus.circle")
                         .resizable()
                         .frame(width: 30, height: 30)
-                        .foregroundStyle(Color.iconPrimary)
+                        .foregroundStyle(Color.iconBlue)
                 }
 
             }

@@ -39,7 +39,7 @@ struct NewUnitTypeView: View {
                 .frame(maxWidth: .infinity)
                 .foregroundStyle(Color.textPrimary)
             }
-            .listRowBackground(Color.bgBrand)
+            .listRowBackground(Color.bgBlue)
         }
         .scrollContentBackground(.hidden)
         .background(.bgModalPage)
