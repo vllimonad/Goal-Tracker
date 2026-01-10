@@ -25,8 +25,8 @@ struct GoalProgressView: View {
                     .foregroundStyle(goal.colors.text.color)
             }
             
-            Text(goal.getProgress(), format: .percent.rounded(increment: 0.1))
-                .font(.subheadline)
+            Text(goal.getProgress(), format: .percent.precision(.fractionLength(0)))
+                .font(.headline)
                 .foregroundStyle(goal.colors.text.color)
         }
         .padding(16)
