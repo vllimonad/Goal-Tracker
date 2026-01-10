@@ -23,11 +23,13 @@ struct StatsView: View {
     }
     
     private var activeGoals: Int {
-        goals.filter(\.isActive).count
+        goals
+            .filter { !$0.isCompleted }
+            .count
     }
     
-    private var archivedGoals: Int {
-        goals.filter(\.isArchived).count
+    private var completedGoals: Int {
+        goals.filter(\.isCompleted).count
     }
     
     private var averageProgress: Int {
@@ -111,9 +113,9 @@ struct StatsView: View {
                 )
                 
                 SingleValueStatsView(
-                    title: "stats.archived.goals.title",
-                    value: archivedGoals.description,
-                    iconResource: .statsActiveGoals
+                    title: "stats.completed.goals.title",
+                    value: completedGoals.description,
+                    iconResource: .statsCompletedGoals
                 )
             }
         }

@@ -29,8 +29,8 @@ class GoalModel {
         records.reduce(initialValue) { $0 + $1.value }
     }
     
-    var isActive: Bool {
-        currentValue < targetValue
+    var isCompleted: Bool {
+        currentValue >= targetValue
     }
     
     var valuesHistory: [RecordModel] {
