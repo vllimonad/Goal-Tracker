@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CustomUnitType: Codable {
+struct CustomUnitType: Codable, Hashable {
     
     var name: String
     var abbreviation: String

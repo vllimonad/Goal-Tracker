@@ -12,6 +12,7 @@ enum UnitType: Codable, Hashable {
     case distance(DistanceUnitType)
     case currency(CurrencyUnitType)
     case other(OtherUnitType)
+    case custom(CustomUnitType)
     
     var name: String {
         switch self {
@@ -19,6 +20,7 @@ enum UnitType: Codable, Hashable {
         case .distance(let value): value.name
         case .currency(let value): value.name
         case .other(let value): value.name
+        case .custom(let value): value.name
         }
     }
     
@@ -28,6 +30,7 @@ enum UnitType: Codable, Hashable {
         case .distance(let value): value.abbreviation
         case .currency(let value): value.abbreviation
         case .other(let value): value.abbreviation
+        case .custom(let value): value.abbreviation
         }
     }
 }

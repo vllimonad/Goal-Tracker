@@ -64,6 +64,16 @@ struct UnitPickerView: View {
         }
         .scrollContentBackground(.hidden)
         .navigationTitle("goal.unit.title")
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                NavigationLink {
+                    NewUnitTypeView(unit: $unit)
+                } label: {
+                    Image(systemName: "plus")
+                        .foregroundStyle(.iconPrimary)
+                }
+            }
+        }
         .background(.bgModalPage)
         .systemShadow()
         .onChange(of: unit) { _, _ in
