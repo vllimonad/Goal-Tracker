@@ -15,120 +15,141 @@ struct UnitPickerView: View {
     @Query private var customUnits: [CustomUnitType]
     @Binding var unit: UnitModel
     
-    private var customUnitModels: [UnitModel] {
-        customUnits.map {
-            UnitModel(customType: $0)
-        }
-    }
-    
-    private var systemCurrencyUnitModels: [UnitModel] {
-        CurrencyUnitType.allCases.map {
-            UnitModel(systemType: .currency($0))
-        }
-    }
-    
-    private var systemWeightUnitModels: [UnitModel] {
-        WeightUnitType.allCases.map {
-            UnitModel(systemType: .weight($0))
-        }
-    }
-    
-    private var systemOtherUnitModels: [UnitModel] {
-        OtherUnitType.allCases.map {
-            UnitModel(systemType: .other($0))
-        }
-    }
-    
-    private var systemDistanceUnitModels: [UnitModel] {
-        DistanceUnitType.allCases.map {
-            UnitModel(systemType: .distance($0))
-        }
-    }
+    @State private var selectedSystemUnit: SystemUnitType?
+    @State private var selectedCustomUnit: CustomUnitType?
     
     var body: some View {
         Form {
-            Section {
-                Picker("", selection: $unit) {
-                    ForEach(systemOtherUnitModels) {
-                        Text($0.name)
-                            .tag($0.id)
-                    }
-                }
-                .pickerStyle(.inline)
-                .labelsHidden()
-            }
-            .listRowBackground(Color.bgModalPrimary)
+            createOtherUnitsSection()
             
-            Section {
-                Picker("", selection: $unit) {
-                    ForEach(customUnits) {
-                        Text($0.name)
-                            .tag($0.id)
-                    }
-                }
-                .pickerStyle(.inline)
-                .labelsHidden()
-            } header: {
-                HStack {
-                    Text("goal.unit.custom.section.title")
-                    
-                    Spacer()
-                    
-                    Button {
-                        
-                    } label: {
-                        Image(systemName: "plus.circle")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                            .foregroundStyle(Color.iconPrimary)
-                    }
-                }
-            }
-            .listRowBackground(Color.bgModalPrimary)
+            createCustomUnitsSection()
 
-            Section("goal.unit.currency.section.title") {
-                Picker("", selection: $unit) {
-                    ForEach(systemCurrencyUnitModels) {
-                        Text($0.name)
-                            .tag($0.id)
-                    }
-                }
-                .pickerStyle(.inline)
-                .labelsHidden()
-            }
-            .listRowBackground(Color.bgModalPrimary)
+            createCurrencyUnitsSection()
             
-            Section("goal.unit.weight.section.title") {
-                Picker("", selection: $unit) {
-                    ForEach(systemWeightUnitModels) {
-                        Text($0.name)
-                            .tag($0.id)
-                    }
-                }
-                .pickerStyle(.inline)
-                .labelsHidden()
-            }
-            .listRowBackground(Color.bgModalPrimary)
+            createWeightUnitsSection()
             
-            Section("goal.unit.distance.section.title") {
-                Picker("", selection: $unit) {
-                    ForEach(systemDistanceUnitModels) {
-                        Text($0.name)
-                            .tag($0.id)
-                    }
-                }
-                .pickerStyle(.inline)
-                .labelsHidden()
-            }
-            .listRowBackground(Color.bgModalPrimary)
+            createDistanceUnitsSection()
         }
         .scrollContentBackground(.hidden)
         .navigationTitle("goal.unit.title")
         .background(.bgModalPage)
         .systemShadow()
-        .onChange(of: unit) { oldValue, newValue in
-            dismiss()
+        .onChange(of: selectedCustomUnit) { _, _ in
+            didSelectCustomUnit()
         }
+        .onChange(of: selectedSystemUnit) { _, _ in
+            didSelectSystemUnit()
+        }
+        .onAppear {
+            selectedSystemUnit = unit.systemType
+            selectedCustomUnit = unit.customType
+        }
+    }
+    
+    private func createOtherUnitsSection() -> some View {
+        Section {
+            Picker("", selection: $selectedSystemUnit) {
+                ForEach(OtherUnitType.allCases, id: \.self) {
+                    Text($0.name)
+                        .tag(SystemUnitType.other($0))
+                }
+            }
+            .pickerStyle(.inline)
+            .labelsHidden()
+        }
+        .listRowBackground(Color.bgModalPrimary)
+    }
+        
+    private func createCustomUnitsSection() -> some View {
+        Section {
+            Picker("", selection: $selectedCustomUnit) {
+                ForEach(customUnits) {
+                    Text($0.name)
+                        .tag($0)
+                }
+            }
+            .pickerStyle(.inline)
+            .labelsHidden()
+        } header: {
+            HStack {
+                Text("goal.unit.custom.section.title")
+                
+                Spacer()
+                
+                NavigationLink {
+                    NewUnitTypeView()
+                } label: {
+                    Image(systemName: "plus.circle")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .foregroundStyle(Color.iconPrimary)
+                }
+
+            }
+        }
+        .listRowBackground(Color.bgModalPrimary)
+    }
+    
+    private func createCurrencyUnitsSection() -> some View {
+        Section("goal.unit.currency.section.title") {
+            Picker("", selection: $selectedSystemUnit) {
+                ForEach(CurrencyUnitType.allCases, id: \.self) {
+                    Text($0.name)
+                        .tag(SystemUnitType.currency($0))
+                }
+            }
+            .pickerStyle(.inline)
+            .labelsHidden()
+        }
+        .listRowBackground(Color.bgModalPrimary)
+    }
+    
+    private func createWeightUnitsSection() -> some View {
+        Section("goal.unit.weight.section.title") {
+            Picker("", selection: $selectedSystemUnit) {
+                ForEach(WeightUnitType.allCases, id: \.self) {
+                    Text($0.name)
+                        .tag(SystemUnitType.weight($0))
+                }
+            }
+            .pickerStyle(.inline)
+            .labelsHidden()
+        }
+        .listRowBackground(Color.bgModalPrimary)
+    }
+    
+    private func createDistanceUnitsSection() -> some View {
+        Section("goal.unit.distance.section.title") {
+            Picker("", selection: $selectedSystemUnit) {
+                ForEach(DistanceUnitType.allCases, id: \.self) {
+                    Text($0.name)
+                        .tag(SystemUnitType.distance($0))
+                }
+            }
+            .pickerStyle(.inline)
+            .labelsHidden()
+        }
+        .listRowBackground(Color.bgModalPrimary)
+    }
+    
+    private func didSelectCustomUnit() {
+        guard
+            let selectedUnit = selectedCustomUnit,
+            selectedUnit != unit.customType
+        else { return }
+        
+        unit = UnitModel(customType: selectedUnit)
+        dismiss()
+    }
+    
+    private func didSelectSystemUnit() {
+        guard
+            let selectedUnit = selectedSystemUnit,
+            selectedUnit != unit.systemType
+        else { return }
+        
+        unit = UnitModel(systemType: selectedUnit)
+        dismiss()
     }
 }
 
