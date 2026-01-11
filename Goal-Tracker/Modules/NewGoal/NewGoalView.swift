@@ -34,7 +34,7 @@ struct NewGoalView: View {
         
     var body: some View {
         Form {
-            Section {
+            Section("new.goal.name.section.title") {
                 nameTextField()
             }
             .listRowBackground(Color.bgModalPrimary)

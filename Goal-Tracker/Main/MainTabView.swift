@@ -14,7 +14,7 @@ struct MainTabView: View {
     }
     
     @State private var selectedTab: TabType = .goals
-    @State private var didTapNewGoalTab: Bool = false
+    @State private var isNewGoalPresented: Bool = false
     
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -48,17 +48,21 @@ struct MainTabView: View {
             }
         }
         .tint(.textBlue)
-        .onChange(of: selectedTab, { oldValue, newValue in
+        .onChange(of: selectedTab) { oldValue, newValue in
             if newValue == .newGoal {
-                didTapNewGoalTab = true
-                selectedTab = oldValue
+                isNewGoalPresented = true
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    selectedTab = oldValue
+                }
             }
-        })
-        .sheet(isPresented: $didTapNewGoalTab) {
-            NavigationStack {
+        }
+        .sheet(isPresented: $isNewGoalPresented) {
+            NavigationView {
                 NewGoalView()
             }
         }
+
     }
 }
 
