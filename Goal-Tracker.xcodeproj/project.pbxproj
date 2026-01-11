@@ -8,17 +8,76 @@
 
 /* Begin PBXBuildFile section */
 		2B3CB9BA2ECE58F70069EDD9 /* icons.icon in Resources */ = {isa = PBXBuildFile; fileRef = 2B3CB9B92ECE58F70069EDD9 /* icons.icon */; };
+		2B5AE2272F1450EE00C5A5CC /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5AE2262F1450EE00C5A5CC /* WidgetKit.framework */; };
+		2B5AE2292F1450EE00C5A5CC /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5AE2282F1450EE00C5A5CC /* SwiftUI.framework */; };
+		2B5AE23A2F1450F000C5A5CC /* GoalTrackerWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 2B5AE2242F1450EE00C5A5CC /* GoalTrackerWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2B5AE2382F1450F000C5A5CC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2B522ABC2E6F8F0F00105245 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2B5AE2232F1450EE00C5A5CC;
+			remoteInfo = GoalTrackerWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2B5AE23F2F1450F000C5A5CC /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				2B5AE23A2F1450F000C5A5CC /* GoalTrackerWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2B3CB9B92ECE58F70069EDD9 /* icons.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = icons.icon; sourceTree = "<group>"; };
 		2B522AC42E6F8F0F00105245 /* Goal-Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Goal-Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B5AE2242F1450EE00C5A5CC /* GoalTrackerWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GoalTrackerWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B5AE2262F1450EE00C5A5CC /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		2B5AE2282F1450EE00C5A5CC /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		2B5AE23B2F1450F000C5A5CC /* Exceptions for "GoalTrackerWidget" folder in "GoalTrackerWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 2B5AE2232F1450EE00C5A5CC /* GoalTrackerWidgetExtension */;
+		};
+		2B5AE2432F1452A500C5A5CC /* Exceptions for "GoalTrackerWidget" folder in "Goal-Tracker" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				GoalEntry.swift,
+				GoalTimelineProvider.swift,
+				GoalWidget.swift,
+				GoalWidgetView.swift,
+			);
+			target = 2B522AC32E6F8F0F00105245 /* Goal-Tracker */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		2B522AC62E6F8F0F00105245 /* Goal-Tracker */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "Goal-Tracker";
+			sourceTree = "<group>";
+		};
+		2B5AE22A2F1450EE00C5A5CC /* GoalTrackerWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				2B5AE2432F1452A500C5A5CC /* Exceptions for "GoalTrackerWidget" folder in "Goal-Tracker" target */,
+				2B5AE23B2F1450F000C5A5CC /* Exceptions for "GoalTrackerWidget" folder in "GoalTrackerWidgetExtension" target */,
+			);
+			path = GoalTrackerWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -31,6 +90,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2B5AE2212F1450EE00C5A5CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B5AE2292F1450EE00C5A5CC /* SwiftUI.framework in Frameworks */,
+				2B5AE2272F1450EE00C5A5CC /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -39,6 +107,8 @@
 			children = (
 				2B3CB9B92ECE58F70069EDD9 /* icons.icon */,
 				2B522AC62E6F8F0F00105245 /* Goal-Tracker */,
+				2B5AE22A2F1450EE00C5A5CC /* GoalTrackerWidget */,
+				2B5AE2252F1450EE00C5A5CC /* Frameworks */,
 				2B522AC52E6F8F0F00105245 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -47,8 +117,18 @@
 			isa = PBXGroup;
 			children = (
 				2B522AC42E6F8F0F00105245 /* Goal-Tracker.app */,
+				2B5AE2242F1450EE00C5A5CC /* GoalTrackerWidgetExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		2B5AE2252F1450EE00C5A5CC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2B5AE2262F1450EE00C5A5CC /* WidgetKit.framework */,
+				2B5AE2282F1450EE00C5A5CC /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -61,10 +141,12 @@
 				2B522AC02E6F8F0F00105245 /* Sources */,
 				2B522AC12E6F8F0F00105245 /* Frameworks */,
 				2B522AC22E6F8F0F00105245 /* Resources */,
+				2B5AE23F2F1450F000C5A5CC /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				2B5AE2392F1450F000C5A5CC /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				2B522AC62E6F8F0F00105245 /* Goal-Tracker */,
@@ -76,6 +158,28 @@
 			productReference = 2B522AC42E6F8F0F00105245 /* Goal-Tracker.app */;
 			productType = "com.apple.product-type.application";
 		};
+		2B5AE2232F1450EE00C5A5CC /* GoalTrackerWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2B5AE23C2F1450F000C5A5CC /* Build configuration list for PBXNativeTarget "GoalTrackerWidgetExtension" */;
+			buildPhases = (
+				2B5AE2202F1450EE00C5A5CC /* Sources */,
+				2B5AE2212F1450EE00C5A5CC /* Frameworks */,
+				2B5AE2222F1450EE00C5A5CC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				2B5AE22A2F1450EE00C5A5CC /* GoalTrackerWidget */,
+			);
+			name = GoalTrackerWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = GoalTrackerWidgetExtension;
+			productReference = 2B5AE2242F1450EE00C5A5CC /* GoalTrackerWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -83,11 +187,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1620;
+				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					2B522AC32E6F8F0F00105245 = {
 						CreatedOnToolsVersion = 16.2;
+					};
+					2B5AE2232F1450EE00C5A5CC = {
+						CreatedOnToolsVersion = 26.0.1;
 					};
 				};
 			};
@@ -111,6 +218,7 @@
 			projectRoot = "";
 			targets = (
 				2B522AC32E6F8F0F00105245 /* Goal-Tracker */,
+				2B5AE2232F1450EE00C5A5CC /* GoalTrackerWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -124,6 +232,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2B5AE2222F1450EE00C5A5CC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -134,7 +249,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2B5AE2202F1450EE00C5A5CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2B5AE2392F1450F000C5A5CC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2B5AE2232F1450EE00C5A5CC /* GoalTrackerWidgetExtension */;
+			targetProxy = 2B5AE2382F1450F000C5A5CC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		2B522AD02E6F8F1100105245 /* Debug */ = {
@@ -328,6 +458,70 @@
 			};
 			name = Release;
 		};
+		2B5AE23D2F1450F000C5A5CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B6DN2V836G;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GoalTrackerWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = GoalTrackerWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.uladzislau.klunduk.goalslab.GoalTrackerWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2B5AE23E2F1450F000C5A5CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B6DN2V836G;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GoalTrackerWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = GoalTrackerWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.uladzislau.klunduk.goalslab.GoalTrackerWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -345,6 +539,15 @@
 			buildConfigurations = (
 				2B522AD32E6F8F1100105245 /* Debug */,
 				2B522AD42E6F8F1100105245 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2B5AE23C2F1450F000C5A5CC /* Build configuration list for PBXNativeTarget "GoalTrackerWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B5AE23D2F1450F000C5A5CC /* Debug */,
+				2B5AE23E2F1450F000C5A5CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
