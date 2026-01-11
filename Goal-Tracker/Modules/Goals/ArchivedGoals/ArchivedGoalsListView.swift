@@ -31,7 +31,6 @@ struct ArchivedGoalsListView: View {
         .listStyle(.plain)
         .navigationTitle("archived.goals.title")
         .toolbarTitleDisplayMode(.inline)
-        .toolbarVisibility(.hidden, for: .tabBar)
         .toolbar {
             toolBarContent()
         }

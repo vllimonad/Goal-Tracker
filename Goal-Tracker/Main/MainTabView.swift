@@ -23,7 +23,9 @@ struct MainTabView: View {
                 image: selectedTab == .goals ? "tab_goals_colored" : "tab_goals",
                 value: .goals
             ) {
-                GoalsListView()
+                NavigationStack {
+                    GoalsListView()
+                }
             }
                         
             Tab(
@@ -31,7 +33,9 @@ struct MainTabView: View {
                 image: selectedTab == .stats ? "tab_stats_colored" : "tab_stats",
                 value: .stats
             ) {
-                StatsView()
+                NavigationStack {
+                    StatsView()
+                }
             }
             
             Tab(
@@ -51,7 +55,9 @@ struct MainTabView: View {
             }
         })
         .sheet(isPresented: $didTapNewGoalTab) {
-            NewGoalView()
+            NavigationStack {
+                NewGoalView()
+            }
         }
     }
 }

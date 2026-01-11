@@ -25,36 +25,35 @@ struct GoalsListView: View {
     @State private var isDeleteAlertPresented: Bool = false
     
     var body: some View {
-        NavigationStack {
-            List(goals) {
-                goalView(for: $0)
-            }
-            .background(.bgPage)
-            .listRowSpacing(12)
-            .listStyle(.plain)
-            .navigationTitle("goals.title")
-            .toolbarTitleDisplayMode(.inlineLarge)
-            .toolbar {
-                toolBarContent()
-            }
-            .navigationDestination(item: $goalToEdit) {
-                editGoalView(for: $0)
-            }
-            .sheet(item: $selectedGoal) {
-                newRecordsViewSheet(for: $0)
-            }
-            .alert(
-                "delete.goal \(goalToDelete?.name ?? "")?",
-                isPresented: $isDeleteAlertPresented
-            ) {
-                alertActions()
-            }
-            .overlay {
-                if goals.isEmpty {
-                    contentUnavailableView()
-                }
+        List(goals) {
+            goalView(for: $0)
+        }
+        .background(.bgPage)
+        .listRowSpacing(12)
+        .listStyle(.plain)
+        .navigationTitle("goals.title")
+        .toolbarTitleDisplayMode(.inlineLarge)
+        .toolbar {
+            toolBarContent()
+        }
+        .navigationDestination(item: $goalToEdit) {
+            editGoalView(for: $0)
+        }
+        .sheet(item: $selectedGoal) {
+            newRecordsViewSheet(for: $0)
+        }
+        .alert(
+            "delete.goal \(goalToDelete?.name ?? "")?",
+            isPresented: $isDeleteAlertPresented
+        ) {
+            alertActions()
+        }
+        .overlay {
+            if goals.isEmpty {
+                contentUnavailableView()
             }
         }
+        
     }
     
     private func goalView(for goal: GoalModel) -> some View {
@@ -134,6 +133,7 @@ struct GoalsListView: View {
         ToolbarItem(placement: .topBarTrailing) {
             NavigationLink {
                 ArchivedGoalsListView()
+                    .toolbarVisibility(.hidden, for: .tabBar)
             } label: {
                 Image(systemName: "archivebox")
                     .foregroundStyle(.iconPrimary)

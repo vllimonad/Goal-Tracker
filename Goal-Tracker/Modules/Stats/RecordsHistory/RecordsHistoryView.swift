@@ -32,7 +32,6 @@ struct RecordsHistoryView: View {
         .systemShadow()
         .navigationTitle("\(goal.name) records")
         .navigationBarTitleDisplayMode(.inline)
-        .toolbarVisibility(.hidden, for: .tabBar)
     }
     
     private func recordRow(for record: RecordModel) -> some View {
