@@ -44,48 +44,46 @@ struct StatsView: View {
     }
     
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack {
-                    statsGrid()
-                    
-                    VStack(alignment: .leading, spacing: 20) {
-                        if let selectedGoal = selectedGoal {
-                            HStack(alignment: .top) {
-                                selectedGoalTitle(selected: selectedGoal)
-                                
-                                goalPicker(selected: selectedGoal)
-                            }
+        ScrollView {
+            VStack {
+                statsGrid()
+                
+                VStack(alignment: .leading, spacing: 20) {
+                    if let selectedGoal = selectedGoal {
+                        HStack(alignment: .top) {
+                            selectedGoalTitle(selected: selectedGoal)
                             
-                            if isChartPresented {
-                                recordsChart(for: selectedGoal)
-                                
-                                recordsHistoryActionView(for: selectedGoal)
-                            } else {
-                                 chartContentUnavailableView()
-                            }
-                        } else {
-                            statsContentUnavailableView()
+                            goalPicker(selected: selectedGoal)
                         }
+                        
+                        if isChartPresented {
+                            recordsChart(for: selectedGoal)
+                            
+                            recordsHistoryActionView(for: selectedGoal)
+                        } else {
+                             chartContentUnavailableView()
+                        }
+                    } else {
+                        statsContentUnavailableView()
                     }
-                    .padding(20)
-                    .background {
-                        RoundedRectangle(cornerRadius: 20)
-                            .fill(.bgPrimary)
-                    }
-                    .systemShadow()
                 }
-                .padding(.horizontal, 20)
+                .padding(20)
+                .background {
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(.bgPrimary)
+                }
+                .systemShadow()
             }
-            .background(.bgPage)
-            .navigationTitle("stats.title")
-            .navigationBarTitleDisplayMode(.large)
-            .onAppear {
-                selectedGoalId = selectedGoalId ?? goals.first?.id
-            }
-            .onChange(of: goals) { _, newValue in
-                selectedGoalId = selectedGoalId ?? newValue.first?.id
-            }
+            .padding(.horizontal, 20)
+        }
+        .background(.bgPage)
+        .navigationTitle("stats.title")
+        .navigationBarTitleDisplayMode(.large)
+        .onAppear {
+            selectedGoalId = selectedGoalId ?? goals.first?.id
+        }
+        .onChange(of: goals) { _, newValue in
+            selectedGoalId = selectedGoalId ?? newValue.first?.id
         }
     }
     
@@ -202,6 +200,7 @@ struct StatsView: View {
     private func recordsHistoryActionView(for goal: GoalModel) -> some View {
         NavigationLink {
             RecordsHistoryView(goal: goal)
+                .toolbarVisibility(.hidden, for: .tabBar)
         } label: {
             HStack {
                 Text("stats.records.history.title")
