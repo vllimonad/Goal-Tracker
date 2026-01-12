@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftData
+import AppIntents
 
 @Model
 class GoalModel {

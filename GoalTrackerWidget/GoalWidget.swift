@@ -14,10 +14,15 @@ struct GoalWidget: Widget {
     let kind: String = "GoalWidget"
 
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: GoalTimelineProvider()) { entry in
-            GoalWidgetView(goal: entry)
+        AppIntentConfiguration(
+            kind: kind,
+            intent: SelectGoalIntent.self,
+            provider: GoalProvider()
+        ) { entry in
+            GoalWidgetView(entry: entry)
         }
-        .configurationDisplayName("Vertical progress")
+        .configurationDisplayName("Select a goal")
+        .description("Track a specific goal on your home screen")
         .supportedFamilies([.systemSmall])
     }
 }

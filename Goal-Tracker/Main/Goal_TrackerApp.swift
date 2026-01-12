@@ -14,13 +14,6 @@ struct Goal_TrackerApp: App {
         WindowGroup {
             MainTabView()
         }
-        .modelContainer(for: [
-            GoalModel.self,
-            RecordModel.self,
-            UnitModel.self,
-            CustomUnitType.self,
-            ColorsModel.self,
-            ColorModel.self
-        ])
+        .modelContainer(for: [GoalModel.self])
     }
 }

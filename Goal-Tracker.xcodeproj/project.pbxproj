@@ -43,6 +43,7 @@
 		2B5AE2242F1450EE00C5A5CC /* GoalTrackerWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GoalTrackerWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B5AE2262F1450EE00C5A5CC /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		2B5AE2282F1450EE00C5A5CC /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		2B5AE2622F14807900C5A5CC /* GoalTrackerWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoalTrackerWidgetExtension.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -56,18 +57,46 @@
 		2B5AE2432F1452A500C5A5CC /* Exceptions for "GoalTrackerWidget" folder in "Goal-Tracker" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				GoalEntry.swift,
-				GoalTimelineProvider.swift,
+				GoalsEntry.swift,
 				GoalWidget.swift,
 				GoalWidgetView.swift,
 			);
 			target = 2B522AC32E6F8F0F00105245 /* Goal-Tracker */;
+		};
+		2B5AE2542F14729D00C5A5CC /* Exceptions for "Goal-Tracker" folder in "Goal-Tracker" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 2B522AC32E6F8F0F00105245 /* Goal-Tracker */;
+		};
+		2B5AE2562F1474B100C5A5CC /* Exceptions for "Goal-Tracker" folder in "GoalTrackerWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Modules/Shared/Models/Color/ColorModel.swift,
+				Modules/Shared/Models/Color/ColorsModel.swift,
+				Modules/Shared/Models/Goal/GoalModel.swift,
+				Modules/Shared/Models/Goal/RecordModel.swift,
+				Modules/Shared/Models/Unit/CustomUnitType.swift,
+				Modules/Shared/Models/Unit/system/CurrencyUnitType.swift,
+				Modules/Shared/Models/Unit/system/DistanceUnitType.swift,
+				Modules/Shared/Models/Unit/system/OtherUnitType.swift,
+				Modules/Shared/Models/Unit/system/WeightUnitType.swift,
+				Modules/Shared/Models/Unit/SystemUnitType.swift,
+				Modules/Shared/Models/Unit/UnitModel.swift,
+				Modules/Shared/Models/Unit/UnitType.swift,
+			);
+			target = 2B5AE2232F1450EE00C5A5CC /* GoalTrackerWidgetExtension */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		2B522AC62E6F8F0F00105245 /* Goal-Tracker */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				2B5AE2542F14729D00C5A5CC /* Exceptions for "Goal-Tracker" folder in "Goal-Tracker" target */,
+				2B5AE2562F1474B100C5A5CC /* Exceptions for "Goal-Tracker" folder in "GoalTrackerWidgetExtension" target */,
+			);
 			path = "Goal-Tracker";
 			sourceTree = "<group>";
 		};
@@ -105,6 +134,7 @@
 		2B522ABB2E6F8F0F00105245 = {
 			isa = PBXGroup;
 			children = (
+				2B5AE2622F14807900C5A5CC /* GoalTrackerWidgetExtension.entitlements */,
 				2B3CB9B92ECE58F70069EDD9 /* icons.icon */,
 				2B522AC62E6F8F0F00105245 /* Goal-Tracker */,
 				2B5AE22A2F1450EE00C5A5CC /* GoalTrackerWidget */,
@@ -394,6 +424,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = icons;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = "Goal-Tracker/Goal-Tracker.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
@@ -401,6 +432,7 @@
 				DEVELOPMENT_TEAM = B6DN2V836G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Goal-Tracker/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Goals Lab";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -429,6 +461,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = icons;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = "Goal-Tracker/Goal-Tracker.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
@@ -436,6 +469,7 @@
 				DEVELOPMENT_TEAM = B6DN2V836G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Goal-Tracker/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Goals Lab";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -463,6 +497,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = GoalTrackerWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -495,6 +530,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = GoalTrackerWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
