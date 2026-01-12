@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import WidgetKit
 
 struct ArchivedGoalsListView: View {
     
@@ -143,6 +144,9 @@ struct ArchivedGoalsListView: View {
         guard let goal = selectedGoal else { return }
         
         modelContext.delete(goal)
+        try? modelContext.save()
+        
+        WidgetCenter.shared.reloadAllTimelines()
         
         withAnimation(.snappy) {
             selectedGoal = nil
@@ -153,6 +157,9 @@ struct ArchivedGoalsListView: View {
         goals.forEach {
             modelContext.delete($0)
         }
+        try? modelContext.save()
+        
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     private func unarchiveGoal(_ goal: GoalModel) {

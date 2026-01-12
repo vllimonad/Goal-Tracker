@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct RecordsHistoryView: View {
     
@@ -84,6 +85,8 @@ struct RecordsHistoryView: View {
         withAnimation {
             goal.records.removeAll { record.id == $0.id }
         }
+        
+        WidgetCenter.shared.reloadAllTimelines()
     }
 }
 

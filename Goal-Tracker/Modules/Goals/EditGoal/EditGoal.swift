@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct EditGoalView: View {
     
@@ -151,6 +152,8 @@ struct EditGoalView: View {
             background: backgroundColor,
             text: textColor
         )
+        
+        WidgetCenter.shared.reloadAllTimelines()
     }
 }
 

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UIKit
+import WidgetKit
 
 struct NewRecordView: View {
     
@@ -132,8 +133,9 @@ struct NewRecordView: View {
         
         let record = RecordModel(value: value)
         goal.records.append(record)
-        
         try? modelContext.save()
+        
+        WidgetCenter.shared.reloadAllTimelines()
     }
 }
 
