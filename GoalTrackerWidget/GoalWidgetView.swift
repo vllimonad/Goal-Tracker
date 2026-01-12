@@ -13,49 +13,35 @@ struct GoalWidgetView: View {
     var entry: GoalEntry
     
     var body: some View {
-        if let goal = entry.goal {
-            goalView(goal: goal)
+        if entry.isPlaceholder {
+            goalView()
+                .redacted(reason: .placeholder)
         } else {
-            goalView(goal: GoalModel(
-                name: "Goal",
-                initialValue: 1,
-                targetValue: 2,
-                unit: UnitModel(systemType: .currency(.usd)),
-                colors: ColorsModel(
-                    progress: ColorModel(color: .blue),
-                    background: ColorModel(red: 0.90, green: 0.94, blue: 1.0),
-                    text: ColorModel(color: .black)
-                )
-            ))
-            .redacted(reason: .placeholder)
+            goalView()
         }
     }
     
-    func goalView(goal: GoalModel) -> some View {
+    func goalView() -> some View {
         VStack(alignment: .leading) {
-            Text(goal.name)
+            Text(entry.name)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .font(.headline)
                 .lineLimit(0)
-                .foregroundStyle(goal.colors.text.color)
+                .foregroundStyle(entry.textColor)
             
             Spacer()
             
-            Text(goal.getProgress(), format: .percent.precision(.fractionLength(0)))
+            Text(entry.progress, format: .percent.precision(.fractionLength(0)))
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 .font(.title2.bold())
-                .foregroundStyle(goal.colors.text.color)
-                .contentTransition(.numericText())
-                .animation(.snappy, value: goal.currentValue)
+                .foregroundStyle(entry.textColor)
         }
         .containerBackground(for: .widget){
             GeometryReader { geometry in
                 HStack(spacing: 0) {
-                    goal.colors.progress.color
-                        .frame(width: geometry.size.width * goal.getProgress())
-                        .animation(.spring, value: goal.getProgress())
-                    goal.colors.background.color
-                        .animation(.spring, value: goal.getProgress())
+                    entry.progressColor
+                        .frame(width: geometry.size.width * entry.progress)
+                    entry.backgroundColor
                 }
             }
         }
@@ -78,17 +64,11 @@ struct GoalWidgetView: View {
 } timeline: {
     GoalEntry(
         date: .now,
-        goal: GoalModel(
-            name: "Goal",
-            initialValue: 1,
-            targetValue: 2,
-            unit: UnitModel(systemType: .currency(.usd)),
-            colors: ColorsModel(
-                progress: ColorModel(color: .blue),
-                background: ColorModel(red: 0.90, green: 0.94, blue: 1.0),
-                text: ColorModel(color: .black)
-            )
-        ),
-        isPlaceholder: false
+        name: "Select Goal",
+        progress: 0.5,
+        textColor: .black,
+        progressColor: .blue,
+        backgroundColor: .blue.opacity(0.2),
+        isPlaceholder: true
     )
 }

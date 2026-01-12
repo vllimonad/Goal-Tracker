@@ -51,64 +51,73 @@ struct GoalQuery: EntityQuery {
 struct SelectGoalIntent: WidgetConfigurationIntent {
     static var title: LocalizedStringResource = "Select Goal"
     
-    @Parameter(title: "Goal")
+    @Parameter(title: "Selected Goal")
     var goal: GoalEntity?
 }
 
 struct GoalEntry: TimelineEntry {
     let date: Date
-    let goal: GoalModel?
+    let name: String
+    let progress: Double
+    let textColor: Color
+    let progressColor: Color
+    let backgroundColor: Color
     let isPlaceholder: Bool
 }
 
 struct GoalProvider: AppIntentTimelineProvider {
     
+    let placeholderEntry = GoalEntry(
+        date: .now,
+        name: "Selected goal",
+        progress: 0.5,
+        textColor: .black,
+        progressColor: .blue,
+        backgroundColor: Color(red: 0.90, green: 0.94, blue: 1.0),
+        isPlaceholder: true
+    )
+    
+    let snapshotEntry = GoalEntry(
+        date: .now,
+        name: "Journeys",
+        progress: 0.3,
+        textColor: .black,
+        progressColor: .orange,
+        backgroundColor: Color(red: 1.0, green: 0.95, blue: 0.90),
+        isPlaceholder: false
+    )
+    
     func placeholder(in context: Context) -> GoalEntry {
-        GoalEntry(date: .now, goal: nil, isPlaceholder: true)
+        placeholderEntry
     }
 
     func snapshot(for configuration: SelectGoalIntent, in context: Context) async -> GoalEntry {
-        GoalEntry(
-            date: .now,
-            goal: GoalModel(
-                name: "Goal",
-                initialValue: 1,
-                targetValue: 2,
-                unit: UnitModel(systemType: .currency(.usd)),
-                colors: ColorsModel(
-                    progress: ColorModel(color: .blue),
-                    background: ColorModel(red: 0.90, green: 0.94, blue: 1.0),
-                    text: ColorModel(color: .black)
-                )
-            ),
-            isPlaceholder: false
-        )
+        snapshotEntry
     }
     
     func timeline(for configuration: SelectGoalIntent, in context: Context) async -> Timeline<GoalEntry> {
-        guard let selectedGoal = configuration.goal else {
-            print("Timeline nil")
-            let entry = GoalEntry(date: .now, goal: nil, isPlaceholder: true)
+        if let selectedGoal = configuration.goal, let entry = await getGoalEntry(for: selectedGoal.id) {
             return Timeline(entries: [entry], policy: .never)
+        } else {
+            return Timeline(entries: [placeholderEntry], policy: .never)
         }
-        
-        let goalID = selectedGoal.id
-        let goal = await getGoalModel(for: goalID)
-        
-        let entry = GoalEntry(
-            date: .now,
-            goal: goal,
-            isPlaceholder: false
-        )
-        
-        return Timeline(entries: [entry], policy: .never)
     }
     
     @MainActor
-    private func getGoalModel(for id: UUID) -> GoalModel? {
+    private func getGoalEntry(for id: UUID) -> GoalEntry? {
         guard let modelContainer = try? ModelContainer(for: GoalModel.self) else { return nil }
         
         let descriptor = FetchDescriptor<GoalModel>(predicate: #Predicate { $0.id == id })
-        return try? modelContainer.mainContext.fetch(descriptor).first
+        guard let goal = try? modelContainer.mainContext.fetch(descriptor).first else { return nil }
+        
+        return GoalEntry (
+            date: .now,
+            name: goal.name,
+            progress: goal.getProgress(),
+            textColor: goal.colors.text.color,
+            progressColor: goal.colors.progress.color,
+            backgroundColor: goal.colors.background.color,
+            isPlaceholder: false
+        )
     }
 }
