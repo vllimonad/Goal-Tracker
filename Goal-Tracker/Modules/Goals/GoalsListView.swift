@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import WidgetKit
 
 struct GoalsListView: View {
     
@@ -168,6 +169,9 @@ struct GoalsListView: View {
         guard let goal = goalToDelete else { return }
         
         modelContext.delete(goal)
+        try? modelContext.save()
+        
+        WidgetCenter.shared.reloadAllTimelines()
         
         withAnimation(.snappy) {
             goalToDelete = nil
