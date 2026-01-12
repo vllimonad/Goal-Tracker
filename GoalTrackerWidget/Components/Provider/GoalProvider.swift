@@ -11,60 +11,6 @@ import SwiftUI
 import AppIntents
 import SwiftData
 
-struct GoalEntity: AppEntity {
-    let id: UUID
-    let name: String
-
-    static var typeDisplayRepresentation: TypeDisplayRepresentation = "Goal"
-    static var defaultQuery = GoalQuery()
-
-    var displayRepresentation: DisplayRepresentation {
-        DisplayRepresentation(title: "\(name)")
-    }
-}
-
-struct GoalQuery: EntityQuery {
-    
-    @MainActor
-    func entities(for identifiers: [UUID]) async throws -> [GoalEntity] {
-        guard let modelContainer = try? ModelContainer(for: GoalModel.self) else { return [] }
-        
-        let fetchDescriptor = FetchDescriptor<GoalModel>(predicate: #Predicate { identifiers.contains($0.id) })
-        
-        guard let models = try? modelContainer.mainContext.fetch(fetchDescriptor) else { return [] }
-        
-        return models.map { GoalEntity(id: $0.id, name: $0.name) }
-    }
-
-    @MainActor
-    func suggestedEntities() async throws -> [GoalEntity] {
-        guard let modelContainer = try? ModelContainer(for: GoalModel.self) else { return [] }
-        
-        let fetchDescriptor = FetchDescriptor<GoalModel>(sortBy: [SortDescriptor(\.creationDate)])
-        
-        guard let models = try? modelContainer.mainContext.fetch(fetchDescriptor) else { return [] }
-        
-        return models.map { GoalEntity(id: $0.id, name: $0.name) }
-    }
-}
-
-struct SelectGoalIntent: WidgetConfigurationIntent {
-    static var title: LocalizedStringResource = "Select Goal"
-    
-    @Parameter(title: "Selected Goal")
-    var goal: GoalEntity?
-}
-
-struct GoalEntry: TimelineEntry {
-    let date: Date
-    let name: String
-    let progress: Double
-    let textColor: Color
-    let progressColor: Color
-    let backgroundColor: Color
-    let isPlaceholder: Bool
-}
-
 struct GoalProvider: AppIntentTimelineProvider {
     
     let placeholderEntry = GoalEntry(
