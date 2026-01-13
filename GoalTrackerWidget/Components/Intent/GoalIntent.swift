@@ -48,8 +48,8 @@ struct GoalQuery: EntityQuery {
 }
 
 struct SelectGoalIntent: WidgetConfigurationIntent {
-    static var title: LocalizedStringResource = "Select Goal"
+    static var title: LocalizedStringResource = "widget.goal.selection.title"
     
-    @Parameter(title: "Selected Goal")
+    @Parameter(title: "widget.goal.parameter.title")
     var goal: GoalEntity?
 }

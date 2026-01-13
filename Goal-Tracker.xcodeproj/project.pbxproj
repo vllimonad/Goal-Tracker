@@ -86,6 +86,7 @@
 				Modules/Shared/Models/Unit/SystemUnitType.swift,
 				Modules/Shared/Models/Unit/UnitModel.swift,
 				Modules/Shared/Models/Unit/UnitType.swift,
+				Resources/Localizable.xcstrings,
 			);
 			target = 2B5AE2232F1450EE00C5A5CC /* GoalTrackerWidgetExtension */;
 		};

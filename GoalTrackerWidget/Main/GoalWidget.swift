@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 import WidgetKit
 import SwiftUI
 
@@ -21,8 +20,8 @@ struct GoalWidget: Widget {
         ) { entry in
             GoalWidgetView(entry: entry)
         }
-        .configurationDisplayName("Select a goal")
-        .description("Track a specific goal on your home screen")
+        .configurationDisplayName("widget.configutation.name")
+        .description("widget.configutation.description")
         .supportedFamilies([.systemSmall])
     }
 }
