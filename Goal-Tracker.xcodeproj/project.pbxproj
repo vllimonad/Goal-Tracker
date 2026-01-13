@@ -428,7 +428,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Goal-Tracker/Configuration/Goal-Tracker.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"Goal-Tracker/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = B6DN2V836G;
 				ENABLE_PREVIEWS = YES;
@@ -465,7 +465,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Goal-Tracker/Configuration/Goal-Tracker.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"Goal-Tracker/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = B6DN2V836G;
 				ENABLE_PREVIEWS = YES;

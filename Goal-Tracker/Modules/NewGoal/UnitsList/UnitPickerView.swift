@@ -64,9 +64,9 @@ struct UnitsListView: View {
     private func createCustomUnitsSection() -> some View {
         Section {
             Picker("", selection: $selectedCustomUnit) {
-                ForEach(customUnits) {
-                    Text($0.name)
-                        .tag($0)
+                ForEach(customUnits) { type in
+                    Text("\(type.name), \(type.abbreviation)")
+                        .tag(type)
                 }
             }
             .pickerStyle(.inline)
@@ -94,9 +94,9 @@ struct UnitsListView: View {
     private func createCurrencyUnitsSection() -> some View {
         Section("goal.unit.currency.section.title") {
             Picker("", selection: $selectedSystemUnit) {
-                ForEach(CurrencyUnitType.allCases, id: \.self) {
-                    Text($0.name)
-                        .tag(SystemUnitType.currency($0))
+                ForEach(CurrencyUnitType.allCases, id: \.self) { type in
+                    Text("\(type.name), \(type.abbreviation)")
+                        .tag(SystemUnitType.currency(type))
                 }
             }
             .pickerStyle(.inline)
@@ -108,9 +108,9 @@ struct UnitsListView: View {
     private func createWeightUnitsSection() -> some View {
         Section("goal.unit.weight.section.title") {
             Picker("", selection: $selectedSystemUnit) {
-                ForEach(WeightUnitType.allCases, id: \.self) {
-                    Text($0.name)
-                        .tag(SystemUnitType.weight($0))
+                ForEach(WeightUnitType.allCases, id: \.self) { type in
+                    Text("\(type.name), \(type.abbreviation)")
+                        .tag(SystemUnitType.weight(type))
                 }
             }
             .pickerStyle(.inline)
@@ -122,9 +122,9 @@ struct UnitsListView: View {
     private func createDistanceUnitsSection() -> some View {
         Section("goal.unit.distance.section.title") {
             Picker("", selection: $selectedSystemUnit) {
-                ForEach(DistanceUnitType.allCases, id: \.self) {
-                    Text($0.name)
-                        .tag(SystemUnitType.distance($0))
+                ForEach(DistanceUnitType.allCases, id: \.self) { type in
+                    Text("\(type.name), \(type.abbreviation)")
+                        .tag(SystemUnitType.distance(type))
                 }
             }
             .pickerStyle(.inline)
