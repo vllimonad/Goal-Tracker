@@ -39,7 +39,7 @@
 
 /* Begin PBXFileReference section */
 		2B3CB9B92ECE58F70069EDD9 /* icons.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = icons.icon; sourceTree = "<group>"; };
-		2B522AC42E6F8F0F00105245 /* Goal-Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Goal-Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B522AC42E6F8F0F00105245 /* GoalTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoalTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B5AE2242F1450EE00C5A5CC /* GoalTrackerWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GoalTrackerWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B5AE2262F1450EE00C5A5CC /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		2B5AE2282F1450EE00C5A5CC /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -53,7 +53,7 @@
 			);
 			target = 2B5AE2232F1450EE00C5A5CC /* GoalTrackerWidgetExtension */;
 		};
-		2B5AE2432F1452A500C5A5CC /* Exceptions for "GoalTrackerWidget" folder in "Goal-Tracker" target */ = {
+		2B5AE2432F1452A500C5A5CC /* Exceptions for "GoalTrackerWidget" folder in "GoalTracker" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Components/Entry/GoalEntry.swift,
@@ -62,16 +62,16 @@
 				Components/View/GoalWidgetView.swift,
 				Main/GoalWidget.swift,
 			);
-			target = 2B522AC32E6F8F0F00105245 /* Goal-Tracker */;
+			target = 2B522AC32E6F8F0F00105245 /* GoalTracker */;
 		};
-		2B5AE2542F14729D00C5A5CC /* Exceptions for "Goal-Tracker" folder in "Goal-Tracker" target */ = {
+		2B5AE2542F14729D00C5A5CC /* Exceptions for "GoalTracker" folder in "GoalTracker" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Configuration/Info.plist,
 			);
-			target = 2B522AC32E6F8F0F00105245 /* Goal-Tracker */;
+			target = 2B522AC32E6F8F0F00105245 /* GoalTracker */;
 		};
-		2B5AE2562F1474B100C5A5CC /* Exceptions for "Goal-Tracker" folder in "GoalTrackerWidgetExtension" target */ = {
+		2B5AE2562F1474B100C5A5CC /* Exceptions for "GoalTracker" folder in "GoalTrackerWidgetExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Modules/Shared/Models/Color/ColorModel.swift,
@@ -93,19 +93,19 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		2B522AC62E6F8F0F00105245 /* Goal-Tracker */ = {
+		2B522AC62E6F8F0F00105245 /* GoalTracker */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				2B5AE2542F14729D00C5A5CC /* Exceptions for "Goal-Tracker" folder in "Goal-Tracker" target */,
-				2B5AE2562F1474B100C5A5CC /* Exceptions for "Goal-Tracker" folder in "GoalTrackerWidgetExtension" target */,
+				2B5AE2542F14729D00C5A5CC /* Exceptions for "GoalTracker" folder in "GoalTracker" target */,
+				2B5AE2562F1474B100C5A5CC /* Exceptions for "GoalTracker" folder in "GoalTrackerWidgetExtension" target */,
 			);
-			path = "Goal-Tracker";
+			path = GoalTracker;
 			sourceTree = "<group>";
 		};
 		2B5AE22A2F1450EE00C5A5CC /* GoalTrackerWidget */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				2B5AE2432F1452A500C5A5CC /* Exceptions for "GoalTrackerWidget" folder in "Goal-Tracker" target */,
+				2B5AE2432F1452A500C5A5CC /* Exceptions for "GoalTrackerWidget" folder in "GoalTracker" target */,
 				2B5AE23B2F1450F000C5A5CC /* Exceptions for "GoalTrackerWidget" folder in "GoalTrackerWidgetExtension" target */,
 			);
 			path = GoalTrackerWidget;
@@ -137,7 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				2B3CB9B92ECE58F70069EDD9 /* icons.icon */,
-				2B522AC62E6F8F0F00105245 /* Goal-Tracker */,
+				2B522AC62E6F8F0F00105245 /* GoalTracker */,
 				2B5AE22A2F1450EE00C5A5CC /* GoalTrackerWidget */,
 				2B5AE2252F1450EE00C5A5CC /* Frameworks */,
 				2B522AC52E6F8F0F00105245 /* Products */,
@@ -147,7 +147,7 @@
 		2B522AC52E6F8F0F00105245 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2B522AC42E6F8F0F00105245 /* Goal-Tracker.app */,
+				2B522AC42E6F8F0F00105245 /* GoalTracker.app */,
 				2B5AE2242F1450EE00C5A5CC /* GoalTrackerWidgetExtension.appex */,
 			);
 			name = Products;
@@ -165,9 +165,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2B522AC32E6F8F0F00105245 /* Goal-Tracker */ = {
+		2B522AC32E6F8F0F00105245 /* GoalTracker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2B522AD22E6F8F1100105245 /* Build configuration list for PBXNativeTarget "Goal-Tracker" */;
+			buildConfigurationList = 2B522AD22E6F8F1100105245 /* Build configuration list for PBXNativeTarget "GoalTracker" */;
 			buildPhases = (
 				2B522AC02E6F8F0F00105245 /* Sources */,
 				2B522AC12E6F8F0F00105245 /* Frameworks */,
@@ -180,13 +180,13 @@
 				2B5AE2392F1450F000C5A5CC /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				2B522AC62E6F8F0F00105245 /* Goal-Tracker */,
+				2B522AC62E6F8F0F00105245 /* GoalTracker */,
 			);
-			name = "Goal-Tracker";
+			name = GoalTracker;
 			packageProductDependencies = (
 			);
 			productName = "Goal-Tracker";
-			productReference = 2B522AC42E6F8F0F00105245 /* Goal-Tracker.app */;
+			productReference = 2B522AC42E6F8F0F00105245 /* GoalTracker.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2B5AE2232F1450EE00C5A5CC /* GoalTrackerWidgetExtension */ = {
@@ -248,7 +248,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2B522AC32E6F8F0F00105245 /* Goal-Tracker */,
+				2B522AC32E6F8F0F00105245 /* GoalTracker */,
 				2B5AE2232F1450EE00C5A5CC /* GoalTrackerWidgetExtension */,
 			);
 		};
@@ -425,15 +425,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = icons;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CODE_SIGN_ENTITLEMENTS = "Goal-Tracker/Configuration/Goal-Tracker.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "GoalTracker/Configuration/Goal-Tracker.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6;
-				DEVELOPMENT_ASSET_PATHS = "\"Goal-Tracker/Resources/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"GoalTracker/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = B6DN2V836G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Goal-Tracker/Configuration/Info.plist";
+				INFOPLIST_FILE = GoalTracker/Configuration/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Goals Lab";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -462,15 +462,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = icons;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CODE_SIGN_ENTITLEMENTS = "Goal-Tracker/Configuration/Goal-Tracker.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "GoalTracker/Configuration/Goal-Tracker.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6;
-				DEVELOPMENT_ASSET_PATHS = "\"Goal-Tracker/Resources/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"GoalTracker/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = B6DN2V836G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Goal-Tracker/Configuration/Info.plist";
+				INFOPLIST_FILE = GoalTracker/Configuration/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Goals Lab";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -571,7 +571,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2B522AD22E6F8F1100105245 /* Build configuration list for PBXNativeTarget "Goal-Tracker" */ = {
+		2B522AD22E6F8F1100105245 /* Build configuration list for PBXNativeTarget "GoalTracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2B522AD32E6F8F1100105245 /* Debug */,

@@ -31,8 +31,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2B522AC32E6F8F0F00105245"
-               BuildableName = "Goal-Tracker.app"
-               BlueprintName = "Goal-Tracker"
+               BuildableName = "GoalTracker.app"
+               BlueprintName = "GoalTracker"
                ReferencedContainer = "container:Goal-Tracker.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -72,8 +72,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2B522AC32E6F8F0F00105245"
-            BuildableName = "Goal-Tracker.app"
-            BlueprintName = "Goal-Tracker"
+            BuildableName = "GoalTracker.app"
+            BlueprintName = "GoalTracker"
             ReferencedContainer = "container:Goal-Tracker.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -108,8 +108,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2B522AC32E6F8F0F00105245"
-            BuildableName = "Goal-Tracker.app"
-            BlueprintName = "Goal-Tracker"
+            BuildableName = "GoalTracker.app"
+            BlueprintName = "GoalTracker"
             ReferencedContainer = "container:Goal-Tracker.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
