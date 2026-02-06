@@ -78,7 +78,7 @@ struct StatsView: View {
         }
         .background(.bgPage)
         .navigationTitle("stats.title")
-        .navigationBarTitleDisplayMode(.large)
+        .toolbarTitleDisplayMode(.inlineLarge)
         .onAppear {
             selectedGoalId = selectedGoalId ?? goals.first?.id
         }
