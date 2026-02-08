@@ -18,76 +18,46 @@ struct NewUnitTypeView: View {
     @State private var abbreviationError: String?
         
     var body: some View {
-        Form {
-            Section("new.unit.type.name.field.title") {
-                nameTextField()
-            }
-            .listRowBackground(Color.bgModalPrimary)
+        VStack(spacing: 20) {
+            CustomTextField(
+                title: "new.unit.type.name.field.title",
+                value: $name,
+                error: $nameError
+            )
+            .systemShadow()
             
-            Section("new.unit.type.abbreviation.field.title") {
-                abbreviationTextField()
-            }
-            .listRowBackground(Color.bgModalPrimary)
+            CustomTextField(
+                title: "new.unit.type.abbreviation.field.title",
+                value: $abbreviation,
+                error: $abbreviationError
+            )
+            .systemShadow()
             
-            Section {
-                Button(action: {
-                    createUnitType()
-                }, label: {
-                    Text("new.unit.type.action.title")
-                        .font(.headline)
-                })
-                .frame(maxWidth: .infinity)
-                .foregroundStyle(Color.textPrimary)
-            }
-            .listRowBackground(Color.bgBlue)
+            createButton()
+            
+            Spacer()
         }
-        .scrollContentBackground(.hidden)
+        .padding(.top, 40)
+        .padding(.horizontal)
         .background(.bgModalPage)
         .navigationTitle("new.unit.type.title")
         .navigationBarTitleDisplayMode(.inline)
-        .systemShadow()
     }
     
-    private func nameTextField() -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            TextField("new.goal.name.field.placeholder", text: $name)
-                .keyboardType(.default)
-                .onChange(of: name) { oldValue, newValue in
-                    nameError = nil
-                    
-                    if newValue.count > 20 {
-                        name = oldValue
-                    }
-                }
-            
-            if let error = nameError {
-                Text(error)
-                    .font(.caption)
-                    .foregroundStyle(.red)
-            }
-        }
-        .animation(.easeOut, value: nameError)
-    }
-    
-    private func abbreviationTextField() -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            TextField("new.goal.abbreviation.field.placeholder", text: $abbreviation)
-                .keyboardType(.default)
-                .onChange(of: abbreviation) { oldValue, newValue in
-                    abbreviationError = nil
-                    
-                    if newValue.count > 3 {
-                        abbreviation = oldValue
-                    }
-                }
-            
-            if let error = abbreviationError {
-                Text(error)
-                    .font(.caption)
-                    .foregroundStyle(.red)
-            }
-        }
-        .animation(.easeOut, value: abbreviationError)
+    private func createButton() -> some View {
+        Button(action: {
+            createUnitType()
+        }, label: {
+            Text("new.unit.type.action.title")
+                .font(.headline)
+        })
+        .foregroundStyle(Color.textPrimary)
+        .padding(.vertical)
+        .padding(.horizontal, 80)
+        .background()
+        .clipShape(.capsule)
+        .glassEffect()
+        .padding(.top, 20)
     }
     
     private func createUnitType() {
