@@ -41,7 +41,7 @@ struct CustomTextField: View {
             .padding(18)
             .background()
             .animation(.easeOut, value: error)
-            .clipShape(.capsule)
+            .clipShape(RoundedRectangle(cornerRadius: 28))
         }
     }
 }
