@@ -40,8 +40,8 @@ struct CustomTextField: View {
             }
             .padding(18)
             .background()
-            .animation(.easeOut, value: error)
             .clipShape(RoundedRectangle(cornerRadius: 28))
+            .animation(.easeOut, value: error)
         }
     }
 }

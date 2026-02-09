@@ -33,9 +33,9 @@ struct NewUnitTypeView: View {
             )
             .systemShadow()
             
-            createButton()
-            
             Spacer()
+            
+            createButton()
         }
         .padding(.top, 20)
         .padding(.horizontal)
@@ -49,13 +49,15 @@ struct NewUnitTypeView: View {
             createUnitType()
         }, label: {
             Text("new.unit.type.action.title")
+                .frame(maxWidth: .infinity)
                 .font(.headline)
-                .padding(.vertical)
-                .padding(.horizontal, 80)
+                .padding(.vertical, 18)
         })
         .foregroundStyle(Color.textPrimary)
-        .glassEffect(.regular)
-        .padding(.top, 20)
+        .background(Color.bgBlue)
+        .clipShape(.capsule)
+        .glassEffect()
+        .padding(.bottom, 20)
     }
     
     private func createUnitType() {
