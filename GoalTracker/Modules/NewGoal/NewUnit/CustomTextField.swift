@@ -21,7 +21,7 @@ struct CustomTextField: View {
                 .foregroundStyle(Color.secondary)
                 .padding(.leading)
             
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: 10) {
                 TextField("new.goal.name.field.placeholder", text: $value)
                     .onChange(of: value) { oldValue, newValue in
                         error = nil

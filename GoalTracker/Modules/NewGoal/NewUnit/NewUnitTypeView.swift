@@ -37,7 +37,7 @@ struct NewUnitTypeView: View {
             
             Spacer()
         }
-        .padding(.top, 40)
+        .padding(.top, 20)
         .padding(.horizontal)
         .background(.bgModalPage)
         .navigationTitle("new.unit.type.title")
@@ -50,26 +50,33 @@ struct NewUnitTypeView: View {
         }, label: {
             Text("new.unit.type.action.title")
                 .font(.headline)
+                .padding(.vertical)
+                .padding(.horizontal, 80)
         })
         .foregroundStyle(Color.textPrimary)
-        .padding(.vertical)
-        .padding(.horizontal, 80)
-        .background()
-        .clipShape(.capsule)
-        .glassEffect()
+        .glassEffect(.regular)
         .padding(.top, 20)
     }
     
     private func createUnitType() {
+        guard validateInput() else { return }
+        
+        let customUnit = CustomUnitType(name: name, abbreviation: abbreviation)
+        
+        modelContext.insert(customUnit)
+        dismiss()
+    }
+    
+    private func validateInput() -> Bool {
         if name.isEmpty {
             nameError = String(localized: "new.unit.type.name.error")
-        } else if abbreviation.isEmpty {
-            abbreviationError = String(localized: "new.unit.type.abbreviation.error")
-        } else {
-            let customUnit = CustomUnitType(name: name, abbreviation: abbreviation)
-            modelContext.insert(customUnit)
-            dismiss()
         }
+        
+        if abbreviation.isEmpty {
+            abbreviationError = String(localized: "new.unit.type.abbreviation.error")
+        }
+        
+        return nameError == nil && abbreviationError == nil
     }
 }
 
