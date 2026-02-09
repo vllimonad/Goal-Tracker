@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CustomTextField: View {
     
-    var title: String
+    var title: LocalizedStringKey
     
     @Binding var value: String
     @Binding var error: String?
