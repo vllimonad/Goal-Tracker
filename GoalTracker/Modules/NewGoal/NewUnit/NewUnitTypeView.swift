@@ -21,6 +21,7 @@ struct NewUnitTypeView: View {
         VStack(spacing: 20) {
             CustomTextField(
                 title: "new.unit.type.name.field.title",
+                maxCharCount: 20,
                 value: $name,
                 error: $nameError
             )
@@ -28,6 +29,7 @@ struct NewUnitTypeView: View {
             
             CustomTextField(
                 title: "new.unit.type.abbreviation.field.title",
+                maxCharCount: 3,
                 value: $abbreviation,
                 error: $abbreviationError
             )

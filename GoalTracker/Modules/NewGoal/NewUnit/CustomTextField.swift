@@ -10,6 +10,7 @@ import SwiftUI
 struct CustomTextField: View {
     
     var title: LocalizedStringKey
+    var maxCharCount: Int
     
     @Binding var value: String
     @Binding var error: String?
@@ -26,7 +27,7 @@ struct CustomTextField: View {
                     .onChange(of: value) { oldValue, newValue in
                         error = nil
                         
-                        if newValue.count > 20 {
+                        if newValue.count > maxCharCount {
                             value = oldValue
                         }
                     }
@@ -39,7 +40,7 @@ struct CustomTextField: View {
                 }
             }
             .padding(18)
-            .background()
+            .background(Color.bgModalPrimary)
             .clipShape(RoundedRectangle(cornerRadius: 28))
             .animation(.easeOut, value: error)
         }
@@ -49,6 +50,7 @@ struct CustomTextField: View {
 #Preview {
     CustomTextField(
         title: "Name",
+        maxCharCount: 20,
         value: .constant("name"),
         error: .constant(nil)
     )
