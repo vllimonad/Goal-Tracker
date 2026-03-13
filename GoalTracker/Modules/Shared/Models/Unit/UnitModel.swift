@@ -18,21 +18,29 @@ class UnitModel {
     private(set) var systemType: SystemUnitType?
     
     var name: String {
+        let name: String?
+        
         switch type {
         case .custom:
-            return customType!.name
+            name = customType?.name
         case .system:
-            return systemType!.name
+            name = systemType?.name
         }
+        
+        return name ?? SystemUnitType.other(.none).name
     }
     
     var abbreviation: String {
+        let abbreviation: String?
+        
         switch type {
         case .custom:
-            return customType!.abbreviation
+            abbreviation = customType?.abbreviation
         case .system:
-            return systemType!.abbreviation
+            abbreviation = systemType?.abbreviation
         }
+        
+        return abbreviation ?? SystemUnitType.other(.none).abbreviation
     }
     
     convenience init(customType: CustomUnitType) {
