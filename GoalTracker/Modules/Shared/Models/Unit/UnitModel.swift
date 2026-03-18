@@ -11,28 +11,44 @@ import SwiftData
 @Model
 class UnitModel {
     
-    private(set) var type: UnitType
+    private(set) var type: UnitType?
     
     @Relationship(deleteRule: .nullify) private(set) var customType: CustomUnitType?
     
     private(set) var systemType: SystemUnitType?
     
     var name: String {
+        let defaultName = SystemUnitType.other(.none).name
+        
+        guard let type = type else { return defaultName }
+        
+        let name: String?
+        
         switch type {
         case .custom:
-            return customType!.name
+            name = customType?.name
         case .system:
-            return systemType!.name
+            name = systemType?.name
         }
+        
+        return name ?? defaultName
     }
     
     var abbreviation: String {
+        let defaultAbbreviation = SystemUnitType.other(.none).abbreviation
+        
+        guard let type = type else { return defaultAbbreviation }
+        
+        let abbreviation: String?
+        
         switch type {
         case .custom:
-            return customType!.abbreviation
+            abbreviation = customType?.abbreviation
         case .system:
-            return systemType!.abbreviation
+            abbreviation = systemType?.abbreviation
         }
+        
+        return abbreviation ?? defaultAbbreviation
     }
     
     convenience init(customType: CustomUnitType) {
