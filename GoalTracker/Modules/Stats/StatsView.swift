@@ -48,31 +48,7 @@ struct StatsView: View {
             VStack {
                 statsGrid()
                 
-                VStack(alignment: .leading, spacing: 20) {
-                    if let selectedGoal = selectedGoal {
-                        HStack(alignment: .top) {
-                            selectedGoalTitle(selected: selectedGoal)
-                            
-                            goalPicker(selected: selectedGoal)
-                        }
-                        
-                        if isChartPresented {
-                            recordsChart(for: selectedGoal)
-                            
-                            recordsHistoryActionView(for: selectedGoal)
-                        } else {
-                             chartContentUnavailableView()
-                        }
-                    } else {
-                        statsContentUnavailableView()
-                    }
-                }
-                .padding(20)
-                .background {
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(.bgPrimary)
-                }
-                .systemShadow()
+                goalDataView()
             }
             .padding(.horizontal, 20)
         }
@@ -119,12 +95,36 @@ struct StatsView: View {
         }
     }
     
-    private func statsContentUnavailableView() -> some View {
-        ContentUnavailableView(
-            "stats.empty.title",
-            systemImage: "chart.bar.xaxis",
-            description: Text("stats.empty.description")
-        )
+    private func goalDataView() -> some View {
+        VStack(alignment: .leading, spacing: 20) {
+            if let selectedGoal = selectedGoal {
+                HStack(alignment: .top) {
+                    selectedGoalTitle(selected: selectedGoal)
+                    
+                    goalPicker(selected: selectedGoal)
+                }
+                
+                if isChartPresented {
+                    recordsChart(for: selectedGoal)
+                    
+                    VStack {
+                        goalCompletionEstimationView()
+                        
+                        recordsHistoryActionView(for: selectedGoal)
+                    }
+                } else {
+                     chartContentUnavailableView()
+                }
+            } else {
+                statsContentUnavailableView()
+            }
+        }
+        .padding(20)
+        .background {
+            RoundedRectangle(cornerRadius: 20)
+                .fill(.bgPrimary)
+        }
+        .systemShadow()
     }
     
     private func selectedGoalTitle(selected goal: GoalModel) -> some View {
@@ -197,6 +197,25 @@ struct StatsView: View {
         .frame(height: 200)
     }
     
+    private func goalCompletionEstimationView() -> some View {
+        HStack {
+            Text("Estimated completion")
+                .font(.subheadline)
+                .foregroundStyle(.textPrimary)
+            
+            Spacer()
+            
+            Text("12.12.1212")
+                .font(.system(size: 16, weight: .semibold))
+                .foregroundStyle(.textBlue)
+        }
+        .padding(16)
+        .overlay(
+            RoundedRectangle(cornerRadius: 20)
+                .stroke(.bgSecondary, lineWidth: 2)
+        )
+    }
+    
     private func recordsHistoryActionView(for goal: GoalModel) -> some View {
         NavigationLink {
             RecordsHistoryView(goal: goal)
@@ -218,6 +237,14 @@ struct StatsView: View {
         .background(.bgSecondary)
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .padding(.top, 8)
+    }
+    
+    private func statsContentUnavailableView() -> some View {
+        ContentUnavailableView(
+            "stats.empty.title",
+            systemImage: "chart.bar.xaxis",
+            description: Text("stats.empty.description")
+        )
     }
     
     private func chartContentUnavailableView() -> some View {
