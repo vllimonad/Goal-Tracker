@@ -43,6 +43,32 @@ struct StatsView: View {
         selectedGoal?.valuesHistory.count ?? 0 > 1
     }
     
+    private var selectedGoalTargetEstimation: Date? {
+        guard let selectedGoal = selectedGoal else { return nil }
+        
+        guard let lastRecord = selectedGoal.records.sorted(by: { $0.date > $1.date }).first else { return nil }
+        
+        let durationInterval = lastRecord.date.timeIntervalSince(selectedGoal.creationDate)
+        
+        guard durationInterval > 0 else { return nil }
+        
+        let currentProgress = selectedGoal.currentValue - selectedGoal.initialValue
+        let averageProgress = currentProgress / durationInterval
+        
+        guard averageProgress > 0 else { return nil }
+        
+        let remainingProgress = selectedGoal.targetValue - selectedGoal.currentValue
+        guard remainingProgress > 0 else { return nil }
+        
+        let remainingInterval = remainingProgress / averageProgress
+        
+        if remainingInterval.isInfinite || remainingInterval > 3153600000 { // 100 years
+            return nil
+        }
+        
+        return lastRecord.date.addingTimeInterval(remainingInterval)
+    }
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -199,15 +225,20 @@ struct StatsView: View {
     
     private func goalCompletionEstimationView() -> some View {
         HStack {
-            Text("Estimated completion")
+            Text("stats.goal.estimation.title")
                 .font(.subheadline)
                 .foregroundStyle(.textPrimary)
             
             Spacer()
             
-            Text("12.12.1212")
-                .font(.system(size: 16, weight: .semibold))
-                .foregroundStyle(.textBlue)
+            if let selectedGoalTargetEstimation = selectedGoalTargetEstimation {
+                Text(selectedGoalTargetEstimation.formatted(date: .numeric, time: .omitted))
+                    .font(.system(size: 16, weight: .semibold))
+                    .foregroundStyle(.textBlue)
+            } else {
+                Image(systemName: "infinity")
+                    .foregroundStyle(.iconBlue)
+            }
         }
         .padding(16)
         .overlay(
