@@ -52,7 +52,7 @@ struct StatsView: View {
         
         guard durationInterval > 0 else { return nil }
         
-        let currentProgress = selectedGoal.currentValue - selectedGoal.initialValue
+        let currentProgress = abs(selectedGoal.currentValue - selectedGoal.initialValue)
         let averageProgress = currentProgress / durationInterval
         
         guard averageProgress > 0 else { return nil }
