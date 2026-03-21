@@ -20,7 +20,7 @@ class UnitModel {
     var name: String {
         let defaultName = SystemUnitType.other(.none).name
         
-        guard let type = type else { return defaultName }
+        guard !self.isDeleted, let type = type else { return defaultName }
         
         let name: String?
         
@@ -37,7 +37,7 @@ class UnitModel {
     var abbreviation: String {
         let defaultAbbreviation = SystemUnitType.other(.none).abbreviation
         
-        guard let type = type else { return defaultAbbreviation }
+        guard !self.isDeleted, let type = type else { return defaultAbbreviation }
         
         let abbreviation: String?
         
