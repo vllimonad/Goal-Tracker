@@ -43,36 +43,38 @@ struct StatsView: View {
         selectedGoal?.valuesHistory.count ?? 0 > 1
     }
     
+    private var selectedGoalTargetEstimation: Date? {
+        guard let selectedGoal = selectedGoal else { return nil }
+        
+        guard let lastRecord = selectedGoal.records.sorted(by: { $0.date > $1.date }).first else { return nil }
+        
+        let durationInterval = lastRecord.date.timeIntervalSince(selectedGoal.creationDate)
+        
+        guard durationInterval > 0 else { return nil }
+        
+        let currentProgress = selectedGoal.currentValue - selectedGoal.initialValue
+        let averageProgress = currentProgress / durationInterval
+        
+        guard averageProgress > 0 else { return nil }
+        
+        let remainingProgress = selectedGoal.targetValue - selectedGoal.currentValue
+        guard remainingProgress > 0 else { return nil }
+        
+        let remainingInterval = remainingProgress / averageProgress
+        
+        if remainingInterval.isInfinite || remainingInterval > 3153600000 { // 100 years
+            return nil
+        }
+        
+        return lastRecord.date.addingTimeInterval(remainingInterval)
+    }
+    
     var body: some View {
         ScrollView {
             VStack {
                 statsGrid()
                 
-                VStack(alignment: .leading, spacing: 20) {
-                    if let selectedGoal = selectedGoal {
-                        HStack(alignment: .top) {
-                            selectedGoalTitle(selected: selectedGoal)
-                            
-                            goalPicker(selected: selectedGoal)
-                        }
-                        
-                        if isChartPresented {
-                            recordsChart(for: selectedGoal)
-                            
-                            recordsHistoryActionView(for: selectedGoal)
-                        } else {
-                             chartContentUnavailableView()
-                        }
-                    } else {
-                        statsContentUnavailableView()
-                    }
-                }
-                .padding(20)
-                .background {
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(.bgPrimary)
-                }
-                .systemShadow()
+                goalDataView()
             }
             .padding(.horizontal, 20)
         }
@@ -119,12 +121,36 @@ struct StatsView: View {
         }
     }
     
-    private func statsContentUnavailableView() -> some View {
-        ContentUnavailableView(
-            "stats.empty.title",
-            systemImage: "chart.bar.xaxis",
-            description: Text("stats.empty.description")
-        )
+    private func goalDataView() -> some View {
+        VStack(alignment: .leading, spacing: 20) {
+            if let selectedGoal = selectedGoal {
+                HStack(alignment: .top) {
+                    selectedGoalTitle(selected: selectedGoal)
+                    
+                    goalPicker(selected: selectedGoal)
+                }
+                
+                if isChartPresented {
+                    recordsChart(for: selectedGoal)
+                    
+                    VStack {
+                        goalCompletionEstimationView()
+                        
+                        recordsHistoryActionView(for: selectedGoal)
+                    }
+                } else {
+                     chartContentUnavailableView()
+                }
+            } else {
+                statsContentUnavailableView()
+            }
+        }
+        .padding(20)
+        .background {
+            RoundedRectangle(cornerRadius: 20)
+                .fill(.bgPrimary)
+        }
+        .systemShadow()
     }
     
     private func selectedGoalTitle(selected goal: GoalModel) -> some View {
@@ -197,6 +223,30 @@ struct StatsView: View {
         .frame(height: 200)
     }
     
+    private func goalCompletionEstimationView() -> some View {
+        HStack {
+            Text("stats.goal.estimation.title")
+                .font(.subheadline)
+                .foregroundStyle(.textPrimary)
+            
+            Spacer()
+            
+            if let selectedGoalTargetEstimation = selectedGoalTargetEstimation {
+                Text(selectedGoalTargetEstimation.formatted(date: .numeric, time: .omitted))
+                    .font(.system(size: 16, weight: .semibold))
+                    .foregroundStyle(.textBlue)
+            } else {
+                Image(systemName: "infinity")
+                    .foregroundStyle(.iconBlue)
+            }
+        }
+        .padding(16)
+        .overlay(
+            RoundedRectangle(cornerRadius: 20)
+                .stroke(.bgSecondary, lineWidth: 2)
+        )
+    }
+    
     private func recordsHistoryActionView(for goal: GoalModel) -> some View {
         NavigationLink {
             RecordsHistoryView(goal: goal)
@@ -218,6 +268,14 @@ struct StatsView: View {
         .background(.bgSecondary)
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .padding(.top, 8)
+    }
+    
+    private func statsContentUnavailableView() -> some View {
+        ContentUnavailableView(
+            "stats.empty.title",
+            systemImage: "chart.bar.xaxis",
+            description: Text("stats.empty.description")
+        )
     }
     
     private func chartContentUnavailableView() -> some View {

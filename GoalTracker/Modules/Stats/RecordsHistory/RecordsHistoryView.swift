@@ -33,6 +33,11 @@ struct RecordsHistoryView: View {
         .systemShadow()
         .navigationTitle("\(goal.name) records")
         .navigationBarTitleDisplayMode(.inline)
+        .overlay {
+            if groupedRecordsByMonth.isEmpty {
+                ContentUnavailableView("records.history.empty", systemImage: "doc.text.magnifyingglass")
+            }
+        }
     }
     
     private func recordRow(for record: RecordModel) -> some View {
