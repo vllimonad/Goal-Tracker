@@ -169,13 +169,13 @@ struct GoalsListView: View {
         guard let goal = goalToDelete else { return }
         
         modelContext.delete(goal)
-        try? modelContext.save()
         
-        WidgetCenter.shared.reloadAllTimelines()
-        
-        withAnimation(.snappy) {
+        withAnimation(.easeInOut) {
             goalToDelete = nil
         }
+        
+        try? modelContext.save()
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     private func archiveGoal(_ goal: GoalModel) {

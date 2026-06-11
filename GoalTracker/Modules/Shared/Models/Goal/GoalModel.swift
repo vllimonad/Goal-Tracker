@@ -23,8 +23,7 @@ class GoalModel {
     var colors: ColorsModel
     
     @Relationship(deleteRule: .cascade) var records: [RecordModel]
-    
-    @Relationship(deleteRule: .cascade) var unit: UnitModel
+    @Relationship var unit: UnitModel
     
     var currentValue: Double {
         records.reduce(initialValue) { $0 + $1.value }

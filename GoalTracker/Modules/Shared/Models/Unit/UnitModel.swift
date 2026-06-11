@@ -13,7 +13,7 @@ class UnitModel {
     
     private(set) var type: UnitType?
     
-    @Relationship(deleteRule: .nullify) private(set) var customType: CustomUnitType?
+    @Relationship private(set) var customType: CustomUnitType?
     
     private(set) var systemType: SystemUnitType?
     
