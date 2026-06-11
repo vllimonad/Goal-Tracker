@@ -15,7 +15,7 @@ struct GoalsListView: View {
     
     @Query(
         filter: #Predicate<GoalModel> { !$0.isArchived },
-        sort: \GoalModel.creationDate
+        sort: [SortDescriptor(\GoalModel.sortIndex), SortDescriptor(\GoalModel.creationDate)]
     )
     private var goals: [GoalModel]
     
@@ -24,15 +24,22 @@ struct GoalsListView: View {
     @State private var goalToEdit: GoalModel? = nil
 
     @State private var isDeleteAlertPresented: Bool = false
+    @State private var selection = Set<GoalModel.ID>()
+    @State private var editMode: EditMode = .inactive
     
     var body: some View {
-        List(goals) {
-            goalView(for: $0)
+        List(selection: $selection) {
+            ForEach(goals) {
+                goalView(for: $0)
+            }
+            .onMove(perform: moveGoal)
         }
+        .environment(\.editMode, $editMode)
         .background(.bgPage)
         .listRowSpacing(12)
         .listStyle(.plain)
         .navigationTitle("goals.title")
+        .toolbarVisibility(editMode.isEditing ? .hidden : .visible, for: .tabBar)
         .toolbarTitleDisplayMode(.inlineLarge)
         .toolbar {
             toolBarContent()
@@ -54,7 +61,6 @@ struct GoalsListView: View {
                 contentUnavailableView()
             }
         }
-        
     }
     
     private func goalView(for goal: GoalModel) -> some View {
@@ -95,12 +101,12 @@ struct GoalsListView: View {
             prepareForDeletion(goal)
         }
         .tint(.red)
-        
+
         Button("goal.archive.action.title", role: .destructive) {
             archiveGoal(goal)
         }
         .tint(.orange)
-        
+
         Button("goal.edit.action.title") {
             editGoal(goal)
         }
@@ -128,20 +134,56 @@ struct GoalsListView: View {
         }
         .tint(.red)
     }
-    
+
     @ToolbarContentBuilder
     private func toolBarContent() -> some ToolbarContent {
         ToolbarItem(placement: .topBarTrailing) {
-            NavigationLink {
-                ArchivedGoalsListView()
-                    .toolbarVisibility(.hidden, for: .tabBar)
-            } label: {
-                Image(systemName: "archivebox")
-                    .foregroundStyle(.iconPrimary)
+            Button(editMode.isEditing ? "Done" : "Edit") {
+                withAnimation {
+                    editMode = editMode.isEditing ? .inactive : .active
+                }
+            }
+            .tint(.iconPrimary)
+        }
+        
+        ToolbarSpacer(.fixed, placement: .topBarTrailing)
+        
+        ToolbarItemGroup(placement: .topBarTrailing) {
+            if editMode.isEditing == true {
+                Button("", systemImage: "archivebox") {
+                    
+                }
+                .tint(.orange)
+                
+                Button("", systemImage: "xmark.bin") {
+                    
+                }
+                .tint(.red)
+            }
+        }
+        
+        ToolbarItem(placement: .topBarTrailing) {
+            if editMode.isEditing == false {
+                NavigationLink {
+                    ArchivedGoalsListView()
+                        .toolbarVisibility(.hidden, for: .tabBar)
+                } label: {
+                    Image(systemName: "archivebox")
+                        .foregroundStyle(.iconPrimary)
+                }
+            }
+        }
+        
+        ToolbarItem(placement: .bottomBar) {
+            if editMode.isEditing == true {
+                Button("Select All") {
+                    
+                }
+                .tint(.iconPrimary)
             }
         }
     }
-    
+
     @ViewBuilder
     private func alertActions() -> some View {
         Button(role: .cancel) { }
@@ -185,6 +227,14 @@ struct GoalsListView: View {
     private func prepareForDeletion(_ goal: GoalModel) {
         goalToDelete = goal
         isDeleteAlertPresented = true
+    }
+
+    private func moveGoal(from source: IndexSet, to destination: Int) {
+        var reorderedGoals = goals
+        reorderedGoals.move(fromOffsets: source, toOffset: destination)
+        for (index, goal) in reorderedGoals.enumerated() {
+            goal.sortIndex = index
+        }
     }
 }
 
