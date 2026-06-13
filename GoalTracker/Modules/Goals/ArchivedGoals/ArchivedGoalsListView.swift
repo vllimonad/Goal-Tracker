@@ -157,13 +157,16 @@ struct ArchivedGoalsListView: View {
         goals.forEach {
             modelContext.delete($0)
         }
-        try? modelContext.save()
         
+        try? modelContext.save()
         WidgetCenter.shared.reloadAllTimelines()
     }
     
     private func unarchiveGoal(_ goal: GoalModel) {
         goal.isArchived = false
+        
+        try? modelContext.save()
+        WidgetCenter.shared.reloadAllTimelines()
     }
 }
 

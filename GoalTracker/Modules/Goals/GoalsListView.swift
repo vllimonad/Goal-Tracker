@@ -64,7 +64,7 @@ struct GoalsListView: View {
             )
         }
         .alert(
-            "delete selected goals",
+            "goals.alert.delete.title",
             isPresented: $isDeleteSelectionAlertPresented
         ) {
             alertActions(
@@ -73,7 +73,7 @@ struct GoalsListView: View {
             )
         }
         .alert(
-            "archieve selected goals",
+            "goals.alert.archive.title",
             isPresented: $isArchiveSelectionAlertPresented
         ) {
             alertActions(
@@ -87,7 +87,7 @@ struct GoalsListView: View {
             }
         }
         .onChange(of: selection) { _, _ in
-            didSelectAll = selection.count == goals.count
+            didSelectAll = selection.count == goals.count && !goals.isEmpty
         }
     }
     
@@ -109,6 +109,7 @@ struct GoalsListView: View {
             .onTapGesture {
                 selectedGoal = goal
             }
+            .disabled(editMode.isEditing)
     }
     
     private func editGoalView(for goal: GoalModel) -> some View {
@@ -182,12 +183,14 @@ struct GoalsListView: View {
         ToolbarSpacer(.fixed, placement: .topBarTrailing)
         
         ToolbarItem(placement: .topBarTrailing) {
-            Button(editMode.isEditing ? "Done" : "Edit") {
-                withAnimation {
-                    editMode = editMode.isEditing ? .inactive : .active
+            if goals.count > 1 {
+                Button(editMode.isEditing ? "Done" : "Edit") {
+                    withAnimation {
+                        editMode = editMode.isEditing ? .inactive : .active
+                    }
                 }
+                .tint(.iconPrimary)
             }
-            .tint(.iconPrimary)
         }
         
         ToolbarSpacer(.fixed, placement: .topBarTrailing)
@@ -291,7 +294,7 @@ struct GoalsListView: View {
     }
     
     private func deselectAllGoals() {
-        selection = Set()
+        selection.removeAll()
     }
     
     private func prepareForDeletion(_ goal: GoalModel) {
