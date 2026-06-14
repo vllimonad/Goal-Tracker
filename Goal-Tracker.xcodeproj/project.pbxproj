@@ -240,6 +240,13 @@
 				ru,
 				fr,
 				de,
+				"pt-BR",
+				uk,
+				tr,
+				it,
+				cs,
+				sv,
+				nl,
 			);
 			mainGroup = 2B522ABB2E6F8F0F00105245;
 			minimizedProjectReferenceProxies = 1;
