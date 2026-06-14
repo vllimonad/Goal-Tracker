@@ -264,6 +264,9 @@ struct GoalsListView: View {
     
     private func archiveGoal(_ goal: GoalModel) {
         goal.isArchived = true
+        goal.sortIndex = 0
+        
+        try? modelContext.save()
     }
     
     private func archiveSelectedGoals() {
