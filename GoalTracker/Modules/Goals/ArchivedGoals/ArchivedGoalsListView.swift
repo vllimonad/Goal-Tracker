@@ -164,9 +164,6 @@ struct ArchivedGoalsListView: View {
     
     private func unarchiveGoal(_ goal: GoalModel) {
         goal.isArchived = false
-        
-        try? modelContext.save()
-        WidgetCenter.shared.reloadAllTimelines()
     }
 }
 

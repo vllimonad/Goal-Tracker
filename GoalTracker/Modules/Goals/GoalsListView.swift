@@ -15,7 +15,10 @@ struct GoalsListView: View {
     
     @Query(
         filter: #Predicate<GoalModel> { !$0.isArchived },
-        sort: [SortDescriptor(\GoalModel.sortIndex), SortDescriptor(\GoalModel.creationDate, order: .reverse)]
+        sort: [
+            SortDescriptor(\GoalModel.sortIndex),
+            SortDescriptor(\GoalModel.creationDate, order: .reverse)
+        ]
     )
     private var goals: [GoalModel]
     

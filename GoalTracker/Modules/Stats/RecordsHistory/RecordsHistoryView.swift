@@ -10,6 +10,7 @@ import WidgetKit
 
 struct RecordsHistoryView: View {
     
+    @Environment(\.modelContext) private var modelContext
     var goal: GoalModel
     
     private var groupedRecordsByMonth: [(key: Date, value: [RecordModel])] {
@@ -18,6 +19,7 @@ struct RecordsHistoryView: View {
             return calendar.date(from: calendar.dateComponents([.month, .year], from: $0.date))!
         }
         .sorted { $0.key > $1.key }
+        .map { (key: $0.key, value: $0.value.sorted { $0.date > $1.date }) }
     }
     
     var body: some View {
@@ -35,7 +37,10 @@ struct RecordsHistoryView: View {
         .navigationBarTitleDisplayMode(.inline)
         .overlay {
             if groupedRecordsByMonth.isEmpty {
-                ContentUnavailableView("records.history.empty", systemImage: "doc.text.magnifyingglass")
+                ContentUnavailableView(
+                    "records.history.empty",
+                    systemImage: "doc.text.magnifyingglass"
+                )
             }
         }
     }
@@ -91,6 +96,9 @@ struct RecordsHistoryView: View {
             goal.records.removeAll { record.id == $0.id }
         }
         
+        modelContext.delete(record)
+        
+        try? modelContext.save()
         WidgetCenter.shared.reloadAllTimelines()
     }
 }
