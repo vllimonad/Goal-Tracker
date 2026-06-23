@@ -46,7 +46,7 @@ struct GoalsListView: View {
         .listRowSpacing(12)
         .listStyle(.plain)
         .navigationTitle(editMode.isEditing ? "" : "goals.title")
-        .toolbarVisibility(editMode.isEditing ? .hidden : .visible, for: .tabBar)
+        .toolbarVisibility(editMode.isEditing ? .hidden : .automatic, for: .tabBar)
         .toolbarTitleDisplayMode(.inlineLarge)
         .toolbar {
             toolBarContent()
