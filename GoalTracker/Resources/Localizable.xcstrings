@@ -493,7 +493,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nenhuma Meta Arquivada"
+            "value": "Nenhuma meta arquivada"
           }
         },
         "ru": {
@@ -577,7 +577,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Metas Arquivadas"
+            "value": "Metas arquivadas"
           }
         },
         "ru": {
@@ -865,7 +865,7 @@
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zrušit výběr vše"
+            "value": "Zrušit výběr všeho"
           }
         },
         "de": {
@@ -2089,7 +2089,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Editar Meta"
+            "value": "Editar meta"
           }
         },
         "ru": {
@@ -3601,7 +3601,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nenhuma Meta Ativa"
+            "value": "Nenhuma meta ativa"
           }
         },
         "ru": {
@@ -5109,7 +5109,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nova Meta"
+            "value": "Nova meta"
           }
         },
         "ru": {
@@ -5443,7 +5443,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Novo Registro"
+            "value": "Novo registro"
           }
         },
         "ru": {
@@ -6031,7 +6031,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Unidade Personalizada"
+            "value": "Unidade personalizada"
           }
         },
         "ru": {
@@ -6619,7 +6619,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sem Registros"
+            "value": "Sem registros"
           }
         },
         "ru": {
@@ -6673,13 +6673,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Completado"
+            "value": "Completadas"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Terminé"
+            "value": "Terminés"
           }
         },
         "it": {
@@ -8485,7 +8485,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Feet"
+            "value": "Fit"
           }
         },
         "uk": {
@@ -10735,7 +10735,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Configuração do Widget"
+            "value": "Configuração do widget"
           }
         },
         "ru": {
@@ -10903,7 +10903,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Selecionar uma Meta"
+            "value": "Selecionar uma meta"
           }
         },
         "ru": {

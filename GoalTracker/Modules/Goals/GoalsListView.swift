@@ -45,7 +45,7 @@ struct GoalsListView: View {
         .background(.bgPage)
         .listRowSpacing(12)
         .listStyle(.plain)
-        .navigationTitle(editMode.isEditing ? "" : "goals.title")
+        .navigationTitle("goals.title")
         .toolbarVisibility(editMode.isEditing ? .hidden : .automatic, for: .tabBar)
         .toolbarTitleDisplayMode(.inlineLarge)
         .toolbar {
@@ -210,7 +210,7 @@ struct GoalsListView: View {
             }
         }
         
-        ToolbarItem(placement: .topBarLeading) {
+        ToolbarItem(placement: .bottomBar) {
             if editMode.isEditing == true {
                 Button(didSelectAll ? "Deselect All" : "Select All") {
                     if didSelectAll {

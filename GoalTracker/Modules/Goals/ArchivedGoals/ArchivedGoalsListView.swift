@@ -43,7 +43,7 @@ struct ArchivedGoalsListView: View {
         .background(.bgPage)
         .listRowSpacing(12)
         .listStyle(.plain)
-        .navigationTitle(editMode.isEditing ? "" : "archived.goals.title")
+        .navigationTitle("archived.goals.title")
         .toolbarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(editMode.isEditing)
         .toolbar {
@@ -160,7 +160,7 @@ struct ArchivedGoalsListView: View {
             }
         }
         
-        ToolbarItem(placement: .topBarLeading) {
+        ToolbarItem(placement: .bottomBar) {
             if editMode.isEditing == true {
                 Button(didSelectAll ? "Deselect All" : "Select All") {
                     if didSelectAll {
