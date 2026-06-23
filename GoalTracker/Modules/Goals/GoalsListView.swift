@@ -15,7 +15,10 @@ struct GoalsListView: View {
     
     @Query(
         filter: #Predicate<GoalModel> { !$0.isArchived },
-        sort: \GoalModel.creationDate
+        sort: [
+            SortDescriptor(\GoalModel.sortIndex),
+            SortDescriptor(\GoalModel.creationDate, order: .reverse)
+        ]
     )
     private var goals: [GoalModel]
     
@@ -24,15 +27,26 @@ struct GoalsListView: View {
     @State private var goalToEdit: GoalModel? = nil
 
     @State private var isDeleteAlertPresented: Bool = false
+    @State private var isDeleteSelectionAlertPresented: Bool = false
+    @State private var isArchiveSelectionAlertPresented: Bool = false
+    @State private var didSelectAll: Bool = false
+    
+    @State private var selection = Set<GoalModel.ID>()
+    @State private var editMode: EditMode = .inactive
     
     var body: some View {
-        List(goals) {
-            goalView(for: $0)
+        List(selection: $selection) {
+            ForEach(goals) {
+                goalView(for: $0)
+            }
+            .onMove(perform: moveGoal)
         }
+        .environment(\.editMode, $editMode)
         .background(.bgPage)
         .listRowSpacing(12)
         .listStyle(.plain)
-        .navigationTitle("goals.title")
+        .navigationTitle(editMode.isEditing ? "" : "goals.title")
+        .toolbarVisibility(editMode.isEditing ? .hidden : .automatic, for: .tabBar)
         .toolbarTitleDisplayMode(.inlineLarge)
         .toolbar {
             toolBarContent()
@@ -47,14 +61,37 @@ struct GoalsListView: View {
             "delete.goal \(goalToDelete?.name ?? "")?",
             isPresented: $isDeleteAlertPresented
         ) {
-            alertActions()
+            alertActions(
+                title: "goals.alert.delete.action.title",
+                action: deleteGoal
+            )
+        }
+        .alert(
+            "goals.alert.delete.title",
+            isPresented: $isDeleteSelectionAlertPresented
+        ) {
+            alertActions(
+                title: "goals.alert.delete.action.title",
+                action: deleteSelectedGoals
+            )
+        }
+        .alert(
+            "goals.alert.archive.title",
+            isPresented: $isArchiveSelectionAlertPresented
+        ) {
+            alertActions(
+                title: "goals.alert.archive.action.title",
+                action: archiveSelectedGoals
+            )
         }
         .overlay {
             if goals.isEmpty {
                 contentUnavailableView()
             }
         }
-        
+        .onChange(of: selection) { _, _ in
+            didSelectAll = selection.count == goals.count && !goals.isEmpty
+        }
     }
     
     private func goalView(for goal: GoalModel) -> some View {
@@ -75,6 +112,7 @@ struct GoalsListView: View {
             .onTapGesture {
                 selectedGoal = goal
             }
+            .disabled(editMode.isEditing)
     }
     
     private func editGoalView(for goal: GoalModel) -> some View {
@@ -95,12 +133,12 @@ struct GoalsListView: View {
             prepareForDeletion(goal)
         }
         .tint(.red)
-        
+
         Button("goal.archive.action.title", role: .destructive) {
             archiveGoal(goal)
         }
         .tint(.orange)
-        
+
         Button("goal.edit.action.title") {
             editGoal(goal)
         }
@@ -128,28 +166,74 @@ struct GoalsListView: View {
         }
         .tint(.red)
     }
-    
+
     @ToolbarContentBuilder
     private func toolBarContent() -> some ToolbarContent {
+        ToolbarItemGroup(placement: .topBarTrailing) {
+            if editMode.isEditing == true {
+                Button("", systemImage: "archivebox") {
+                    isArchiveSelectionAlertPresented = true
+                }
+                .tint(.orange)
+                
+                Button("", systemImage: "xmark.bin") {
+                    isDeleteSelectionAlertPresented = true
+                }
+                .tint(.red)
+            }
+        }
+        
+        ToolbarSpacer(.fixed, placement: .topBarTrailing)
+        
         ToolbarItem(placement: .topBarTrailing) {
-            NavigationLink {
-                ArchivedGoalsListView()
-                    .toolbarVisibility(.hidden, for: .tabBar)
-            } label: {
-                Image(systemName: "archivebox")
-                    .foregroundStyle(.iconPrimary)
+            if goals.count > 1 {
+                Button(editMode.isEditing ? "Done" : "Edit") {
+                    withAnimation {
+                        editMode = editMode.isEditing ? .inactive : .active
+                    }
+                }
+                .tint(.iconPrimary)
+            }
+        }
+        
+        ToolbarSpacer(.fixed, placement: .topBarTrailing)
+        
+        ToolbarItem(placement: .topBarTrailing) {
+            if editMode.isEditing == false {
+                NavigationLink {
+                    ArchivedGoalsListView()
+                        .toolbarVisibility(.hidden, for: .tabBar)
+                } label: {
+                    Image(systemName: "archivebox")
+                        .foregroundStyle(.iconPrimary)
+                }
+            }
+        }
+        
+        ToolbarItem(placement: .topBarLeading) {
+            if editMode.isEditing == true {
+                Button(didSelectAll ? "Deselect All" : "Select All") {
+                    if didSelectAll {
+                        deselectAllGoals()
+                    } else {
+                        selectAllGoals()
+                    }
+                }
+                .tint(.iconPrimary)
+                .contentTransition(.opacity)
+                .animation(.default, value: didSelectAll)
             }
         }
     }
-    
+
     @ViewBuilder
-    private func alertActions() -> some View {
+    private func alertActions(title: LocalizedStringKey, action: @escaping () -> Void) -> some View {
         Button(role: .cancel) { }
         
         Button(
-            "goals.alert.delete.action.title",
+            title,
             role: .destructive,
-            action: deleteGoal
+            action: action
         )
     }
     
@@ -180,11 +264,56 @@ struct GoalsListView: View {
     
     private func archiveGoal(_ goal: GoalModel) {
         goal.isArchived = true
+        goal.sortIndex = 0
+        
+        try? modelContext.save()
+    }
+    
+    private func archiveSelectedGoals() {
+        goals
+            .filter { selection.contains($0.id) }
+            .forEach { archiveGoal($0) }
+        
+        withAnimation {
+            selection.removeAll()
+            editMode = .inactive
+        }
+    }
+
+    private func deleteSelectedGoals() {
+        let toDelete = goals.filter { selection.contains($0.id) }
+        for goal in toDelete {
+            modelContext.delete(goal)
+        }
+        
+        withAnimation {
+            selection.removeAll()
+            editMode = .inactive
+        }
+        
+        try? modelContext.save()
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+    
+    private func selectAllGoals() {
+        selection = Set(goals.map { $0.id })
+    }
+    
+    private func deselectAllGoals() {
+        selection.removeAll()
     }
     
     private func prepareForDeletion(_ goal: GoalModel) {
         goalToDelete = goal
         isDeleteAlertPresented = true
+    }
+
+    private func moveGoal(from source: IndexSet, to destination: Int) {
+        var reorderedGoals = goals
+        reorderedGoals.move(fromOffsets: source, toOffset: destination)
+        for (index, goal) in reorderedGoals.enumerated() {
+            goal.sortIndex = index
+        }
     }
 }
 

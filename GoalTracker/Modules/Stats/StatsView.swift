@@ -11,7 +11,12 @@ import Charts
 
 struct StatsView: View {
     
-    @Query(sort: \GoalModel.creationDate) private var goals: [GoalModel]
+    @Query(sort: [
+        SortDescriptor(\GoalModel.sortIndex),
+        SortDescriptor(\GoalModel.creationDate, order: .reverse)
+    ])
+    private var goals: [GoalModel]
+    
     @State private var selectedGoalId: UUID? = nil
     
     private var selectedGoal: GoalModel? {

@@ -19,6 +19,7 @@ class GoalModel {
     var initialValue: Double
     var targetValue: Double
     var isArchived: Bool
+    var sortIndex: Int = 0
     
     var colors: ColorsModel
     
@@ -41,11 +42,13 @@ class GoalModel {
             return RecordModel(id: UUID(), date: $0.date, value: totalPerRecord)
         }
         
-        history.insert(RecordModel(
-            id: UUID(),
-            date: creationDate,
-            value: initialValue),
-                       at: 0
+        history.insert(
+            RecordModel(
+                id: UUID(),
+                date: creationDate,
+                value: initialValue
+            ),
+            at: 0
         )
         
         return history
@@ -66,11 +69,12 @@ class GoalModel {
             targetValue: targetValue,
             unit: unit,
             isArchived: false,
+            sortIndex: 0,
             colors: colors,
             records: []
         )
     }
-    
+
     init(
         id: UUID,
         name: String,
@@ -79,6 +83,7 @@ class GoalModel {
         targetValue: Double,
         unit: UnitModel,
         isArchived: Bool,
+        sortIndex: Int,
         colors: ColorsModel,
         records: [RecordModel]
     ) {
@@ -89,6 +94,7 @@ class GoalModel {
         self.targetValue = targetValue
         self.unit = unit
         self.isArchived = isArchived
+        self.sortIndex = sortIndex
         self.colors = colors
         self.records = records
     }
