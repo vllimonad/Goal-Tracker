@@ -55,7 +55,7 @@ struct NewUnitTypeView: View {
                 .font(.headline)
                 .padding(.vertical, 18)
         })
-        .foregroundStyle(Color.textPrimary)
+        .foregroundStyle(Color.white)
         .background(Color.bgBlue)
         .clipShape(.capsule)
         .glassEffect()

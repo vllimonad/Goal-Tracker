@@ -7,31 +7,53 @@
 
 import SwiftUI
 import SwiftData
+import WidgetKit
 
 struct UnitsListView: View {
     
+    @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) var dismiss
     
-    @Query private var customUnits: [CustomUnitType]
+    @Query(sort: [
+        SortDescriptor(\CustomUnitType.sortIndex),
+        SortDescriptor(\CustomUnitType.creationDate, order: .reverse)
+    ])
+    private var customUnits: [CustomUnitType]
+    
     @Binding var unit: UnitModel
     
     @State private var selectedSystemUnit: SystemUnitType?
     @State private var selectedCustomUnit: CustomUnitType?
+    @State private var editMode: EditMode = .inactive
+    @State private var isNewUnitTypeViewPresent: Bool = false
     
     var body: some View {
         Form {
             createOtherUnitsSection()
             
-            createCustomUnitsSection()
-
+            if editMode.isEditing {
+                editableCustomUnitsSection()
+            } else {
+                createCustomUnitsSection()
+            }
+            
             createCurrencyUnitsSection()
-            
             createWeightUnitsSection()
-            
             createDistanceUnitsSection()
         }
+        .environment(\.editMode, $editMode)
         .scrollContentBackground(.hidden)
         .navigationTitle("goal.unit.title")
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(editMode.isEditing ? "Done" : "Edit") {
+                    withAnimation {
+                        editMode = editMode.isEditing ? .inactive : .active
+                    }
+                }
+                .tint(.iconPrimary)
+            }
+        }
         .background(.bgModalPage)
         .tint(.iconBlue)
         .systemShadow()
@@ -44,6 +66,9 @@ struct UnitsListView: View {
         .onAppear {
             selectedSystemUnit = unit.systemType
             selectedCustomUnit = unit.customType
+        }
+        .navigationDestination(isPresented: $isNewUnitTypeViewPresent) {
+            NewUnitTypeView()
         }
     }
     
@@ -59,10 +84,11 @@ struct UnitsListView: View {
             .labelsHidden()
         }
         .listRowBackground(Color.bgModalPrimary)
+        .disabled(editMode.isEditing)
     }
         
     private func createCustomUnitsSection() -> some View {
-        Section {
+        Section("goal.unit.custom.section.title") {
             Picker("", selection: $selectedCustomUnit) {
                 ForEach(customUnits) { type in
                     Text("\(type.name), \(type.abbreviation)")
@@ -71,24 +97,38 @@ struct UnitsListView: View {
             }
             .pickerStyle(.inline)
             .labelsHidden()
+            
+            Button {
+                isNewUnitTypeViewPresent = true
+            } label: {
+                Text("Add")
+                    .font(.headline)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .foregroundStyle(.white)
+            }
+            .listRowBackground(Color.bgBlue)
+        }
+        .listRowBackground(Color.bgModalPrimary)
+    }
+    
+    private func editableCustomUnitsSection() -> some View {
+        Section {
+            List {
+                ForEach(customUnits) { type in
+                    Text("\(type.name), \(type.abbreviation)")
+                }
+                .onDelete(perform: deleteUnit)
+                .onMove(perform: moveUnit)
+            }
         } header: {
             HStack {
                 Text("goal.unit.custom.section.title")
                 
                 Spacer()
-                
-                NavigationLink {
-                    NewUnitTypeView()
-                } label: {
-                    Image(systemName: "plus.circle")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .foregroundStyle(Color.iconBlue)
-                }
-
             }
         }
         .listRowBackground(Color.bgModalPrimary)
+        .disabled(editMode.isEditing)
     }
     
     private func createCurrencyUnitsSection() -> some View {
@@ -103,6 +143,7 @@ struct UnitsListView: View {
             .labelsHidden()
         }
         .listRowBackground(Color.bgModalPrimary)
+        .disabled(editMode.isEditing)
     }
     
     private func createWeightUnitsSection() -> some View {
@@ -117,6 +158,7 @@ struct UnitsListView: View {
             .labelsHidden()
         }
         .listRowBackground(Color.bgModalPrimary)
+        .disabled(editMode.isEditing)
     }
     
     private func createDistanceUnitsSection() -> some View {
@@ -131,6 +173,7 @@ struct UnitsListView: View {
             .labelsHidden()
         }
         .listRowBackground(Color.bgModalPrimary)
+        .disabled(editMode.isEditing)
     }
     
     private func didSelectCustomUnit() {
@@ -151,6 +194,30 @@ struct UnitsListView: View {
         
         unit = UnitModel(systemType: selectedUnit)
         dismiss()
+    }
+    
+    private func deleteUnit(_ indexSet: IndexSet) {
+        for index in indexSet {
+            let unit = customUnits[index]
+            if unit === selectedCustomUnit {
+                selectedCustomUnit = nil
+                selectedSystemUnit = .other(.none)
+                self.unit = UnitModel(systemType: .other(.none))
+            }
+            
+            modelContext.delete(unit)
+        }
+        
+        try? modelContext.save()
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+    
+    private func moveUnit(from source: IndexSet, to destination: Int) {
+        var reorderedUnits = customUnits
+        reorderedUnits.move(fromOffsets: source, toOffset: destination)
+        for (index, unit) in reorderedUnits.enumerated() {
+            unit.sortIndex = index
+        }
     }
 }
 

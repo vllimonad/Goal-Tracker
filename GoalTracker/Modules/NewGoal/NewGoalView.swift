@@ -34,45 +34,47 @@ struct NewGoalView: View {
     @State private var textColor: Color = PresetsDataSource.getInitial().text.color
         
     var body: some View {
-        Form {
-            Section("new.goal.name.section.title") {
-                nameTextField()
-            }
-            .listRowBackground(Color.bgModalPrimary)
-            
-            Section("new.goal.data.section.title") {
-                initialValueTextField()
+        NavigationStack {
+            Form {
+                Section("new.goal.name.section.title") {
+                    nameTextField()
+                }
+                .listRowBackground(Color.bgModalPrimary)
                 
-                targetValueTextField()
+                Section("new.goal.data.section.title") {
+                    initialValueTextField()
+                    
+                    targetValueTextField()
+                    
+                    unitPickerView()
+                }
+                .listRowBackground(Color.bgModalPrimary)
                 
-                unitPickerView()
+                Section("new.goal.presets.section.title") {
+                    presetsView()
+                }
+                .listRowBackground(Color.bgModalPrimary)
+                
+                Section("new.goal.colors.section.title") {
+                    colorPickers()
+                }
+                .listRowBackground(Color.bgModalPrimary)
+                
+                Section("new.goal.preview.section.title") {
+                    goalPreview()
+                }
             }
-            .listRowBackground(Color.bgModalPrimary)
-            
-            Section("new.goal.presets.section.title") {
-                presetsView()
+            .scrollContentBackground(.hidden)
+            .background(.bgModalPage)
+            .navigationTitle("new.goal.title")
+            .navigationBarTitleDisplayMode(.inline)
+            .systemShadow()
+            .toolbar {
+                toolbarContent()
             }
-            .listRowBackground(Color.bgModalPrimary)
-            
-            Section("new.goal.colors.section.title") {
-                colorPickers()
+            .onScrollPhaseChange { _, _ in
+                focusedTextField = nil
             }
-            .listRowBackground(Color.bgModalPrimary)
-            
-            Section("new.goal.preview.section.title") {
-                goalPreview()
-            }
-        }
-        .scrollContentBackground(.hidden)
-        .background(.bgModalPage)
-        .navigationTitle("new.goal.title")
-        .navigationBarTitleDisplayMode(.inline)
-        .systemShadow()
-        .toolbar {
-            toolbarContent()
-        }
-        .onScrollPhaseChange { _, _ in
-            focusedTextField = nil
         }
     }
     
