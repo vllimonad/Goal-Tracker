@@ -102,7 +102,7 @@ struct UnitsListView: View {
             Button {
                 isNewUnitTypeViewPresent = true
             } label: {
-                Text("Add")
+                Text("new.unit.type.add.button.title")
                     .font(.headline)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .foregroundStyle(.white)
