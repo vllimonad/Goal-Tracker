@@ -168,7 +168,6 @@ struct EditGoalView: View {
     private func saveChanges() {
         goal.name = name
         goal.targetValue = targetValue
-        goal.unit = unit
         goal.colors = ColorsModel(
             progress: progressColor,
             background: backgroundColor,

@@ -54,9 +54,21 @@ class UnitModel {
     convenience init(customType: CustomUnitType) {
         self.init(type: .custom, customType: customType, systemType: nil)
     }
-    
+
     convenience init(systemType: SystemUnitType) {
         self.init(type: .system, customType: nil, systemType: systemType)
+    }
+
+    func update(systemType: SystemUnitType) {
+        type = .system
+        self.systemType = systemType
+        customType = nil
+    }
+
+    func update(customType: CustomUnitType) {
+        type = .custom
+        self.customType = customType
+        systemType = nil
     }
     
     private init(

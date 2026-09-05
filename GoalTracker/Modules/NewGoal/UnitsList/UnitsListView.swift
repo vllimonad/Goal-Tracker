@@ -44,6 +44,7 @@ struct UnitsListView: View {
         .environment(\.editMode, $editMode)
         .scrollContentBackground(.hidden)
         .navigationTitle("goal.unit.title")
+        .navigationBarBackButtonHidden(editMode.isEditing)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button(editMode.isEditing ? "Done" : "Edit") {
@@ -181,21 +182,21 @@ struct UnitsListView: View {
             let selectedUnit = selectedCustomUnit,
             selectedUnit != unit.customType
         else { return }
-        
-        unit = UnitModel(customType: selectedUnit)
+
+        unit.update(customType: selectedUnit)
         dismiss()
     }
-    
+
     private func didSelectSystemUnit() {
         guard
             let selectedUnit = selectedSystemUnit,
             selectedUnit != unit.systemType
         else { return }
-        
-        unit = UnitModel(systemType: selectedUnit)
+
+        unit.update(systemType: selectedUnit)
         dismiss()
     }
-    
+
     private func deleteUnit(_ indexSet: IndexSet) {
         let goals = (try? modelContext.fetch(FetchDescriptor<GoalModel>())) ?? []
 
@@ -205,11 +206,11 @@ struct UnitsListView: View {
             if unitToDelete === selectedCustomUnit {
                 selectedCustomUnit = nil
                 selectedSystemUnit = .other(.none)
-                self.unit = UnitModel(systemType: .other(.none))
+                unit.update(systemType: .other(.none))
             }
 
             for goal in goals where goal.unit.customType === unitToDelete {
-                goal.unit = UnitModel(systemType: .other(.none))
+                goal.unit.update(systemType: .other(.none))
             }
 
             modelContext.delete(unitToDelete)
