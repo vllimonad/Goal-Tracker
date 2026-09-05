@@ -197,17 +197,24 @@ struct UnitsListView: View {
     }
     
     private func deleteUnit(_ indexSet: IndexSet) {
+        let goals = (try? modelContext.fetch(FetchDescriptor<GoalModel>())) ?? []
+
         for index in indexSet {
-            let unit = customUnits[index]
-            if unit === selectedCustomUnit {
+            let unitToDelete = customUnits[index]
+
+            if unitToDelete === selectedCustomUnit {
                 selectedCustomUnit = nil
                 selectedSystemUnit = .other(.none)
                 self.unit = UnitModel(systemType: .other(.none))
             }
-            
-            modelContext.delete(unit)
+
+            for goal in goals where goal.unit.customType === unitToDelete {
+                goal.unit = UnitModel(systemType: .other(.none))
+            }
+
+            modelContext.delete(unitToDelete)
         }
-        
+
         try? modelContext.save()
         WidgetCenter.shared.reloadAllTimelines()
     }

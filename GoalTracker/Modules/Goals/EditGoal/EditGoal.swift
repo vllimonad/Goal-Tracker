@@ -17,11 +17,14 @@ struct EditGoalView: View {
     
     @State private var name: String = ""
     @State private var targetValue: Double = 0
-    
+    @State private var unit: UnitModel = UnitModel(systemType: .other(.none))
+
     @State private var progressColor: Color = .white
     @State private var backgroundColor: Color = .white
     @State private var textColor: Color = .white
-    
+
+    @State private var didAppear = false
+
     var body: some View {
         Form {
             Section("edit.goal.name.section.title") {
@@ -31,6 +34,7 @@ struct EditGoalView: View {
             
             Section("edit.goal.data.section.title") {
                 targetValueRow()
+                unitPickerView()
             }
             .listRowBackground(Color.bgPrimary)
             
@@ -55,6 +59,8 @@ struct EditGoalView: View {
             focusedTextField = nil
         }
         .onAppear {
+            guard !didAppear else { return }
+            didAppear = true
             configureInitialValues()
         }
     }
@@ -85,6 +91,20 @@ struct EditGoalView: View {
         }
         .onTapGesture {
             focusedTextField = .target
+        }
+    }
+    
+    private func unitPickerView() -> some View {
+        NavigationLink {
+            UnitsListView(unit: $unit)
+        } label: {
+            HStack {
+                Text("new.goal.unit.picker.title")
+                
+                Spacer()
+                
+                Text(unit.name)
+            }
         }
     }
     
@@ -125,6 +145,7 @@ struct EditGoalView: View {
     private func configureInitialValues() {
         name = goal.name
         targetValue = goal.targetValue
+        unit = goal.unit
         progressColor = goal.colors.progress.color
         backgroundColor = goal.colors.background.color
         textColor = goal.colors.text.color
@@ -147,6 +168,7 @@ struct EditGoalView: View {
     private func saveChanges() {
         goal.name = name
         goal.targetValue = targetValue
+        goal.unit = unit
         goal.colors = ColorsModel(
             progress: progressColor,
             background: backgroundColor,
