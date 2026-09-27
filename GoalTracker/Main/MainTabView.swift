@@ -24,7 +24,7 @@ struct MainTabView: View {
                 value: .goals
             ) {
                 NavigationStack {
-                    GoalsListView()
+                    GoalsListView(isNewGoalSheetPresented: $isNewGoalPresented)
                 }
             }
                         
@@ -34,22 +34,24 @@ struct MainTabView: View {
                 value: .stats
             ) {
                 NavigationStack {
-                    StatsView()
+                    StatsView(isNewGoalSheetPresented: $isNewGoalPresented)
                 }
             }
             
-            Tab(
-                "new.goal.title",
-                systemImage: "plus",
-                value: .newGoal,
-                role: .search
-            ) {
-                EmptyView()
+            if UIDevice.current.userInterfaceIdiom != .pad {
+                Tab(
+                    "new.goal.title",
+                    systemImage: "plus",
+                    value: .newGoal,
+                    role: .search
+                ) {
+                    EmptyView()
+                }
             }
         }
         .tint(.textBlue)
         .onChange(of: selectedTab) { oldValue, newValue in
-            if newValue == .newGoal {
+            if newValue == .newGoal, UIDevice.current.userInterfaceIdiom != .pad {
                 isNewGoalPresented = true
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -62,7 +64,6 @@ struct MainTabView: View {
                 NewGoalView()
             }
         }
-
     }
 }
 

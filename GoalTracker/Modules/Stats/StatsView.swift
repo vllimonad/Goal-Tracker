@@ -18,6 +18,7 @@ struct StatsView: View {
     private var goals: [GoalModel]
     
     @State private var selectedGoalId: UUID? = nil
+    @Binding var isNewGoalSheetPresented: Bool
     
     private var selectedGoal: GoalModel? {
         goals.first(where: { $0.id == selectedGoalId })
@@ -84,8 +85,18 @@ struct StatsView: View {
             .padding(.horizontal, 20)
         }
         .background(.bgPage)
-        .navigationTitle("stats.title")
+        .navigationTitle(UIDevice.current.userInterfaceIdiom == .pad ? "" : "stats.title")
         .toolbarTitleDisplayMode(.inlineLarge)
+        .toolbar {
+            ToolbarItemGroup(placement: .topBarTrailing) {
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    Button("", systemImage: "plus") {
+                        isNewGoalSheetPresented = true
+                    }
+                    .tint(.iconPrimary)
+                }
+            }
+        }
         .onAppear {
             selectedGoalId = selectedGoalId ?? goals.first?.id
         }
@@ -294,5 +305,5 @@ struct StatsView: View {
 }
 
 #Preview {
-    StatsView()
+    StatsView(isNewGoalSheetPresented: .constant(false))
 }

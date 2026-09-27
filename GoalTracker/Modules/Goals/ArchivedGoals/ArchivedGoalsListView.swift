@@ -160,7 +160,7 @@ struct ArchivedGoalsListView: View {
             }
         }
         
-        ToolbarItem(placement: .bottomBar) {
+        ToolbarItem(placement: UIDevice.current.userInterfaceIdiom == .pad ? .topBarLeading : .bottomBar) {
             if editMode.isEditing == true {
                 Button(didSelectAll ? "Deselect All" : "Select All") {
                     if didSelectAll {

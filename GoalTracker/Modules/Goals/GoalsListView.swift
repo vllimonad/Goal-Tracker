@@ -33,6 +33,7 @@ struct GoalsListView: View {
     
     @State private var selection = Set<GoalModel.ID>()
     @State private var editMode: EditMode = .inactive
+    @Binding var isNewGoalSheetPresented: Bool
     
     var body: some View {
         List(selection: $selection) {
@@ -45,7 +46,7 @@ struct GoalsListView: View {
         .background(.bgPage)
         .listRowSpacing(12)
         .listStyle(.plain)
-        .navigationTitle("goals.title")
+        .navigationTitle(UIDevice.current.userInterfaceIdiom == .pad ? "" : "goals.title")
         .toolbarVisibility(editMode.isEditing ? .hidden : .automatic, for: .tabBar)
         .toolbarTitleDisplayMode(.inlineLarge)
         .toolbar {
@@ -198,7 +199,7 @@ struct GoalsListView: View {
         
         ToolbarSpacer(.fixed, placement: .topBarTrailing)
         
-        ToolbarItem(placement: .topBarTrailing) {
+        ToolbarItem(placement: UIDevice.current.userInterfaceIdiom == .pad ? .topBarLeading : .topBarTrailing) {
             if editMode.isEditing == false {
                 NavigationLink {
                     ArchivedGoalsListView()
@@ -210,7 +211,18 @@ struct GoalsListView: View {
             }
         }
         
-        ToolbarItem(placement: .bottomBar) {
+        ToolbarSpacer(.fixed, placement: .topBarTrailing)
+        
+        ToolbarItemGroup(placement: .topBarTrailing) {
+            if UIDevice.current.userInterfaceIdiom == .pad, editMode.isEditing == false {
+                Button("", systemImage: "plus") {
+                    isNewGoalSheetPresented = true
+                }
+                .tint(.iconPrimary)
+            }
+        }
+                
+        ToolbarItem(placement: UIDevice.current.userInterfaceIdiom == .pad ? .topBarLeading : .bottomBar) {
             if editMode.isEditing == true {
                 Button(didSelectAll ? "Deselect All" : "Select All") {
                     if didSelectAll {
@@ -318,5 +330,5 @@ struct GoalsListView: View {
 }
 
 #Preview {
-    GoalsListView()
+    GoalsListView(isNewGoalSheetPresented: .constant(false))
 }
